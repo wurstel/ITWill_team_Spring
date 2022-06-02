@@ -10,7 +10,7 @@
 	<!-- hikariCP -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mvc_board3"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/subscribeproject"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="1234"></property>
 	</bean>
@@ -22,7 +22,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:/mybatis_config.xml"></property>
-		<property name="mapperLocations" value="classpath:/com/itwillbs/mvc_board/mapper/*Mapper.xml"></property>
+		<property name="mapperLocations" value="classpath:/com/springProject/subProject/mapper/*Mapper.xml"></property>
 	</bean>
 	
 	<!-- MyBatis연동에 사용될 객체들의 패키지위치 지정(기본 루트 패키지 지정)  -->
