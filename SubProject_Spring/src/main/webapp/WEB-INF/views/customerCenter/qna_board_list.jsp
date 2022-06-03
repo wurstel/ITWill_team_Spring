@@ -1,8 +1,8 @@
-<%@page import="vo.PageInfo"%>
+<%@page import="com.springProject.subProject.vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,7 @@
 				<tr class="text-center">
 					<td scope="row" style="text-align: center; vertical-align: middle;">${board.getQna_num() }</td>
 					<td id="subject" scope="row" style="text-align: center; vertical-align: middle;">
-						<a href="QNADetail.cu?qna_num=${board.getQna_num() }&page=${pageNum}" style="text-decoration: none;">
+						<a href="detail?qna_num=${board.getQna_num() }&page=${pageNum}" style="text-decoration: none;">
 							${board.getQna_title() }
 						</a>
 					</td>
@@ -55,7 +55,7 @@
 	</table>
 	</section>
 	<section id="buttonArea">
-		<button type="button" onclick="location.href='QNAWriteForm.cu'" class="btn btn-outline-primary">글쓰기</button>
+		<button type="button" onclick="location.href='customerCenter/write'" class="btn btn-outline-primary">글쓰기</button>
 	</section>
 	<section id="pageList">
 		<nav aria-label="Page navigation example">
@@ -63,7 +63,7 @@
 				<li class="page-item">
 					<c:choose>
 						<c:when test="${pageNum > 1}">
-							<a class="page-link" href="QNAList.cu?page=${pageNum - 1}">Previous</a>
+							<a class="page-link" href="list?page=${pageNum - 1}">Previous</a>
 						</c:when>
 						<c:otherwise>
 							<a class="page-link" aria-disabled="true">Previous</a>
@@ -76,7 +76,7 @@
 	            				<li class="page-item"><a class="page-link" aria-disabled="true">${i }</a></li>
 	            			</c:when>
 	            			<c:otherwise>
-	            				<li class="page-item"><a class="page-link" href="QNAList.cu?page=${i }">${i }</a></li>
+	            				<li class="page-item"><a class="page-link" href="list?page=${i }">${i }</a></li>
 	            			</c:otherwise>
 	            		</c:choose>
 	            	</c:forEach>
@@ -84,7 +84,7 @@
 	            <li class="page-item">
 	            	<c:choose>
 	            		<c:when test="${pageNum < maxPage}">
-	            			<a class="page-link" href="QNAList.cu?page=${pageNum + 1}">Next</a>
+	            			<a class="page-link" href="list?page=${pageNum + 1}">Next</a>
 	            		</c:when>
 	            		<c:otherwise>
 	            			<a class="page-link" aria-disabled="true">Next</a>
