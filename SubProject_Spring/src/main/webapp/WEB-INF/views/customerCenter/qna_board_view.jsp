@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>Q&A 게시판</title>
 </head>
@@ -22,17 +22,17 @@
 				<tbody>
 					<tr>
 						<td style="width: 20%;">글제목</td>
-						<td colspan="4">${article.getQna_title() }</td>
+						<td colspan="4">${qna.getQna_title() }</td>
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td colspan="2">${article.getQna_mem_id() }</td>
+						<td colspan="2">${qna.getQna_mem_id() }</td>
 						<td>작성일자</td>
-						<td colspan="2">${article.getQna_date() }</td>
+						<td colspan="2">${qna.getQna_date() }</td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td colspan="4" style="min-height: 200px; text-align: left;">${article.getQna_content() }</td>
+						<td colspan="4" style="min-height: 200px; text-align: left;">${qna.getQna_content() }</td>
 					</tr>
 				</tbody>
 			</table>

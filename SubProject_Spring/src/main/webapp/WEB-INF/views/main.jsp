@@ -12,7 +12,7 @@
 	<h1>main.jsp</h1>
 	<div id="menu">
 	<h2>
-	<a href="customerCenter">customerCenter</a>
+	<a href="customerCenter/list">customerCenter</a>
 	</h2>
 	
 	<h2>

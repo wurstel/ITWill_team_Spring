@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>Q&A 게시판</title>
 </head>
 <body>
@@ -36,8 +36,8 @@
 		<tbody>
 		<!-- JSTL 의 c:forEach 태그를 사용하여 articleList 에서 BoardDTO 객체를 꺼내서 내용 출력 -->
 		<!-- 단, 게시물 목록이 하나라도 존재할 경우에만 출력 c:if 태그 사용 -->
-		<c:if test="${not empty articleList and pageInfo.getListCount() > 0}">
-			<c:forEach var="board" items="${articleList }">
+		<c:if test="${not empty qnaList and pageInfo.getListCount() > 0}">
+			<c:forEach var="board" items="${qnaList }">
 				<tr class="text-center">
 					<td scope="row" style="text-align: center; vertical-align: middle;">${board.getQna_num() }</td>
 					<td id="subject" scope="row" style="text-align: center; vertical-align: middle;">
@@ -55,7 +55,7 @@
 	</table>
 	</section>
 	<section id="buttonArea">
-		<button type="button" onclick="location.href='customerCenter/write'" class="btn btn-outline-primary">글쓰기</button>
+		<button type="button" onclick="location.href='write'" class="btn btn-outline-primary">글쓰기</button>
 	</section>
 	<section id="pageList">
 		<nav aria-label="Page navigation example">
@@ -63,7 +63,7 @@
 				<li class="page-item">
 					<c:choose>
 						<c:when test="${pageNum > 1}">
-							<a class="page-link" href="list?page=${pageNum - 1}">Previous</a>
+							<a class="page-link" href="list?pageNum=${pageNum - 1}">Previous</a>
 						</c:when>
 						<c:otherwise>
 							<a class="page-link" aria-disabled="true">Previous</a>
@@ -76,7 +76,7 @@
 	            				<li class="page-item"><a class="page-link" aria-disabled="true">${i }</a></li>
 	            			</c:when>
 	            			<c:otherwise>
-	            				<li class="page-item"><a class="page-link" href="list?page=${i }">${i }</a></li>
+	            				<li class="page-item"><a class="page-link" href="list?pageNum=${i }">${i }</a></li>
 	            			</c:otherwise>
 	            		</c:choose>
 	            	</c:forEach>
@@ -84,7 +84,7 @@
 	            <li class="page-item">
 	            	<c:choose>
 	            		<c:when test="${pageNum < maxPage}">
-	            			<a class="page-link" href="list?page=${pageNum + 1}">Next</a>
+	            			<a class="page-link" href="list?pageNum=${pageNum + 1}">Next</a>
 	            		</c:when>
 	            		<c:otherwise>
 	            			<a class="page-link" aria-disabled="true">Next</a>
