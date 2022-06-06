@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springProject.subProject.mapper.MemberMapper">
+	<!-- 로그인시 아이디,비밀번호 확인 -->
+	<select id="searchUser" resultType="java.lang.String">
+		SELECT mem_id FROM member WHERE mem_id=#{mem_id} AND mem_password=#{mem_password}
+	</select>
+	<!-- 회원가입 -->
+	<insert id="insertMember">
+		INSERT INTO member VALUES(#{mem_id},#{mem_password},#{mem_name},#{mem_birth},#{mem_gender},#{mem_email},#{mem_phoneNum},#{mem_postcode},#{mem_address},'normal','0','null')
+	</insert>
+	<!-- 아이디 증복확인 -->
+	<select id="isDuplicate" resultType="java.lang.String">
+		SELECT mem_id FROM member WHERE mem_id = #{id}
+	</select>
+	
+</mapper>

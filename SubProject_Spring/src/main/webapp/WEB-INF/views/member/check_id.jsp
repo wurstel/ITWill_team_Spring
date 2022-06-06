@@ -12,14 +12,14 @@
 			document.fr.id.value = id;
 			let isDuplicate = "<%=request.getParameter("isDuplicate")%>";
 			
-			if(isDuplicate == "true") { // = 아이디 중복일 경우
-				document.getElementById("checkIdResult").innerHTML = "이미 사용중인 아이디";
-				document.getElementById("checkIdResult").style.color = "RED";
-			} else { // 아이디가 중복이 아닐 경우
+			if(isDuplicate == 'null') { // 아이디가 중복이 아닐 경우
 				let btn = "<input type='button' value='아이디 사용' onclick='useId()'>";
-				
 				document.getElementById("checkIdResult").innerHTML = "사용 가능한 아이디<br>" + btn;
 				document.getElementById("checkIdResult").style.color = "GREEN";
+			} else { // = 아이디 중복일 경우 
+				document.getElementById("checkIdResult").innerHTML = "이미 사용중인 아이디";
+				document.getElementById("checkIdResult").style.color = "RED";
+				
 			}
 		<%}%>
 	}
@@ -32,7 +32,7 @@
 	
 	function checkId() {
 		let id = document.fr.id.value;
-		
+
 		if(id.length >= 4 && id.length <= 8) { // 아이디 규칙이 적합할 경우
 			location.href = "CheckIdDuplicate.me?mem_id=" + id; 
 		} else { // 아이디 규칙이 적합하지 않을 경우

@@ -5,20 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="./css/login.css" rel="stylesheet" type="text/css">
-<script src="./js/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="./js/login.js"></script>
+<link href="resources/css/login.css" rel="stylesheet" type="text/css">
+<script src="resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="resources/js/login.js"></script>
 </head>
 <body>
 	<section class="login-form">
 	<h1>LOGIN</h1>
-	<form action="login_pro.me" method="post">
+	<form action="login.me" method="post">
 		<div class="int-area">
-			<input type="text" name="mem_id" id="id" autocomplete="off" required="required">
+			<input type="text" name="mem_id" id="mem_id" autocomplete="off" required="required">
 			<label for="id">USER NAME</label>
 		</div>
 		<div class="int-area">
-			<input type="password" name="mem_password" id="passwd" autocomplete="off" required="required">
+			<input type="password" name="mem_password" id="mem_password" autocomplete="off" required="required">
 			<label for="passwd">PASSWORD</label>
 		</div>
 		<div class="btn-area">

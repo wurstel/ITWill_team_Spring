@@ -32,7 +32,7 @@
       	</ul>
       	<ul class="navbar-nav">
       		<c:choose>
-            	<c:when test="${empty sessionScope.sId }">
+            	<c:when test="${empty userId }">
 			            <li class="nav-item ">                                                                
 			                <a class="nav-link" href="login_form.me">로그인</a>                
 			            </li>
@@ -40,7 +40,7 @@
 			                <a class="nav-link" href="join_form.me">회원가입</a>                
 			            </li>
             	</c:when>
-           		<c:when test="${sessionScope.sId eq 'almeal'}">
+           		<c:when test="${userId eq 'almeal'}">
             		<li class="nav-item ">                                                                
 			                <a class="nav-link">관리자</a>                
 			            </li>
@@ -53,7 +53,7 @@
             	</c:when>
             	<c:otherwise>
             			<li class="nav-item ">                                                                
-			                <a class="nav-link">${sId}</a>                
+			                <a class="nav-link">${userId}</a>                
 			            </li>
 	            		<li class="nav-item ">                                                                
 			                <a class="nav-link" href="mypage.me">마이페이지</a>                

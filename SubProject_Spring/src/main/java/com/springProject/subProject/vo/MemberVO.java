@@ -113,7 +113,7 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
-		return "MemberDTO [mem_id=" + mem_id + ", mem_password=" + mem_password + ", mem_name=" + mem_name
+		return "MemberVO [mem_id=" + mem_id + ", mem_password=" + mem_password + ", mem_name=" + mem_name
 				+ ", mem_birth=" + mem_birth + ", mem_gender=" + mem_gender + ", mem_email=" + mem_email
 				+ ", mem_phoneNum=" + mem_phoneNum + ", mem_address=" + mem_address + ", mem_grade=" + mem_grade
 				+ ", mem_point=" + mem_point + ", mem_paymethod=" + mem_paymethod + "]";

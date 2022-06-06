@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="./css/join.css" rel="stylesheet" type="text/css">
-<script src="./js/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="./js/joinFunc.js"></script>
+<link href="resources/css/join.css" rel="stylesheet" type="text/css">
+<script src="resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="resources/js/joinFunc.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </head>
@@ -15,7 +15,7 @@
 	<section class="join-form">
 	<h1>JOIN</h1>
 	
-	<form action="mem_join.me" name ="fr">
+	<form action="mem_join.me" name ="fr" method="post">
 		<div class="int-area">
 			<input type="text" name="mem_id" id="id" autocomplete="off" required="required" readonly>
 			<label for="id">아이디(필수)</label>	<!-- 아이디 중복방지 -->	
@@ -73,7 +73,7 @@
 		</div>
 		
 		<div class="int-area">
-			<input type="text" name="mem_email" id="email">@<input type="text" name="domain" id="domain"  >&nbsp;
+			<input type="text" name="mem_mailAdd" id="email">@<input type="text" name="domain" id="domain"  >&nbsp;
 <!-- 			<label for="id">이메일</label>					 -->
 			<select id="sDomain" onchange="selectDomain(this.value)">
 					<option value="">선택하세요</option>
@@ -89,13 +89,13 @@
 		</div>
 		
 		<div class="phone">
-			<select id="selectPhoneCode" name="mem_phoneNum">
+			<select id="selectPhoneCode" name="mem_phoneF">
 				<option value="010">010</option>
 				<option value="011">011</option>
 				<option value="016">016</option>
 			</select>-
-			<input type="text" name="mem_phoneNum1" id="phone1" autocomplete="off">-
-			<input type="text" name="mem_phoneNum2" id="phone2" autocomplete="off" >
+			<input type="text" name="mem_phoneM" id="phone1" autocomplete="off">-
+			<input type="text" name="mem_phoneL" id="phone2" autocomplete="off" >
 <!-- 			<label for="id">전화번호</label>						 -->
 		</div>
 		
