@@ -35,7 +35,7 @@ public class ControllerCustomer {
 			model.addAttribute("msg", "글 등록 실패");
 			return "main";
 		}
-		return "redirect:/customerCenter";
+		return "redirect:/customerCenter/list";
 	}
 	// 글 목록
 	@RequestMapping(value = "customerCenter/list", method = RequestMethod.GET)
