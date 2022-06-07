@@ -16,6 +16,11 @@
 	</h2>
 	
 	<h2>
+	<a href="admin/main">admin</a>
+	</h2>
+	
+	
+	<h2>
 	<a href="./storeMain.st">store</a>
 	</h2>
 	

@@ -8,9 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap 5 Simple Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles_ad_pr.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    
+    
     <style>
         .sidebar {
             position: fixed;
@@ -49,7 +50,34 @@
         .sidebar .nav-link.active {
             color: #0d6efd;
         }
+        
+        #listForm {
+			width: 1024px;
+			max-height: 610px;
+			margin: auto;
+		}
+		
+		#buttonArea {
+			margin: auto;
+			width: 1024px;
+			text-align: right;
+		}
+		
+		#pageList {
+			margin: auto;
+			width: 1024px;
+			text-align: center;
+		}
+		
+		h2 {
+			text-align: center;
+			padding: 20px 0;
+			
+		}
+
+		
     </style>
+    
 </head>
 <body>
     <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -57,8 +85,11 @@
         <div class="row">
         	<jsp:include page="../inc/sidebar_adminpage.jsp"></jsp:include>
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-				<div class="container-fluid px-4">
-					<h1 class="mt-4">상품관리</h1>
+				<div>
+					<h1> 
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+						상품관리
+					</h1>
 				</div>
 				<c:set var="pageNum" value="${pageInfo.getPageNum() }" />
 				<c:set var="maxPage" value="${pageInfo.getMaxPage() }" />
@@ -69,69 +100,70 @@
 				<!-- 게시판 리스트 -->
 				<section id="listForm">
 					<h2>상품 목록</h2>
-					<table>
-						<tr id="tr_top">
-							<td width="100px">상품코드</td>
-							<td>상품이미지</td>
-							<td width="150px">상품명</td>
-							<td width="100px">가격</td>
-							<td width="200px">상품상세</td>
-							<td width="200px">비고</td>
-						</tr>
+					<table class="table table-hover">
+						<thead class="table-dark">
+							<tr id="tr_top">
+								<td width="100px">상품코드</td>
+								<td>상품이미지</td>
+								<td width="200px">상품명</td>
+								<td width="150px">가격</td>
+								<td width="200px">비고</td>
+							</tr>
+						</thead>
 						<!-- JSTL 의 c:forEach 태그를 사용하여 articleList 에서 BoardDTO 객체를 꺼내서 내용 출력 -->
 						<!-- 단, 게시물 목록이 하나라도 존재할 경우에만 출력 c:if 태그 사용 -->
-						<c:if
-							test="${not empty productList and pageInfo.getListCount() > 0}">
+						<c:if test="${not empty productList and pageInfo.getListCount() > 0}">
 							<c:forEach var="product" items="${productList }">
 								<tr>
 									<td>${product.getPd_code() }</td>
 									<td>${product.getPd_img() }</td>
-									<td>${product.getPd_name() }</td>
+									<td><a href="detail?pd_code=${product.getPd_code() }&page=${pageNum}">
+										${product.getPd_name() }</a></td>
 									<td>${product.getPd_price() }</td>
-									<td>${product.getPd_detail() }</td>
 									<td>
-										<button type="button" class="btn btn-outline-success btn-sm" onclick="location.href='ProductRegisterForm.ad'">등록하기</button>
-										<button type="button" class="btn btn-outline-danger btn-sm">삭제하기</button>
+										<button type="button"  id = "deleteBtn" class="btn btn-outline-danger btn-sm"
+										 onclick="location.href='delete?pd_code=${product.getPd_code() }&page=${pageNum}'">삭제하기</button>
 									</td>
 								</tr>
 							</c:forEach>
 						</c:if>
 					</table>
-				</section>
-				<section id="pageList">
-					<c:choose>
-						<c:when test="${pageNum > 1}">
-							<input type="button" value="이전"
-								onclick="location.href='ProductList.ad?page=${pageNum - 1}'">
-						</c:when>
-						<c:otherwise>
-							<input type="button" value="이전">
-						</c:otherwise>
-					</c:choose>
-
-					<!-- 페이지 번호 목록은 시작 페이지(startPage)부터 끝 페이지(endPage) 까지 표시 -->
-					<c:forEach var="i" begin="${startPage }" end="${endPage }">
-						<!-- 단, 현재 페이지 번호는 링크 없이 표시 -->
+					<section id="buttonArea">
+						<button type="button" class="btn btn-outline-primary" onclick="location.href='register'">등록하기</button>
+					</section>
+					<section id="pageList">
 						<c:choose>
-							<c:when test="${pageNum eq i}">
-									${i }
-								</c:when>
+							<c:when test="${pageNum > 1}">
+								<input type="button" value="이전" onclick="location.href='list?pageNum=${pageNum - 1}'">
+							</c:when>
 							<c:otherwise>
-								<a href="BoardList.bo?page=${i }">${i }</a>
+								<input type="button" value="이전">
 							</c:otherwise>
 						</c:choose>
-					</c:forEach>
-
-					<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
-					<c:choose>
-						<c:when test="${pageNum < maxPage}">
-							<input type="button" value="다음"
-								onclick="location.href='ProductList.ad?page=${pageNum + 1}'">
-						</c:when>
-						<c:otherwise>
-							<input type="button" value="다음">
-						</c:otherwise>
-					</c:choose>
+							
+						<!-- 페이지 번호 목록은 시작 페이지(startPage)부터 끝 페이지(endPage) 까지 표시 -->
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+							<!-- 단, 현재 페이지 번호는 링크 없이 표시 -->
+							<c:choose>
+								<c:when test="${pageNum eq i}">
+									${i }
+								</c:when>
+								<c:otherwise>
+									<a href="list?pageNum=${i }">${i }</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+				
+						<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
+						<c:choose>
+							<c:when test="${pageNum < maxPage}">
+								<input type="button" value="다음" onclick="location.href='list?pageNum=${pageNum + 1}'">
+							</c:when>
+							<c:otherwise>
+								<input type="button" value="다음">
+							</c:otherwise>
+						</c:choose>
+					</section>
 				</section>
 			</main>
 		</div>
