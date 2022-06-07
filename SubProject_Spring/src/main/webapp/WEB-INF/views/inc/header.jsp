@@ -13,7 +13,7 @@
 </head>
 <body id="headerBody">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom navbar-fixed-top">
-    <a class="navbar-brand" href="main.jsp">subscribeProject</a>
+    <a class="navbar-brand" href="main.jsp" style="margin-left: 10px">subscribeProject</a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
             data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                 <a class="nav-link" href="./storeMain.st">스토어</a>                
             </li>
             <li class="nav-item ">                                                                
-                <a class="nav-link" href="customerCenter/list.cu">고객센터</a>                
+                <a class="nav-link" href="customerCenter_list.cu">고객센터</a>                
             </li>
       	</ul>
       	<ul class="navbar-nav">

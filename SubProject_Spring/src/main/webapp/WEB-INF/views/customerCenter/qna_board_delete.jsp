@@ -30,7 +30,7 @@
 	<!-- 게시판 글 삭제 -->
 	<h2>게시판 글 삭제</h2>
 	<section id="passForm">
-		<form action="delete.cu" name="deleteForm" method="post">
+		<form action="customerCenter_delete.cu" name="deleteForm" method="post">
 		<input type="hidden" name="qna_num" value="${param.qna_num }">
 		<input type="hidden" name="page" value="${param.page }">
 			<table>
