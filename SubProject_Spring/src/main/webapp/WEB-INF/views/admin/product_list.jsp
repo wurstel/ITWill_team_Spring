@@ -1,93 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 5 Simple Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-    
-    
-    <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            padding: 90px 0 0;
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-            z-index: 99;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap 5 Simple Admin Dashboard</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
-        @media (max-width: 767.98px) {
-            .sidebar {
-                top: 11.5rem;
-                padding: 0;
-            }
-        }
-            
-        .navbar {
-            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
-        }
 
-        @media (min-width: 767.98px) {
-            .navbar {
-                top: 0;
-                position: sticky;
-                z-index: 999;
-            }
-        }
+<style>
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	padding: 90px 0 0;
+	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+	z-index: 99;
+}
 
-        .sidebar .nav-link {
-            color: #333;
-        }
+@media ( max-width : 767.98px) {
+	.sidebar {
+		top: 11.5rem;
+		padding: 0;
+	}
+}
 
-        .sidebar .nav-link.active {
-            color: #0d6efd;
-        }
-        
-        #listForm {
-			width: 1024px;
-			max-height: 610px;
-			margin: auto;
-		}
-		
-		#buttonArea {
-			margin: auto;
-			width: 1024px;
-			text-align: right;
-		}
-		
-		#pageList {
-			margin: auto;
-			width: 1024px;
-			text-align: center;
-		}
-		
-		h2 {
-			text-align: center;
-			padding: 20px 0;
-			
-		}
+.navbar {
+	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
 
-		
-    </style>
-    
+@media ( min-width : 767.98px) {
+	.navbar {
+		top: 0;
+		position: sticky;
+		z-index: 999;
+	}
+}
+
+.sidebar .nav-link {
+	color: #333;
+}
+
+.sidebar .nav-link.active {
+	color: #0d6efd;
+}
+
+#listForm {
+	width: 1024px;
+	max-height: 610px;
+	margin: auto;
+}
+
+#buttonArea {
+	margin: auto;
+	width: 1024px;
+	text-align: right;
+}
+
+#pageList {
+	margin: auto;
+	width: 1024px;
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+	padding: 20px 0;
+}
+</style>
+
 </head>
 <body>
-    <jsp:include page="../inc/header.jsp"></jsp:include>
-    <div class="container-fluid">
-        <div class="row">
-        	<jsp:include page="../inc/sidebar_adminpage.jsp"></jsp:include>
+	<jsp:include page="../inc/header.jsp"></jsp:include>
+	<div class="container-fluid">
+		<div class="row">
+			<jsp:include page="../inc/sidebar_adminpage.jsp"></jsp:include>
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
 				<div>
-					<h1> 
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+					<h1>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+							viewBox="0 0 24 24" fill="none" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-file">
+							<path
+								d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+							<polyline points="13 2 13 9 20 9"></polyline></svg>
 						상품관리
 					</h1>
 				</div>
@@ -112,77 +119,87 @@
 						</thead>
 						<!-- JSTL 의 c:forEach 태그를 사용하여 articleList 에서 BoardDTO 객체를 꺼내서 내용 출력 -->
 						<!-- 단, 게시물 목록이 하나라도 존재할 경우에만 출력 c:if 태그 사용 -->
-						<c:if test="${not empty productList and pageInfo.getListCount() > 0}">
+						<c:if
+							test="${not empty productList and pageInfo.getListCount() > 0}">
 							<c:forEach var="product" items="${productList }">
 								<tr>
 									<td>${product.getPd_code() }</td>
 									<td>${product.getPd_img() }</td>
-									<td><a href="detail?pd_code=${product.getPd_code() }&page=${pageNum}">
-										${product.getPd_name() }</a></td>
+									<td><a
+										href="detail?pd_code=${product.getPd_code() }&page=${pageNum}">
+											${product.getPd_name() }</a></td>
 									<td>${product.getPd_price() }</td>
 									<td>
-										<button type="button"  id = "deleteBtn" class="btn btn-outline-danger btn-sm"
-										 onclick="location.href='delete?pd_code=${product.getPd_code() }&page=${pageNum}'">삭제하기</button>
+										<button type="button" id="deleteBtn"
+											class="btn btn-outline-danger btn-sm"
+											onclick="location.href='delete?pd_code=${product.getPd_code() }&page=${pageNum}'">삭제하기</button>
 									</td>
 								</tr>
 							</c:forEach>
 						</c:if>
 					</table>
 					<section id="buttonArea">
-						<button type="button" class="btn btn-outline-primary" onclick="location.href='register'">등록하기</button>
+						<button type="button" class="btn btn-outline-primary"
+							onclick="location.href='register'">등록하기</button>
 					</section>
 					<section id="pageList">
-						<c:choose>
-							<c:when test="${pageNum > 1}">
-								<input type="button" value="이전" onclick="location.href='list?pageNum=${pageNum - 1}'">
-							</c:when>
-							<c:otherwise>
-								<input type="button" value="이전">
-							</c:otherwise>
-						</c:choose>
-							
-						<!-- 페이지 번호 목록은 시작 페이지(startPage)부터 끝 페이지(endPage) 까지 표시 -->
-						<c:forEach var="i" begin="${startPage }" end="${endPage }">
-							<!-- 단, 현재 페이지 번호는 링크 없이 표시 -->
-							<c:choose>
-								<c:when test="${pageNum eq i}">
-									${i }
-								</c:when>
-								<c:otherwise>
-									<a href="list?pageNum=${i }">${i }</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-				
-						<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
-						<c:choose>
-							<c:when test="${pageNum < maxPage}">
-								<input type="button" value="다음" onclick="location.href='list?pageNum=${pageNum + 1}'">
-							</c:when>
-							<c:otherwise>
-								<input type="button" value="다음">
-							</c:otherwise>
-						</c:choose>
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-center">
+								<li class="page-item"><c:choose>
+										<c:when test="${pageNum > 1}">
+											<a class="page-link" href="list?pageNum=${pageNum - 1}">Previous</a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" aria-disabled="true">Previous</a>
+										</c:otherwise>
+									</c:choose> <!-- 페이지 번호 목록은 시작 페이지(startPage)부터 끝 페이지(endPage) 까지 표시 --> <c:forEach
+										var="i" begin="${startPage }" end="${endPage }">
+										<!-- 단, 현재 페이지 번호는 링크 없이 표시 -->
+										<c:choose>
+											<c:when test="${pageNum eq i}">
+												<li class="page-item"><a class="page-link"
+													aria-disabled="true">${i }</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="list?pageNum=${i }">${i }</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach> <!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 --> <c:choose>
+										<c:when test="${pageNum < maxPage}">
+											<a class="page-link" href="list?pageNum=${pageNum + 1}">Next</a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" aria-disabled="true">Next</a>
+										</c:otherwise>
+									</c:choose></li>
+							</ul>
+						</nav>
 					</section>
 				</section>
 			</main>
 		</div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-        new Chartist.Line('#traffic-chart', {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun'],
-            series: [
-                [23000, 25000, 19000, 34000, 56000, 64000,80000]
-            ]
-            }, {
-            low: 0,
-            showArea: true
-        });        
-    </script>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+		integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+	<!-- Github buttons -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script>
+		new Chartist.Line('#traffic-chart', {
+			labels : [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
+			series : [ [ 23000, 25000, 19000, 34000, 56000, 64000, 80000 ] ]
+		}, {
+			low : 0,
+			showArea : true
+		});
+	</script>
 </body>
 </html>
