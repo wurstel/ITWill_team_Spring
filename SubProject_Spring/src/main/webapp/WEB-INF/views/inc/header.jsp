@@ -27,7 +27,7 @@
                 <a class="nav-link" href="./storeMain.st">스토어</a>                
             </li>
             <li class="nav-item ">                                                                
-                <a class="nav-link" href="customerCenter/list">고객센터</a>                
+                <a class="nav-link" href="customerCenter/list.cu">고객센터</a>                
             </li>
       	</ul>
       	<ul class="navbar-nav">
