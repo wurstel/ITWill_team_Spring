@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap 5 Simple Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles_ad_pr.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <style>
@@ -49,6 +48,19 @@
         .sidebar .nav-link.active {
             color: #0d6efd;
         }
+        
+        #pageList {
+			margin: auto;
+			width: 1024px;
+			text-align: center;
+		}
+        
+        h2 {
+			text-align: center;
+			padding: 20px 0;
+			
+		}
+        
     </style>
 </head>
 <body>
@@ -58,7 +70,10 @@
 			<jsp:include page="../inc/sidebar_adminpage.jsp"></jsp:include>
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">회원관리</h1>
+					<h1>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+						회원관리
+					</h1>
 				</div>
 				<c:set var="pageNum" value="${pageInfo.getPageNum() }" />
 				<c:set var="maxPage" value="${pageInfo.getMaxPage() }" />
@@ -69,17 +84,19 @@
 				<!-- 게시판 리스트 -->
 				<section id="listForm">
 					<h2>회원 목록</h2>
-					<table>
-						<tr id="tr_top">
-							<td width="100px">아이디</td>
-							<td width="100px">회원이름</td>
-							<td width="150px">생년월일</td>
-							<td width="100px">성별</td>
-							<td width="200px">이메일</td>
-							<td width="200px">전화번호</td>
-							<td width="200px">주소</td>
-							<td width="200px">비고</td>
-						</tr>
+					<table class="table table-hover text-center">
+						<thead class="table-light">
+							<tr id="tr_top">
+								<td width="100px">아이디</td>
+								<td width="100px">회원이름</td>
+								<td width="150px">생년월일</td>
+								<td width="100px">성별</td>
+								<td width="200px">이메일</td>
+								<td width="200px">전화번호</td>
+								<td width="200px">주소</td>
+								<td width="200px">비고</td>
+							</tr>
+						</thead>
 						<!-- 단, 게시물 목록이 하나라도 존재할 경우에만 출력 c:if 태그 사용 -->
 						<c:if test="${pageInfo.getListCount() > 0 && not empty memberList }">
 							<c:forEach var="member" items="${memberList }">
@@ -101,7 +118,7 @@
 					<c:choose>
 						<c:when test="${pageNum > 1}">
 							<input type="button" value="이전"
-								onclick="location.href='ProductList.ad?page=${pageNum - 1}'">
+								onclick="location.href='member?page=${pageNum - 1}'">
 						</c:when>
 						<c:otherwise>
 							<input type="button" value="이전">
@@ -116,7 +133,7 @@
 									${i }
 								</c:when>
 							<c:otherwise>
-								<a href="BoardList.bo?page=${i }">${i }</a>
+								<a href="member?page=${i }">${i }</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -125,7 +142,7 @@
 					<c:choose>
 						<c:when test="${pageNum < maxPage}">
 							<input type="button" value="다음"
-								onclick="location.href='ProductList.ad?page=${pageNum + 1}'">
+								onclick="location.href='member?page=${pageNum + 1}'">
 						</c:when>
 						<c:otherwise>
 							<input type="button" value="다음">
