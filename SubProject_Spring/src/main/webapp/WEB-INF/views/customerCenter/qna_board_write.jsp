@@ -16,7 +16,7 @@
 <body>
 <jsp:include page="../inc/header.jsp"></jsp:include>
 	<main role="main" class="container" style="margin-top: 5em;">
-		<form name="QNAWriteForm" method="POST" action="write">
+		<form name="QNAWriteForm" method="POST" action="write.cu">
 			<div class="pt-1" style="float: left; margin-right:10px; margin-bottom: 5px;">
 			<input type="text" name="qna_mem_id" placeholder="아이디"
 				style="border-radius: 5px; width: 100%; padding: 5px;">

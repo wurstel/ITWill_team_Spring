@@ -17,7 +17,7 @@
 <body>
 <jsp:include page="../inc/header.jsp"></jsp:include>
 	<main role="main" class="container" style="margin-top: 5em;">
-		<form name="QNAModifyForm" method="POST" action="modify">
+		<form name="QNAModifyForm" method="POST" action="modify.cu">
 			<input type="hidden" name="qna_num" value="${param.qna_num }">
 			<input type="hidden" name="page" value="${param.page }">
 			<div class="pt-1" style="float: left; margin-right:10px; margin-bottom: 5px;">

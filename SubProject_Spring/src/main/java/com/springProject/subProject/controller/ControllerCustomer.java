@@ -22,12 +22,12 @@ public class ControllerCustomer {
 	private ServiceCustomer service;
 	
 	// 글쓰기 폼
-	@RequestMapping(value = "/customerCenter/write", method = RequestMethod.GET)
+	@RequestMapping(value = "/customerCenter/write.cu", method = RequestMethod.GET)
 	public String write() {
 		return "customerCenter/qna_board_write";
 	}
 	// 글쓰기 로직
-	@RequestMapping(value = "/customerCenter/write", method = RequestMethod.POST)
+	@RequestMapping(value = "/customerCenter/write.cu", method = RequestMethod.POST)
 	public String writePost(@ModelAttribute QnaVO qna, Model model) {
 		int insertCount = service.writeBoard(qna);
 		
@@ -35,10 +35,10 @@ public class ControllerCustomer {
 			model.addAttribute("msg", "글 등록 실패");
 			return "main";
 		}
-		return "redirect:/customerCenter/list";
+		return "redirect:/customerCenter/list.cu";
 	}
 	// 글 목록
-	@RequestMapping(value = "customerCenter/list", method = RequestMethod.GET)
+	@RequestMapping(value = "customerCenter/list.cu", method = RequestMethod.GET)
 	public String customer(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
 	int listCount = service.getListCount();
@@ -78,7 +78,7 @@ public class ControllerCustomer {
 	
 	}
 	// 4. 글 상세내용 조회 - GET
-	@RequestMapping(value = "/customerCenter/detail", method = RequestMethod.GET)
+	@RequestMapping(value = "/customerCenter/detail.cu", method = RequestMethod.GET)
 	public String detail(@RequestParam int qna_num, Model model) {
 			
 	// Service 객체의 getBoardDetail() 메서드를 호출하여 게시물 상세 정보 조회
@@ -91,12 +91,12 @@ public class ControllerCustomer {
 	
 	}
 	// 글 삭제 폼
-	@RequestMapping(value = "/customerCenter/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/customerCenter/delete.cu", method = RequestMethod.GET)
 	public String delete() {
 		return "/customerCenter/qna_board_delete";
 	}
 	// 글 삭제 로직
-	@RequestMapping(value = "/customerCenter/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/customerCenter/delete.cu", method = RequestMethod.POST)
 	public String deletePost(@ModelAttribute QnaVO qna, @RequestParam int page, Model model) {
 
 	int deleteCount = service.removeBoard(qna);
@@ -106,17 +106,17 @@ public class ControllerCustomer {
 		return "main";
 	}
 		model.addAttribute("page", page);
-		return "redirect:/customerCenter/list";
+		return "redirect:/customerCenter/list.cu";
 	}
 	// 글 수정 폼
-	@RequestMapping(value = "/customerCenter/modify", method = RequestMethod.GET)
+	@RequestMapping(value = "/customerCenter/modify.cu", method = RequestMethod.GET)
 	public String modify(@RequestParam int qna_num, @RequestParam int page, Model model) {
 		QnaVO qna = service.getDetail(qna_num);
 		model.addAttribute("qna", qna);
 		return "/customerCenter/qna_board_modify";
 	}
 	// 글 수정 로직
-	@RequestMapping(value = "/customerCenter/modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/customerCenter/modify.cu", method = RequestMethod.POST)
 	public String modifyPost(@ModelAttribute QnaVO qna, @RequestParam int page, Model model) {
 			
 	int modifyCount = service.modifyBoard(qna);
@@ -127,18 +127,18 @@ public class ControllerCustomer {
 		model.addAttribute("qna_num", qna.getQna_num());
 		model.addAttribute("page", page);
 				
-		return "redirect:/customerCenter/detail";
+		return "redirect:/customerCenter/detail.cu";
 		
 	}
 	// 답글 폼
-	@RequestMapping(value = "/customerCenter/reply", method = RequestMethod.GET)
+	@RequestMapping(value = "/customerCenter/reply.cu", method = RequestMethod.GET)
 	public String reply(@RequestParam int qna_num, @RequestParam int page, Model model) {
 		QnaVO qna = service.getDetail(qna_num);
 		model.addAttribute("qna", qna);
 		return "/customerCenter/qna_board_reply";
 	}
 	// 답글 로직
-	@RequestMapping(value = "/customerCenter/reply", method = RequestMethod.POST)
+	@RequestMapping(value = "/customerCenter/reply.cu", method = RequestMethod.POST)
 	public String replyPost(@ModelAttribute QnaVO qna, @RequestParam int page ,Model model) {
 		int insertCount = service.writeReplyBoard(qna);
 		if(insertCount == 0) {
@@ -146,6 +146,6 @@ public class ControllerCustomer {
 			return "main";
 		}
 		model.addAttribute("page", page);
-		return "redirect:/customerCenter/list";
+		return "redirect:/customerCenter/list.cu";
 	}
 }
