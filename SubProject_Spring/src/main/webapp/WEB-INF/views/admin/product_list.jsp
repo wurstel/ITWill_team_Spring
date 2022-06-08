@@ -55,23 +55,12 @@
 	color: #0d6efd;
 }
 
-#listForm {
-	width: 1024px;
-	max-height: 610px;
-	margin: auto;
-}
 
-#buttonArea {
-	margin: auto;
-	width: 1024px;
-	text-align: right;
-}
-
-#pageList {
-	margin: auto;
-	width: 1024px;
-	text-align: center;
-}
+#pageList {  
+  	margin: auto;  
+  	width: 1024px;  
+  	text-align: center;  
+}  
 
 h2 {
 	text-align: center;
@@ -86,18 +75,6 @@ h2 {
 		<div class="row">
 			<jsp:include page="../inc/sidebar_adminpage.jsp"></jsp:include>
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-				<div>
-					<h1>
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-							viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-file">
-							<path
-								d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-							<polyline points="13 2 13 9 20 9"></polyline></svg>
-						상품관리
-					</h1>
-				</div>
 				<c:set var="pageNum" value="${pageInfo.getPageNum() }" />
 				<c:set var="maxPage" value="${pageInfo.getMaxPage() }" />
 				<c:set var="startPage" value="${pageInfo.getStartPage() }" />
@@ -107,18 +84,19 @@ h2 {
 				<!-- 게시판 리스트 -->
 				<section id="listForm">
 					<h2>상품 목록</h2>
-					<table class="table table-hover">
+					<table class="table table-hover text-center">
 						<thead class="table-dark">
 							<tr id="tr_top">
 								<td width="100px">상품코드</td>
-								<td>상품이미지</td>
-								<td width="200px">상품명</td>
+								<td width="400px">상품이미지</td>
+								<td width="300px">상품명</td>
 								<td width="150px">가격</td>
 								<td width="200px">비고</td>
 							</tr>
 						</thead>
 						<!-- JSTL 의 c:forEach 태그를 사용하여 articleList 에서 BoardDTO 객체를 꺼내서 내용 출력 -->
 						<!-- 단, 게시물 목록이 하나라도 존재할 경우에만 출력 c:if 태그 사용 -->
+						<tbody>
 						<c:if
 							test="${not empty productList and pageInfo.getListCount() > 0}">
 							<c:forEach var="product" items="${productList }">
@@ -126,28 +104,28 @@ h2 {
 									<td>${product.getPd_code() }</td>
 									<td>${product.getPd_img() }</td>
 									<td><a
-										href="detail?pd_code=${product.getPd_code() }&page=${pageNum}">
+										href="admin_detail.ad?pd_code=${product.getPd_code() }&page=${pageNum}">
 											${product.getPd_name() }</a></td>
 									<td>${product.getPd_price() }</td>
 									<td>
 										<button type="button" id="deleteBtn"
 											class="btn btn-outline-danger btn-sm"
-											onclick="location.href='delete?pd_code=${product.getPd_code() }&page=${pageNum}'">삭제하기</button>
+											onclick="location.href='admin_delete.ad?pd_code=${product.getPd_code() }&page=${pageNum}'">삭제하기</button>
 									</td>
 								</tr>
 							</c:forEach>
 						</c:if>
+						</tbody>
 					</table>
 					<section id="buttonArea">
-						<button type="button" class="btn btn-outline-primary"
-							onclick="location.href='register'">등록하기</button>
+						<button type="button" class="btn btn-outline-primary" onclick="location.href='admin_register.ad'" class="btn btn-outline-primary">등록하기</button>
 					</section>
 					<section id="pageList">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination justify-content-center">
 								<li class="page-item"><c:choose>
 										<c:when test="${pageNum > 1}">
-											<a class="page-link" href="list?pageNum=${pageNum - 1}">Previous</a>
+											<a class="page-link" href="admin_list.ad?pageNum=${pageNum - 1}">Previous</a>
 										</c:when>
 										<c:otherwise>
 											<a class="page-link" aria-disabled="true">Previous</a>
@@ -162,12 +140,12 @@ h2 {
 											</c:when>
 											<c:otherwise>
 												<li class="page-item"><a class="page-link"
-													href="list?pageNum=${i }">${i }</a></li>
+													href="admin_list.ad?pageNum=${i }">${i }</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach> <!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 --> <c:choose>
 										<c:when test="${pageNum < maxPage}">
-											<a class="page-link" href="list?pageNum=${pageNum + 1}">Next</a>
+											<a class="page-link" href="admin_list.ad?pageNum=${pageNum + 1}">Next</a>
 										</c:when>
 										<c:otherwise>
 											<a class="page-link" aria-disabled="true">Next</a>

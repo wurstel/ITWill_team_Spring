@@ -48,6 +48,14 @@
         .sidebar .nav-link.active {
             color: #0d6efd;
         }
+        
+        
+        #buttonArea {  
+  			margin: auto;  
+  			width: 800px;  
+  			text-align: left;  
+  		}  
+		
     </style>
 </head>
 <body>
@@ -82,7 +90,7 @@
 								<tr class="text-center">
 									<td scope="row" style="text-align: center; vertical-align: middle;">${qna.getQna_num() }</td>
 									<td id="subject" scope="row" style="text-align: center; vertical-align: middle;">
-										<a href="../customerCenter/detail?qna_num=${qna.getQna_num() }&page=${pageNum}" style="text-decoration: none;">
+										<a href="./customerCenter_detail.cu?qna_num=${qna.getQna_num() }&page=${pageNum}" style="text-decoration: none;">
 											${qna.getQna_title() }
 										</a>
 									</td>
@@ -94,49 +102,47 @@
 						</c:if>
 						</tbody>
 					</table>
-				</section>
-				
-				<section id="buttonArea">
-					<button type="button" onclick="location.href='../customerCenter/write'" class="btn btn-outline-primary">글쓰기</button>
-				</section>
-				
-				<section id="pageList">
-					<nav aria-label="Page navigation example" style="margin-left: 30em;">
-						<ul class="pagination justify-content-center">
-							<li class="page-item">
-								<c:choose>
-									<c:when test="${pageNum > 1}">
-										<a class="page-link" href="customer?page=${pageNum - 1}">Previous</a>
-									</c:when>
-									<c:otherwise>
-										<a class="page-link" aria-disabled="true">Previous</a>
-									</c:otherwise>
-								</c:choose>
-							</li>
-				            	<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				            		<c:choose>
-				            			<c:when test="${pageNum eq i}">
-				            				<li class="page-item"><a class="page-link" aria-disabled="true">${i }</a></li>
-				            			</c:when>
-				            			<c:otherwise>
-				            				<li class="page-item"><a class="page-link" href="customer?page=${i }">${i }</a></li>
-				            			</c:otherwise>
-				            		</c:choose>
-				            	</c:forEach>
-				            
-				            <li class="page-item">
-				            	<c:choose>
-				            		<c:when test="${pageNum < maxPage}">
-				            			<a class="page-link" href="customer?page=${pageNum + 1}">Next</a>
-				            		</c:when>
-				            		<c:otherwise>
-				            			<a class="page-link" aria-disabled="true">Next</a>
-				            		</c:otherwise>
-				            	</c:choose>
-				            </li>
-						</ul>
-					</nav>
-				</section>
+					<section id="buttonArea">
+						<button type="button" onclick="location.href='./customerCenter_write.cu'" class="btn btn-outline-primary">글쓰기</button>
+					</section>
+					<section id="pageList">
+						<nav aria-label="Page navigation example" style="margin-left: 30em;">
+							<ul class="pagination justify-content-center">
+								<li class="page-item">
+									<c:choose>
+										<c:when test="${pageNum > 1}">
+											<a class="page-link" href="admin_customer.ad?pageNum=${pageNum - 1}">Previous</a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" aria-disabled="true">Previous</a>
+										</c:otherwise>
+									</c:choose>
+								</li>
+					            	<c:forEach var="i" begin="${startPage }" end="${endPage }">
+					            		<c:choose>
+					            			<c:when test="${pageNum eq i}">
+					            				<li class="page-item"><a class="page-link" aria-disabled="true">${i }</a></li>
+					            			</c:when>
+					            			<c:otherwise>
+					            				<li class="page-item"><a class="page-link" href="admin_customer.ad?pageNum=${i }">${i }</a></li>
+					            			</c:otherwise>
+					            		</c:choose>
+					            	</c:forEach>
+					            
+					            <li class="page-item">
+					            	<c:choose>
+					            		<c:when test="${pageNum < maxPage}">
+					            			<a class="page-link" href="admin_customer.ad?pageNum=${pageNum + 1}">Next</a>
+					            		</c:when>
+					            		<c:otherwise>
+					            			<a class="page-link" aria-disabled="true">Next</a>
+					            		</c:otherwise>
+					            	</c:choose>
+					            </li>
+							</ul>
+						</nav>
+					</section>
+				</section>	
 			</main>	
 		</div>
 	</div>

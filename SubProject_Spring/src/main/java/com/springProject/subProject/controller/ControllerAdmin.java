@@ -25,14 +25,14 @@ public class ControllerAdmin {
 	private ServiceAdmin service;
 	
 	// 관리자 메인페이지
-	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_main.ad", method = RequestMethod.GET)
 	public String adminDashboard() {
 		return "admin/adminDashboard";
 	}
 	
 	// 회원관리 페이지
 	
-	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_member.ad", method = RequestMethod.GET)
 		public String member(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
 		int listCount = service.getMeListCount();
@@ -75,7 +75,7 @@ public class ControllerAdmin {
 	
 	
 	// 고객센터관리 페이지
-	@RequestMapping(value = "/admin/customer", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_customer.ad", method = RequestMethod.GET)
 	public String customerCenter(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
 		int listCount = service.getCuListCount();
@@ -119,13 +119,13 @@ public class ControllerAdmin {
 	
 	
 	// 상품등록 폼 - GET
-	@RequestMapping(value = "/admin/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_register.ad", method = RequestMethod.GET)
 	public String register() {
 		return "admin/product_register";
 	}
 	
 	// 상품등록 비즈니스 로직
-	@RequestMapping(value = "/admin/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin_register.ad", method = RequestMethod.POST)
 	public String registerPost(@ModelAttribute ProductVO product, Model model) {
 		
 		int insertCount = service.registerProduct(product);
@@ -135,12 +135,12 @@ public class ControllerAdmin {
 			return "fail_back";
 		}
 		
-		return "redirect:/admin/list";
+		return "redirect:/admin_list.ad";
 	}
 	
 	
 	// 상품 목록
-	@RequestMapping(value = "/admin/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_list.ad", method = RequestMethod.GET)
 	public String productList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
 		int listCount = service.getPdListCount();
@@ -181,7 +181,7 @@ public class ControllerAdmin {
 	}
 
 	// 상품 상세 조회 - GET
-	@RequestMapping(value = "/admin/detail", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_detail.ad", method = RequestMethod.GET)
 	public String detail(@RequestParam String pd_code, Model model) {
 		
 		// Service 객체의 getProductDetail() 메서드를 호출하여 게시물 상세 정보 조회
@@ -195,13 +195,13 @@ public class ControllerAdmin {
 	
 	
 	// 상품 삭제 폼
-	@RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_delete.ad", method = RequestMethod.GET)
 	public String delete() {
-		return "/admin/product_delete";
+		return "admin/product_delete";
 	}
 
 	// 상품 삭제 로직 - POST
-	@RequestMapping(value = "/admin/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin_delete.ad", method = RequestMethod.POST)
 	public String deletePost(@ModelAttribute ProductVO product, @RequestParam int page, Model model) {
 		
 		int deleteCount = service.removeProduct(product);
@@ -216,12 +216,12 @@ public class ControllerAdmin {
 		model.addAttribute("page", page);
 		
 
-		return "redirect:/admin/list";
+		return "redirect:/admin_list.ad";
 	}
 	
 	// 상품 수정 폼(modify - modify()) - GET
 	// => qna_board_modify.jsp 
-	@RequestMapping(value = "/admin/modify", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_modify.ad", method = RequestMethod.GET)
 	public String modify(@RequestParam String pd_code, Model model) {
 		// 글 상세정보 조회 작업을 재사용하여 수정할 내용 가져오기
 		// Service 객체의 getDetail() 메서드를 호출하여 게시물 상세 정보 조회
@@ -236,7 +236,7 @@ public class ControllerAdmin {
 	// 상품 수정 비즈니스 로직(modify - modifyPost()) - POST
 	// => service - modifyBoard(), mapper - deleteBoard()
 	// => 수정 결과 판별(실패 시 "글 수정 실패" fail_back.jsp, 성공 시 detail)
-	@RequestMapping(value = "/admin/modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin_modify.ad", method = RequestMethod.POST)
 	public String modifyPost(@ModelAttribute ProductVO product, @RequestParam int page, Model model) {
 		
 		int modifyCount = service.modifyProduct(product);
@@ -249,7 +249,7 @@ public class ControllerAdmin {
 		model.addAttribute("pd_code", product.getPd_code());
 		model.addAttribute("page", page);
 				
-		return "redirect:/admin/detail";
+		return "redirect:/admin_detail.ad";
 		
 	}
 

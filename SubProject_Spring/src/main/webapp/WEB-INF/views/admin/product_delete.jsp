@@ -30,7 +30,7 @@
 	<!-- 상품 삭제 -->
 	<h2>상품 삭제</h2>
 	<section id="passForm">
-		<form action="delete" name="deleteForm" method="post">
+		<form action="admin_delete.ad" name="deleteForm" method="post">
 		<input type="hidden" name="pd_code" value="${param.pd_code }">
 		<input type="hidden" name="page" value="${param.page }">
 			<table>
