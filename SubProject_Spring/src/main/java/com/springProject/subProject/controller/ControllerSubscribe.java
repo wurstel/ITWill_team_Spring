@@ -29,7 +29,7 @@ public class ControllerSubscribe {
    
    @RequestMapping(value = "/sub_order.sub", method = RequestMethod.GET)
    public String standardSub(HttpSession session, Model model) {
-      String id = (String)session.getAttribute("sId");
+      String id = (String)session.getAttribute("userId");
       
       if(id == null) {
          model.addAttribute("msg", "잘못된 접근입니다");
@@ -38,12 +38,6 @@ public class ControllerSubscribe {
       
       return "subscribe/sub_order";
    }
-   
-   @RequestMapping(value = "/Payment.pm", method = RequestMethod.POST)
-   public String payment() {
-      return "payment/payment";
-   }
-   
    
    
 }

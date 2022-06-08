@@ -1,6 +1,6 @@
 package com.springProject.subProject.vo;
 
-public class payInfoVO {
+public class PayInfoVO {
 	private String pd_name;
 	private String amount;
 	private String mem_email;
