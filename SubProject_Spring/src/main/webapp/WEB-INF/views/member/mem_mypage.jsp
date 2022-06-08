@@ -18,14 +18,14 @@
     <div class="container-fluid">
       <form action="">
       	<table class="table">
-			<tr><td>아이디</td><td>${memberDTO.mem_id}</td></tr>
-			<tr><td>이름</td><td>${memberDTO.mem_name}</td></tr>
-			<tr><td>생년월일</td><td>${memberDTO.mem_birth}</td></tr>
-			<tr><td>성별</td><td>${memberDTO.mem_gender}</td></tr>
-			<tr><td>email</td><td>${memberDTO.mem_email}</td></tr>
-			<tr><td>전화번호</td><td>${memberDTO.mem_phoneNum}</td></tr>
-			<tr><td>주소</td><td>${memberDTO.mem_address }</td></tr>
-			<tr><td>멤버쉽등급</td><td>${memberDTO.mem_grade }</td></tr>
+			<tr><td>아이디</td><td>${memberVO.mem_id}</td></tr>
+			<tr><td>이름</td><td>${memberVO.mem_name}</td></tr>
+			<tr><td>생년월일</td><td>${memberVO.mem_birth}</td></tr>
+			<tr><td>성별</td><td>${memberVO.mem_gender}</td></tr>
+			<tr><td>email</td><td>${memberVO.mem_email}</td></tr>
+			<tr><td>전화번호</td><td>${memberVO.mem_phoneNum}</td></tr>
+			<tr><td>주소</td><td>${memberVO.mem_address }</td></tr>
+			<tr><td>멤버쉽등급</td><td>${memberVO.mem_grade }</td></tr>
       	</table>
       </form>
 <!--       	<button type="submit" class="btn btn-secondary">수정하기</button> -->

@@ -80,7 +80,8 @@
 					<option value="naver.com">naver.com</option>
 					<option value="gmail.com">gmail.com</option>
 					<option value="nate.com">nate.com</option>
-			</select>
+					<option value="daum.net">daum.net</option>
+				</select>
 		</div>
 		<div class="int-area">
 			<input type="button" value="메일 인증" class="mail_btn" id="mail_btn">				

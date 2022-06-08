@@ -14,4 +14,20 @@
 		SELECT mem_id FROM member WHERE mem_id = #{id}
 	</select>
 	
+	<!-- 마이페이지 조회 -->
+	<select id="selectMyPage" resultType="com.springProject.subProject.vo.MemberVO">
+		SELECT * FROM member WHERE mem_id = #{id}
+	</select>
+	
+<!-- 	<update id="selectMemberDetail"> -->
+<!-- 		UPDATE member -->
+<!-- 		SET  -->
+<!-- 	</update> -->
+
+<!-- 회원 정보 수정 -->
+	<update id="updateMember">
+		UPDATE member
+		SET mem_email = #{mem_email}, mem_phoneNum = #{mem_phoneNum}, mem_postcode = #{mem_postcode}, mem_address = #{mem_address}
+		WHERE mem_id = #{mem_id}
+	</update>
 </mapper>

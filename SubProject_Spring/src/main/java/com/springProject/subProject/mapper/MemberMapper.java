@@ -13,6 +13,16 @@ public interface MemberMapper {
 
 	String searchUser(@Param("mem_id") String mem_id,@Param("mem_password") String mem_password);
 
+	
+	int insertMember(@ModelAttribute MemberVO memberVO);
+
+	MemberVO selectMyPage(String id);
+
+	MemberVO selectMemberDetail(String id);
+	
+	// 회원 정보 수정
+	int updateMember(@ModelAttribute MemberVO memberVO);
+
 
 
 }

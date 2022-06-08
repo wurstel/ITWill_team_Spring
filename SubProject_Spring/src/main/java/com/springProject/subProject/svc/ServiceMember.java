@@ -32,6 +32,41 @@ public class ServiceMember {
 		return mapper.searchUser(mem_id,mem_password);
 	}
 
+	
+
+	public int joinMember(@ModelAttribute MemberVO memberVO) {
+	System.out.println(memberVO);
+	
+	
+		return mapper.insertMember(memberVO);
+	}
+
+	// 마이 페이지
+	public MemberVO getMyPage(String id) {
+		// TODO Auto-generated method stub
+		return mapper.selectMyPage(id);
+	}
+
+	// 회원정보 변경 폼 이동 -> 회원정보 가져오기
+	public MemberVO getMemberDetail(String id) {
+		
+		return mapper.selectMemberDetail(id);
+	}
+	
+	// 회원정보 수정 
+	public int updateMember(@ModelAttribute MemberVO memberVO) {
+		
+//		memberVO.setMem_email(memberVO.getMem_email());
+//		memberVO.setMem_phoneNum(memberVO.getMem_phoneNum());
+//		memberVO.setMem_postcode(memberVO.getMem_postcode());
+//		memberVO.setMem_address(memberVO.getMem_address());
+	
+		System.out.println("수정된 정보 : " + memberVO);
+		
+		return mapper.updateMember(memberVO);
+	}
+
+	
 
 
 }
