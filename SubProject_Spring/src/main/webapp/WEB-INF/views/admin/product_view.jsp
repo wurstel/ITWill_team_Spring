@@ -87,10 +87,10 @@
 			       		</tr>
 			        	<tr>
 				            <td colspan="2" align="center">
-				                <input type="button" class="btn btn-outline-primary" value="수정" onclick="location.href='modify?pd_code=${param.pd_code}&page=${param.page}'">
-				                <input type="button" class="btn btn-outline-danger btn-sm" id="deleteBtn"value="삭제" onclick="location.href='delete?pd_code=${param.pd_code}&page=${param.page}'">
+				                <input type="button" class="btn btn-outline-primary" value="수정" onclick="location.href='admin_modify.ad?pd_code=${param.pd_code}&page=${param.page}'">
+				                <input type="button" class="btn btn-outline-danger btn-sm" id="deleteBtn"value="삭제" onclick="location.href='admin_delete.ad?pd_code=${param.pd_code}&page=${param.page}'">
 				                <input type="button" class="btn btn-outline-primary" id="listBtn" value="상품목록" 
-				                	onclick="location.href = 'list?page=${param.page}'">  
+				                	onclick="location.href = 'admin_list.ad?page=${param.page}'">  
 				                	
 				            </td>
 			        	</tr>

@@ -16,7 +16,7 @@
 	</h2>
 	
 	<h2>
-	<a href="admin/main">admin</a>
+	<a href="admin_main.ad">admin</a>
 	</h2>
 	
 	

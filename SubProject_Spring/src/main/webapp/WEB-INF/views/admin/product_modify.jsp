@@ -69,7 +69,7 @@
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
             	<section id="modifyForm">
 					<h1 id="modisubject">상품 수정</h1>
-					<form action="modify" name="ProductForm" method="post">
+					<form action="admin_modify.ad" name="ProductForm" method="post">
 						<input type="hidden" name="page" value="${param.page }">
 						<table class="table">
 							<tr>

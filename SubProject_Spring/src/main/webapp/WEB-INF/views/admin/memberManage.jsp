@@ -130,7 +130,7 @@ h2 {
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><c:choose>
 									<c:when test="${pageNum > 1}">
-									<a class="page-link" href="member?page=${pageNum - 1}">Previous</a>
+									<a class="page-link" href="admin_member.ad?pageNum=${pageNum - 1}">Previous</a>
 									</c:when>
 									<c:otherwise>
 										<a class="page-link" aria-disabled="true">Previous</a>
@@ -147,7 +147,7 @@ h2 {
 									</c:when>
 									<c:otherwise>
 										<li class="page-item"><a class="page-link"
-											href="member?page=${i }">${i }</a></li>
+											href="admin_member.ad?pageNum=${i }">${i }</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -155,7 +155,7 @@ h2 {
 							<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
 							<li class="page-item"><c:choose>
 									<c:when test="${pageNum < maxPage}">
-										<a class="page-link" href="member?page=${pageNum + 1}">Next</a>
+										<a class="page-link" href="admin_member.ad?pageNum=${pageNum + 1}">Next</a>
 									</c:when>
 									<c:otherwise>
 										<a class="page-link" aria-disabled="true">Next</a>

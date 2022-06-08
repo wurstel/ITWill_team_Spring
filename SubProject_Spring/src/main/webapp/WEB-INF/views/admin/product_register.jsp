@@ -68,7 +68,7 @@
                		<h1 class="mt-4">상품등록</h1>
                 </div>
                	<div>
-					<form action="register" name="ProductRegisterForm" method="post" >
+					<form action="admin_register.ad" name="ProductRegisterForm" method="post" >
 					    <table class="table">
 					    	<tr>
 					            <td>상품코드</td>
