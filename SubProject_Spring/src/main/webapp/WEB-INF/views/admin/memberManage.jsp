@@ -93,7 +93,7 @@ h2 {
 				<!-- 게시판 리스트 -->
 				<section id="listForm">
 					<h2>회원 목록</h2>
-					<table class="table table-hover text-center">
+					<table class="table table-hover text-center" style="vertical-align: middle;">
 						<thead class="table-light">
 							<tr id="tr_top">
 								<td width="100px">아이디</td>

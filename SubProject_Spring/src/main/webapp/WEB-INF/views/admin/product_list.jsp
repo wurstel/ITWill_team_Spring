@@ -84,7 +84,7 @@ h2 {
 				<!-- 게시판 리스트 -->
 				<section id="listForm">
 					<h2>상품 목록</h2>
-					<table class="table table-hover text-center">
+					<table class="table table-hover text-center" style="vertical-align: middle;">
 						<thead class="table-dark">
 							<tr id="tr_top">
 								<td width="100px">상품코드</td>
