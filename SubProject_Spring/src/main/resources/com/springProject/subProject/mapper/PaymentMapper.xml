@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.springProject.subProject.mapper.PaymentMapper">
+	<!-- 주문표 -->
+	<insert id="insertOrderPad">
+		INSERT INTO order_pad VALUES((select order_num from(SELECT ifnull(max(order_num),0)+1 as order_num from order_pad where order_mem_id=#{order_mem_id})tmp),
+		#{order_mem_id},#{order_pd_code},'1',#{order_qty},#{order_postcode},#{order_address},#{order_phoneNum})
+	</insert>
+	
+	<!-- 결제 정보 가져오기 -->
+	<select id="getPayInfo" resultType="com.springProject.subProject.vo.PayInfoVO">
+		SELECT pd_name,(p.pd_price*o.order_qty) as amount,mem_email,mem_name,mem_phoneNum,order_address,order_postcode 
+		FROM member m JOIN order_pad o 
+		ON m.mem_id = o.order_mem_id
+		JOIN product p ON o.order_pd_code = p.pd_code
+		WHERE order_mem_id=#{order_mem_id} AND order_pd_code=#{order_pd_code} AND order_num=(SELECT MAX(order_num) FROM order_pad WHERE order_mem_id=#{order_mem_id})
+	</select>
 	
 </mapper>

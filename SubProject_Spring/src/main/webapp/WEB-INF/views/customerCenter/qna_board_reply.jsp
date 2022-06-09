@@ -17,7 +17,7 @@
 <body>
 <jsp:include page="../inc/header.jsp"></jsp:include>
 	<main role="main" class="container" style="margin-top: 5em;">
-		<form name="QNAReplyForm" method="POST" action="reply">
+		<form name="QNAReplyForm" method="POST" action="customerCenter_reply.cu">
 			<input type="hidden" name="qna_num" value="${qna.qna_num}">
 			<input type="hidden" name="page" value="${param.page }">
 			<input type="hidden" name="qna_re_ref" value="${qna.qna_re_ref}">

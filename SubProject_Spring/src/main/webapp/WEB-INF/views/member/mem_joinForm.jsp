@@ -13,8 +13,7 @@
 </head>
 <body>
 	<section class="join-form">
-	<h1>JOIN</h1>
-	
+	<!-- <h1>JOIN</h1> -->
 	<form action="mem_join.me" name ="fr" method="post">
 		<div class="int-area">
 			<input type="text" name="mem_id" id="id" autocomplete="off" required="required" readonly>
@@ -27,19 +26,16 @@
 			<label for="id">비밀번호(필수)</label>	<!-- 정규표현식 -->					
 		</div>
 		<span id="passResult" class="passResult"></span>
-		
 		<div class="int-area">
 			<input type="password" name="mem_password2" id="passwd2" autocomplete="off" required="required"  onkeyup="checkRetypePass(this.value)">
 <!-- 			<label for="email_input">필수정보입니다!</label> -->
 			<label for="id">비밀번호 재확인(필수)</label>	<!-- 정규표현식 -->					
 		</div>
 		<span id="checkRetypePassResult" class="checkRetypePassResult"></span>
-		
 		<div class="int-area">
 			<input type="text" name="mem_name" id="name" autocomplete="off" required="required">
 			<label for="id">이름(필수)</label>					
 		</div>
-		
 		<div class="date">
 			<input type="text" name="mem_year" id="year" autocomplete="off"  placeholder="년(4자)">&nbsp;&nbsp;
 			<select onselect="" id="selectMon" name="mem_month">
@@ -60,7 +56,6 @@
 			<input type="text" name="mem_day" id="day" autocomplete="off"  placeholder="일">
 <!-- 			<label for="id">생년월일</label>				 -->
 		</div>
-		
 		<div class="int-area">
 <!-- 			<input type="radio" value="남" name="mem_gender" id="gender">남 -->
 <!-- 			<input type="radio" value="여" name="mem_gender" id="gender">여 -->
@@ -71,7 +66,6 @@
 			</select>
 <!-- 			<label for="id">성별</label>					 -->
 		</div>
-		
 		<div class="int-area">
 			<input type="text" name="mem_mailAdd" id="email">@<input type="text" name="domain" id="domain"  >&nbsp;
 <!-- 			<label for="id">이메일</label>					 -->
@@ -88,7 +82,6 @@
 <!-- 			<input type="text" name="mem_auth" id="auth" autocomplete="off" required="required"> -->
 <!-- 			<label for="id">메일 인증</label>	아이디 중복방지	 -->
 		</div>
-		
 		<div class="phone">
 			<select id="selectPhoneCode" name="mem_phoneF">
 				<option value="010">010</option>
@@ -99,19 +92,16 @@
 			<input type="text" name="mem_phoneL" id="phone2" autocomplete="off" >
 <!-- 			<label for="id">전화번호</label>						 -->
 		</div>
-		
 		<div class="int-area">
 			<input type="text" name="mem_postcode" id="postcode" autocomplete="off">
 			<input type="button" value="주소검색" id="postcode_se" onclick="postCodeSearch()">
 			<input type="text" id="address" name="address"><input type="text" id="add_detail" name="add_detail" placeholder="상세주소 입력">
 <!-- 			<label for="id">주소</label>					 -->
 		</div>
-		
 		<div class="btn-area" >
 			<button type="submit" id="btn">회원가입</button>
 		</div>
 	</form>
-	
 	</section>
 </body>
 </html>

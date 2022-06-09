@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.springProject.subProject.mapper.PaymentMapper;
-import com.springProject.subProject.vo.payInfoVO;
+import com.springProject.subProject.vo.Order_padVO;
+import com.springProject.subProject.vo.PayInfoVO;
 
 @Service
 public class ServicePayment {
@@ -14,13 +15,13 @@ public class ServicePayment {
 	PaymentMapper mapper;
 	
 	
-	public payInfoVO getPayInfo(String userId, String pd_code) {
-		return mapper.getPayInfo(userId,pd_code);
+	public PayInfoVO getPayInfo(Order_padVO order_padVO) {
+		return mapper.getPayInfo(order_padVO);
 	}
 
 
-	public int insertOrderPad(Model model) {
-		return mapper.insertOrderPad(model);
+	public int insertOrderPad(Order_padVO order_padVO) {
+		return mapper.insertOrderPad(order_padVO);
 	}
 
 }

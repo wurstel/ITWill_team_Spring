@@ -2,7 +2,6 @@
 $(function() {
 	$("#selectBox").on("change", function() {
 		 var result = $("#selectBox").val();
-		 
 		$.ajax({
 			type: "GET", 
 			url: "./storeMain.st",
@@ -22,40 +21,20 @@ $(function() {
 	$("#select li a").on("click", function() {
 		//		 var result = $("li").val();
 		var result = $(this).text();
-		var re_pd_code = $(".re_pd_code").val();
+		var pd_code = $(".pd_code").val();
 
-		$(".resultArea1").hide();
-		$(".resultArea2").show();
-
-		if (result == "최신순") {
-			$.ajax({
-				type: "GET",
-				url: "./productReviewList.st",
-				data: {
-					re_pd_code: re_pd_code,
-					select: result,
-				},
-				dataType: "text",
-				success: function(msg) {
-					$(".resultArea2").html(msg);
-				}
-			});
-		} else if (result == "평점순") {
-			$.ajax({
-				type: "GET",
-				url: "./productReviewList.st",
-				data: {
-					re_pd_code: re_pd_code,
-					select: result,
-				},
-				dataType: "text",
-				success: function(msg) {
-					$(".resultArea2").html(msg);
-				}
-			});
-		}
-
-
+		$.ajax({
+			type: "GET",
+			url: "./productDetail.st",
+			data: {
+				pd_code: pd_code,
+				choice: result,
+			},
+			dataType: "text",
+			success: function(msg) {
+				$(".resultArea1").html($(msg).find(".resultArea1"));
+			}
+		});
 	});
 });
 
@@ -104,6 +83,7 @@ function stock() {
 // 장바구니 클릭 시 팝업창을 이용한 이동
 function choice(name , moveChoice) {
 	var mem_id = document.fr.mem_id;
+//	var mem_id = admin;
 	var fr = document.fr;
 	
 	if(mem_id.value == "") {

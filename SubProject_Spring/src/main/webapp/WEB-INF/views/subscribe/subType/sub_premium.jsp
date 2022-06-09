@@ -20,7 +20,7 @@ body {
 <body>
 	<jsp:include page="../../inc/header.jsp"/>  <!-- 헤더 들어가는 곳 -->
 	<c:set var="pd_code" value="pre"></c:set>
-	<div style="background: url(assets/premiumPage.jpg)" class="jumbotron bg-cover text-white">
+	<div style="background: url(resources/assets/premiumPage.jpg)" class="jumbotron bg-cover text-white">
     <div class="container py-5 text-center">
         <h1 class="display-4 font-weight-bold">프리미엄 구독</h1>
         <p class="font-italic mb-0">스탠다드 구독 상품은 제철 식품과 시기에 맞춘 컨셉의 밀키트와 밀키트에 맞는 전통주를 페어링하여 제공합니다</p>

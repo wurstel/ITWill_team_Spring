@@ -11,16 +11,14 @@
 	<h3>배송정보</h3>
 	<table border="1">
 		<tr>
-			<th>배송방법</th>
-			<td>순차배송</td>
+			<th rowspan="2">배송방법</th>
+			<td rowspan="2"> - 순차배송<br> - 묶음배송 가능</td>
 			<th rowspan="2">배송비</th>
-			<td rowspan="2">무료배송<br> - 로켓배송 상품 중 19,800원 이상 구매 시 무료배송<br>
+			<td rowspan="2">- 무료배송<br> - 로켓배송 상품 중 19,800원 이상 구매 시 무료배송<br>
 				- 도서산간 지역 추가비용 없음
 			</td>
 		</tr>
 		<tr>
-			<th>묶음배송 여부</th>
-			<td>가능</td>
 		</tr>
 		<tr>
 			<th>배송기간</th>

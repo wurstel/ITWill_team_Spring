@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap 5 Simple Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles_ad_pr.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <style>
         .sidebar {
             position: fixed;
@@ -50,6 +50,7 @@
             color: #0d6efd;
         }
     </style>
+    
 </head>
 <body>
     <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -58,43 +59,43 @@
             <jsp:include page="../inc/sidebar_adminpage.jsp"></jsp:include>
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">상품관리</h1>
+					<h1 class="mt-4">상품상세</h1>
 				</div>
-				<div>
-					<h2>상품 정보/삭제</h2>
-					<form id="form1" name="form1" enctype="multipart/form-data" method="post">
-						<table class="table">
-							<tr>
-								<td>상품 이미지</td>
-								<td><img src="${path}/images/${vo.productUrl}"
-									height="300px" width="310px"> <br> <input
-									type="file" id="productPhoto" name="productPhoto"></td>
-							</tr>
-							<tr>
-								<td>상품명</td>
-								<td><input type="text" id="productName" name="productName"
-									value="${vo.productName}"></td>
-							</tr>
-							<tr>
-								<td>가격</td>
-								<td><input type="number" id="productPrice"
-									name="productPrice" value="${vo.productPrice}"></td>
-							</tr>
-							<tr>
-								<td>상품소개</td>
-								<td><textarea id="productDesc" name="productDesc" rows="5"
-										cols="60">${vo.productDesc}</textarea></td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center"><input type="hidden"
-									name="productId" value="${vo.productId}"> <input
-									type="button" id="editBtn" value="수정"> <input
-									type="button" id="deleteBtn" value="삭제"> <input
-									type="button" id="listBtn" value="상품목록"></td>
-							</tr>
-						</table>
-					</form>
-				</div>
+		  		<div>
+				    <table class="table">
+				        <tr>
+				            <td>상품 이미지</td>
+				            <td>
+				                <img src="" height="300px">
+				            </td>
+				        </tr>
+				        <tr>
+				            <td>상품코드</td>
+				            <td><input type="text" id="productCode" name="pd_code" value="${product.getPd_code()}" readonly="readonly"></td>
+				        </tr>
+				        <tr>
+				            <td>상품명</td>
+				            <td><input type="text" id="productName" name="pd_name" value="${product.getPd_name()}" readonly="readonly"></td>
+				        </tr>
+				        <tr>
+				            <td>가격</td>
+				            <td><input type="text" id="productPrice" name="pd_price" value="${product.getPd_price()}" readonly="readonly"></td>
+				        </tr>
+				        <tr>
+				            <td>상품설명</td>
+				            <td><textarea id="productDesc" name="pd_detail" rows="15" cols="150" readonly="readonly">${product.getPd_detail()}</textarea></td>
+			       		</tr>
+			        	<tr>
+				            <td colspan="2" align="center">
+				                <input type="button" class="btn btn-outline-primary" value="수정" onclick="location.href='admin_modify.ad?pd_code=${param.pd_code}&page=${param.page}'">
+				                <input type="button" class="btn btn-outline-danger btn-sm" id="deleteBtn"value="삭제" onclick="location.href='admin_delete.ad?pd_code=${param.pd_code}&page=${param.page}'">
+				                <input type="button" class="btn btn-outline-primary" id="listBtn" value="상품목록" 
+				                	onclick="location.href = 'admin_list.ad?page=${param.page}'">  
+				                	
+				            </td>
+			        	</tr>
+			    	</table>
+	       		</div>
 			</main>
 		</div>
     </div>

@@ -15,7 +15,6 @@ html, body {
 	height: 100%;
 }
 </style>
-<script src="js/paymentAPI.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
@@ -89,6 +88,7 @@ html, body {
 	        alert(msg);
 	    });
 	  }
+	
 	function kgPay() {
 		  
 	    // IMP.request_pay(param, callback) 결제창 호출
@@ -130,7 +130,7 @@ html, body {
 	<div class="row d-flex justify-content-center align-items-center h-100">
 	        <div class="col-4 text-center">
 				<div class="card">
-					<img src="./assets/credit-card.png" alt="스탠다드패키지" class="card-img-top" onclick="kgPay()"/>
+					<img src="resources//assets/credit-card.png" alt="스탠다드패키지" class="card-img-top" onclick="kgPay()"/>
 					<div class="card-body">
 						<button class="btn btn-outline-success btn-block" onclick="kgPay()">카드결제</button><br>
 					</div>
@@ -138,7 +138,7 @@ html, body {
 	        </div>
 	        <div class="col-4 text-center">
 				<div class="card">
-					<img src="./assets/payment_icon_yellow_large.png" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()"/>
+					<img src="resources//assets/payment_icon_yellow_large.png" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()"/>
 					<div class="card-body">
 						<button class="btn btn-outline-warning btn-block" onclick="kakaoPay()">카카오페이</button><br>
 					</div>
@@ -146,7 +146,7 @@ html, body {
 	        </div>
 	        <div class="col-4 text-center">
 				<div class="card">
-					<img src="./assets/logo-toss-blue.png" alt="스탠다드패키지" class="card-img-top" onclick="tossPay()"/>
+					<img src="resources//assets/logo-toss-blue.png" alt="스탠다드패키지" class="card-img-top" onclick="tossPay()"/>
 					<div class="card-body">
 						<button class="btn btn-outline-primary btn-block" onclick="tossPay()">토스페이</button>
 					</div>

@@ -1,13 +1,13 @@
 package com.springProject.subProject.mapper;
 
-import org.springframework.ui.Model;
 
-import com.springProject.subProject.vo.payInfoVO;
+import com.springProject.subProject.vo.Order_padVO;
+import com.springProject.subProject.vo.PayInfoVO;
 
 public interface PaymentMapper {
 
-	payInfoVO getPayInfo(String userId, String pd_code);
+	int insertOrderPad(Order_padVO order_padVO);
 
-	int insertOrderPad(Model model);
+	PayInfoVO getPayInfo(Order_padVO order_padVO);
 
 }

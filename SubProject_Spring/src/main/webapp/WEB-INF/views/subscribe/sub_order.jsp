@@ -16,8 +16,8 @@ html, body {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="js/joinFunc.js"></script>
-<script src="js/jquery-3.6.0.js"></script>
+<script src="resources/js/joinFunc.js"></script>
+<script src="resources/js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <jsp:include page="../inc/header.jsp"/>
@@ -30,14 +30,14 @@ html, body {
           		   <div class="row justify-content-between text-left">
           		   		<div class="form-group col-sm-6 flex-column d-flex">
           		   			<label class="form-control-label px-3">상품선택</label>
-          		   			<select name="sub_type" id="sub_type">
-          		   				<option value="standard">스탠다드</option>
-          		   				<option value="premium">프리미엄</option>
+          		   			<select name="order_pd_code" id="order_pd_code">
+          		   				<option value="st">스탠다드</option>
+          		   				<option value="pre">프리미엄</option>
           		   			</select>
           		   		</div>	
           		   		<div class="form-group col-sm-6 flex-column d-flex">	
           		   			<label class="form-control-label px-3">수량선택</label>
-          		   			<select name="sub_qty" id="sub_qty">
+          		   			<select name="order_qty" id="order_qty">
           		   				<option value="1">1</option>
           		   				<option value="2">2</option>
           		   				<option value="3">3</option>
@@ -52,7 +52,7 @@ html, body {
           		   </div>
 	               <h3>배송정보 입력</h3>
                    <div class="row justify-content-between text-left">
-                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">우편번호<span class="text-danger"> *</span></label> <input type="text" id="postcode" name="postcode" readonly> </div>
+                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">우편번호<span class="text-danger"> *</span></label> <input type="text" id="postcode" name="order_postcode" readonly> </div>
                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3"><span class="text-danger"> &nbsp;</span></label><input type="button" value="주소 검색" onclick="postCodeSearch()"></div>
                    </div>
                    <div class="row justify-content-between text-left">
@@ -60,7 +60,7 @@ html, body {
                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">상세주소<span class="text-danger"> *</span></label> <input type="text" id="address_detail" name="address_detail" placeholder="상세주소 입력" > </div>
                    </div>
                    <div class="row justify-content-between text-left">
-                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">전화번호 <span class="text-danger"> *</span></label> <input type="text" id="phoneNum" name="phoneNum" placeholder="연락받을 전화번호 입력" onblur="checkPhone(this.value)"> </div>
+                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">전화번호 <span class="text-danger"> *</span></label> <input type="text" id="phoneNum" name="order_phoneNum" placeholder="연락받을 전화번호 입력" onblur="checkPhone(this.value)"> </div>
                    </div>
                    <div class="row justify-content-between text-left">
                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">배송시 요청사항<span class="text-danger"> *</span></label>

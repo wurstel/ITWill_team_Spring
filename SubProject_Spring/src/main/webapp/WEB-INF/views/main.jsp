@@ -12,8 +12,13 @@
 	<h1>main.jsp</h1>
 	<div id="menu">
 	<h2>
-	<a href="customerCenter/list">customerCenter</a>
+	<a href="customerCenter_list.cu">customerCenter</a>
 	</h2>
+	
+	<h2>
+	<a href="admin_main.ad">admin</a>
+	</h2>
+	
 	
 	<h2>
 	<a href="./storeMain.st">store</a>

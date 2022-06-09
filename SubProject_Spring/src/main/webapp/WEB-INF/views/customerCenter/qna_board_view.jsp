@@ -37,10 +37,10 @@
 				</tbody>
 			</table>
 			<section id="buttonArea">
-				<button type="button" class="btn btn-outline-primary" onclick="location.href='list?page=${param.page}'">목록</button>
-				<button type="button" class="btn btn-outline-primary" onclick="location.href='reply?qna_num=${param.qna_num}&page=${param.page}'">답글</button>
-				<button type="button" class="btn btn-outline-primary" onclick="location.href='modify?qna_num=${param.qna_num}&page=${param.page}'">수정</button>
-				<button type="button" class="btn btn-outline-danger" onclick="location.href='delete?qna_num=${param.qna_num}&page=${param.page}'">삭제</button>
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='customerCenter_list.cu?page=${param.page}'">목록</button>
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='customerCenter_reply.cu?qna_num=${param.qna_num}&page=${param.page}'">답글</button>
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='customerCenter_modify.cu?qna_num=${param.qna_num}&page=${param.page}'">수정</button>
+				<button type="button" class="btn btn-outline-danger" onclick="location.href='customerCenter_delete.cu?qna_num=${param.qna_num}&page=${param.page}'">삭제</button>
 			</section>
 		</div>
 	</div>
