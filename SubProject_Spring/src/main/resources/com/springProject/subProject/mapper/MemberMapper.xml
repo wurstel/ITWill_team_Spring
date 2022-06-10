@@ -19,15 +19,33 @@
 		SELECT * FROM member WHERE mem_id = #{id}
 	</select>
 	
-<!-- 	<update id="selectMemberDetail"> -->
-<!-- 		UPDATE member -->
-<!-- 		SET  -->
-<!-- 	</update> -->
-
-<!-- 회원 정보 수정 -->
+	<!-- 회원 정보 수정 -->
 	<update id="updateMember">
 		UPDATE member
 		SET mem_email = #{mem_email}, mem_phoneNum = #{mem_phoneNum}, mem_postcode = #{mem_postcode}, mem_address = #{mem_address}
 		WHERE mem_id = #{mem_id}
 	</update>
+	
+	<!-- 장바구니 불러오기 -->
+	<select id="selectMyBasket" resultType="com.springProject.subProject.vo.BasketListVO">
+       SELECT * FROM basket_list WHERE bk_mem_id = #{id}
+    </select>
+    
+    <!-- 장바구니 수량변경 -->
+    <update id="updateBasket">
+    	UPDATE basket SET bk_qty=#{bk_qty} WHERE bk_mem_id=#{bk_mem_id} AND bk_order_num=#{bk_order_num} AND bk_pd_code=#{bk_pd_code} 
+    </update>
+    
+    <!-- 장바구니 물품 삭제 -->
+    <delete id="deleteMyBasket">
+         DELETE FROM basket WHERE bk_pd_code = #{bk_pd_code} AND bk_mem_id = #{bk_mem_id} AND bk_order_num = #{bk_order_num}
+   </delete>
+   
+   <select id="isInquiry" resultType="java.lang.String">
+   		SELECT CASE WHEN RESULT=0 THEN '주문내역이 없습니다' END AS COMMENT FROM (SELECT COUNT(*) AS RESULT FROM ORDER_CHECK WHERE order_mem_id=#{mem_id}) A
+   </select>
+   
+   <select id="loadInquiry" resultType="com.springProject.subProject.vo.Order_checkVO">
+   		SELECT * FROM order_check WHERE order_mem_id =#{mem_id}
+   </select>
 </mapper>

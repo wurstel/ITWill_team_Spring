@@ -1,12 +1,17 @@
 package com.springProject.subProject.svc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springProject.subProject.mapper.MemberMapper;
+import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.MemberVO;
+import com.springProject.subProject.vo.Order_checkVO;
 
 
 @Service
@@ -18,15 +23,6 @@ public class ServiceMember {
 	public String isDuplicate(String id) {
 		return mapper.isDuplicate(id);
 	}
-
-//	public Integer joinMember(@ModelAttribute MemberVO memberVO, String mem_birth, String mem_email, String mem_phoneNum, String mem_address) {
-//		System.out.println(memberVO);
-//		System.out.println(mem_birth);
-//		System.out.println(mem_email);
-//		System.out.println(mem_phoneNum);
-//		System.out.println(mem_address);
-//		return mapper.insertMember(memberVO,mem_birth,mem_email,mem_phoneNum,mem_address);
-//	}
 
 	public String login(String mem_id, String mem_password) {
 		return mapper.searchUser(mem_id,mem_password);
@@ -55,17 +51,39 @@ public class ServiceMember {
 	
 	// 회원정보 수정 
 	public int updateMember(@ModelAttribute MemberVO memberVO) {
-		
 //		memberVO.setMem_email(memberVO.getMem_email());
 //		memberVO.setMem_phoneNum(memberVO.getMem_phoneNum());
 //		memberVO.setMem_postcode(memberVO.getMem_postcode());
 //		memberVO.setMem_address(memberVO.getMem_address());
-	
 		System.out.println("수정된 정보 : " + memberVO);
 		
 		return mapper.updateMember(memberVO);
 	}
+	
+	// 장바구니 불러오기
+	public ArrayList<BasketListVO> getBasketList(String id) {
+	      return mapper.selectMyBasket(id);
+	}
 
+	//장바구니 수량 변경
+	public int updateBasket(BasketListVO basketListVO) {
+		return mapper.updateBasket(basketListVO);
+	}
+	
+	//장바구니 물품 삭재
+	public void deleteBasket(String bk_mem_id, String bk_order_num, String bk_pd_code) {
+		mapper.deleteMyBasket(bk_mem_id, bk_order_num, bk_pd_code);
+	}
+	
+	//주문내역 확인
+	public String isInquiry(String mem_id) {
+		return mapper.isInquiry(mem_id);
+	}
+
+	//주문내역 불러오기
+	public List<Order_checkVO> loadInquiry(String mem_id) {
+		return mapper.loadInquiry(mem_id);
+	}
 	
 
 

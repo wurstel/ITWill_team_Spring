@@ -39,6 +39,19 @@ $(function() {
 	 	}
 	});
 })
+
+$(function() {
+	$(".deleteBakset").click(function() {
+		var n = $('.deleteBakset').index(this);
+	    var order_num = $(".order_num:eq("+n+")").val();
+		var mem_id = $(".bk_mem_id").val();
+		var pd_code = $(".bk_pd_code:eq("+n+")").val();
+	 	var isdelete = confirm("삭제하시겠습니까?");
+	 	if(isdelete) {
+	 		location.href="basketDelete.me?bk_mem_id=" + mem_id +"&bk_pd_code="+ pd_code +"&bk_order_num=" + order_num;
+	 	}
+	})
+})
 </script>
 </head>
 <body>
@@ -83,7 +96,7 @@ $(function() {
 					      	<input type="hidden" class="bk_pd_code" value="${basketlist.bk_pd_code} ">
 					      	<input type="hidden" class="order_num" value="${basketlist.bk_order_num} ">
 					      	<button type="button" class="qtyupdate btn btn-success btn-sm" onclick="updateQty()">수량변경</button>
-					      	<button type="button" class="btn btn-danger btn-sm">삭제하기</button></td>
+					      	<button type="button" class="deleteBakset btn btn-danger btn-sm" onclick="deleteBakset()">삭제하기</button></td>
 					    </tr>
 						</c:forEach>
 					<!-- /장바구니 목록  -->    

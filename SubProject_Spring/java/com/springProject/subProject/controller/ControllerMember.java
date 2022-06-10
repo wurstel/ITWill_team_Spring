@@ -1,5 +1,8 @@
 package com.springProject.subProject.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springProject.subProject.svc.ServiceMember;
+import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.MemberVO;
+import com.springProject.subProject.vo.Order_checkVO;
 
 @Controller
 public class ControllerMember {
@@ -131,5 +136,56 @@ public class ControllerMember {
 
 		return "redirect:/mypage.me";
 	}
-
+	
+	//주문조회 
+	@RequestMapping(value = "/inquiry.me", method = RequestMethod.GET)
+	public String inquiry(HttpSession session,Model model) {
+		String mem_id = (String)session.getAttribute("userId");
+		String isInquiry = service.isInquiry(mem_id);
+		
+		if(isInquiry == null) {			//주문내역이 있는경우
+			List<Order_checkVO> list = service.loadInquiry(mem_id);		//주문내역 불러오기
+			model.addAttribute("list", list);
+		}else {							//주문내역이 없는경우
+			model.addAttribute("comment", isInquiry);
+		}
+		
+		return "member/mem_orderInquiry";
+	}
+	
+	//장바구니 목록 불러오기
+	@RequestMapping(value = "/basket.me", method = RequestMethod.GET)
+	public String basket(HttpSession session, Model model) {
+	    String id = (String) session.getAttribute("userId");
+	    ArrayList<BasketListVO> basketlist = service.getBasketList(id);
+	
+	    model.addAttribute("basketlist", basketlist);
+	
+	    return "member/mem_basket";
+	}
+	
+	//장바구니 수량 변경
+	@RequestMapping(value = "/basketUpdate.me", method = RequestMethod.GET)
+	public String basketUpdate(HttpSession session,BasketListVO basketListVO, Model model) {
+		System.out.println(basketListVO);
+		int updateCount = service.updateBasket(basketListVO);
+		
+		return "redirect:basket.me";
+	}
+	
+	// 마이페이지 - 장바구니 삭제
+    @RequestMapping(value = "/basketDelete.me", method = RequestMethod.GET)
+    public String deleteBasket(String bk_mem_id, String bk_order_num, String bk_pd_code) {
+       System.out.println("DELETE : " + bk_mem_id + bk_order_num + bk_pd_code);
+       service.deleteBasket(bk_mem_id, bk_order_num, bk_pd_code);
+       return "redirect:/basket.me";
+    }
+	
+	
+	
+	
+	
+	
+	
+	
 }
