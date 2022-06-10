@@ -14,6 +14,7 @@ public interface MemberMapper {
 
 	String isDuplicate(String id);
 
+	// 로그인
 	String searchUser(@Param("mem_id") String mem_id,@Param("mem_password") String mem_password);
 
 	int insertMember(@ModelAttribute MemberVO memberVO);

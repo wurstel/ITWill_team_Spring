@@ -23,7 +23,8 @@ public class ServiceMember {
 	public String isDuplicate(String id) {
 		return mapper.isDuplicate(id);
 	}
-
+	
+	// 로그인
 	public String login(String mem_id, String mem_password) {
 		return mapper.searchUser(mem_id,mem_password);
 	}

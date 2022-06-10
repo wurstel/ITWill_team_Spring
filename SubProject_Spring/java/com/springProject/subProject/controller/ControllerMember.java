@@ -65,6 +65,9 @@ public class ControllerMember {
 			return "/fail_back";
 		}
 		return "redirect:/";
+		// return "redirect:/send_authentication_code.jsp?id=" + id + "&email=" + email";
+		// 회원 가입 성공 시 인증 메일 발송을 위한 send_authentication_code.jsp 페이지로 이동 (임의의 주소임)
+		// => 파라미터로 아이디(id)와 이메일주소(email) 전송	
 	}
 
 	// 로그인 폼으로 이동
@@ -80,6 +83,7 @@ public class ControllerMember {
 		System.out.println(userId);
 		session.setAttribute("userId", userId);
 		return "redirect:/";
+		// member_authentication.jsp 로 보내서 인증여부 판별
 	}
 
 	// 로그아웃
@@ -180,12 +184,5 @@ public class ControllerMember {
        service.deleteBasket(bk_mem_id, bk_order_num, bk_pd_code);
        return "redirect:/basket.me";
     }
-	
-	
-	
-	
-	
-	
-	
 	
 }

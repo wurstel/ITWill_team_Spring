@@ -17,7 +17,8 @@ package com.springProject.subProject.vo;
 		mem_address	 VARCHAR(300),
 		mem_grade VARCHAR(30),
 		mem_point VARCHAR(1000),
-		mem_paymethod  VARCHAR(50)
+		mem_paymethod  VARCHAR(50),
+		mem_auth CHAR(1)
 	);
 
 */
