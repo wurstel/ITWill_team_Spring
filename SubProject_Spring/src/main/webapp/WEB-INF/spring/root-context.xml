@@ -25,6 +25,7 @@
 		<property name="mapperLocations" value="classpath:/com/springProject/subProject/mapper/*Mapper.xml"></property>
 	</bean>
 	
+		
 	<!-- MyBatis연동에 사용될 객체들의 패키지위치 지정(기본 루트 패키지 지정)  -->
 	<mybatis-spring:scan base-package="com.springProject.subProject"/>
 	

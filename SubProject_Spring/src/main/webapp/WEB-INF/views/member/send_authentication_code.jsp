@@ -22,7 +22,7 @@
 request.setCharacterEncoding("UTF-8");
 
 // URL 을 통해 전달받은 아이디(id), 이메일 주소(email) 가져와서 변수에 저장
-String id = request.getParameter("id");
+String id = request.getParameter("mem_id");
 // String email = request.getParameter("email");
 // out.println(email);
 
@@ -31,7 +31,7 @@ GenerateAuthenticationCode genCode = new GenerateAuthenticationCode();
 String code = genCode.getAuthenticationCode();
 
 String sender = "admin@itwillbs.co.kr";
-String receiver = request.getParameter("email");
+String receiver = request.getParameter("mem_email");
 String title = "회원 가입 인증 메일입니다.";
 String content = "<h3>인증하려면 아래 링크를 클릭하세요</h3>" 
 					+ "<a href='http://localhost:8080/SubProject_Spring/member/member_authentication.jsp?id=" + id + "&code=" + code + "'>인증하기</a>";
@@ -97,7 +97,7 @@ try {
 	// => 파라미터 : 아이디, 인증코드    리턴타입 : void
 	// ------------------------------------------------------------------------------
 	// 임의의 회원가입성공 페이지를 하나 만들어서 컨트롤러로 보내고 거기서 매핑하고 호출해야할거같음
-	response.sendRedirect("login_form.me");
+	response.sendRedirect("mem_joinSuccess.me");
 } catch(Exception e) {
 	e.printStackTrace();
 	out.println("<h3>SMTP 서버 설정 또는 서비스 문제 발생!</h3>");

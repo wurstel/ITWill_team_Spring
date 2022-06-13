@@ -7,8 +7,26 @@
 	</select>
 	<!-- 회원가입 -->
 	<insert id="insertMember">
-		INSERT INTO member VALUES(#{mem_id},#{mem_password},#{mem_name},#{mem_birth},#{mem_gender},#{mem_email},#{mem_phoneNum},#{mem_postcode},#{mem_address},'normal','0','null')
+		INSERT INTO member VALUES(#{mem_id},#{mem_password},#{mem_name},#{mem_birth},#{mem_gender},#{mem_email},#{mem_phoneNum},#{mem_postcode},#{mem_address},'normal','0','null','N')
 	</insert>
+	<!-- 회원인증조회 -->
+	<select id="authInfo" resultType="java.lang.String">
+		SELECT mem_auth_code FROM member_auth WHERE mem_id = #{mem_id}
+	</select>
+	<insert id="insertAutoInfo">
+		INSERT INTO member_auth VALUES(#{mem_id},#{mem_auth_code})
+	</insert>
+	<update id="updateAuthInfo">
+		UPDATE member_auth SET mem_auth_code = #{mem_auth_code} WHERE mem_id = #{mem_id}
+	</update>
+	<!-- 인증 후 인증코드 삭제 -->
+	<delete id="deleteAuth">
+		DELETE FROM member_auth WHERE mem_id = #{mem_id}
+	</delete>
+	<!-- 인증성공 시 -->
+	<update id="updateAuth">
+		UPDATE member SET mem_auth = 'Y' WHERE mem_id = #{mem_id}
+	</update>
 	<!-- 아이디 증복확인 -->
 	<select id="isDuplicate" resultType="java.lang.String">
 		SELECT mem_id FROM member WHERE mem_id = #{id}

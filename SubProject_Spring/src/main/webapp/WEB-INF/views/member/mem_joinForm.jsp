@@ -1,5 +1,8 @@
+<%@page import="com.springProject.subProject.mail.GenerateAuthenticationCode"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%GenerateAuthenticationCode genCode = new GenerateAuthenticationCode();
+String mem_auth_code = genCode.getAuthenticationCode(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +18,7 @@
 	<section class="join-form">
 	<!-- <h1>JOIN</h1> -->
 	<form action="mem_join.me" name ="fr" method="post">
+		<input type="hidden" name="mem_auth_code" value="<%=mem_auth_code%>">
 		<div class="int-area">
 			<input type="text" name="mem_id" id="id" autocomplete="off" required="required" readonly>
 			<label for="id">아이디(필수)</label>	<!-- 아이디 중복방지 -->	

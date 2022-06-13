@@ -36,7 +36,7 @@ public class GoogleSMTPAuthenticator extends Authenticator {
 		// 파라미터로 FileReader 객체 생성하여 파일이 위치한 경로를 전달
 		// 단 파일이 위치한 폴더는 가상의 경로이므로 실제 경로를 알아내야한다
 		// 2-1 WEB-INF 실제 경로 알아내기
-		ServletContext context = request.getServletContext(); // 톰캣 객체 가져오기
+		ServletContext context = request.getSession().getServletContext(); // 톰캣 객체 가져오기
 		String realPath = context.getRealPath("WEB-INF"); // 루트 기준 WEB-INF 폴더의 실제 경로 알아보기
 		// D:\workspace_jsp3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudyJSP\WEB-INF
 //		System.out.println(realPath);

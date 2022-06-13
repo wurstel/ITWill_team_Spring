@@ -8,15 +8,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springProject.subProject.svc.ServiceMember;
 import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_checkVO;
+import com.springProject.subProject.vo.member_authVO;
 
 @Controller
 public class ControllerMember {
@@ -24,7 +26,6 @@ public class ControllerMember {
 
 	@Autowired
 	private ServiceMember service;
-
 	// 회원가입 폼으로 이동
 	@RequestMapping(value = "/join_form.me", method = RequestMethod.GET)
 	public String joinForm() {
@@ -44,10 +45,37 @@ public class ControllerMember {
 		String isDuplicate = service.isDuplicate(mem_id);
 		return "redirect:MemberCheckId.me?mem_id=" + mem_id + "&isDuplicate=" + isDuplicate;
 	}
+	// 회원가입 인증로직
+	@RequestMapping(value = "/mem_joinSuccess.me", method = RequestMethod.GET) // POST로 변경 URL에 나옴
+	public String joinSuccess(@ModelAttribute member_authVO authVO) {
 
+		String auth = service.selectAuthInfo(authVO); // 기존 인증코드 조회
+		if(auth.equals(null)) {
+			service.insertAuthInfo(authVO);
+		}
+		return "member/mem_joinSuccess";
+	}
+	// 회원가입 인증메일 전송 로직
+	@RequestMapping(value = "/mem_sendmail.me", method = RequestMethod.GET)
+	public ModelAndView sendEmail(@ModelAttribute MemberVO memberVO,String mem_email) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		
+		String email = "email";
+		String mem_id = memberVO.getMem_id();
+		String addr = memberVO.getMem_email(); // 받는사람
+		String subject = "회원 가입 인증 메일입니다.";
+		String body = "인증하려면 아래 링크를 클릭하세요"
+				+"<a href='http://localhost:8080/subProject/member_authentication.me?mem_id=" + mem_id + "'>인증하기</a>";
+		service.sendEmail(email, addr, subject, body);
+		System.out.println(mem_id);
+		mv.setViewName("redirect:/");
+		return mv; 
+	}
+		
 	// 회원가입 비즈니스 로직
 	@RequestMapping(value = "/mem_join.me", method = RequestMethod.POST)
-	public String join(@ModelAttribute MemberVO memberVO, String mem_year, String mem_month, String mem_day,
+	public String join(@ModelAttribute MemberVO memberVO,@ModelAttribute member_authVO authVO,@RequestParam String mem_id,@RequestParam String mem_auth_code, String mem_year, String mem_month, String mem_day,
 			String mem_mailAdd, String domain, String mem_phoneF, String mem_phoneM, String mem_phoneL, String address,
 			String add_detail, Model model) {
 		String mem_birth = mem_year + mem_month + mem_day;
@@ -60,14 +88,25 @@ public class ControllerMember {
 		memberVO.setMem_phoneNum(mem_phoneNum);
 
 		int insertCount = service.joinMember(memberVO);
+		service.insertAuthInfo(authVO);
 		if (insertCount == 0) { // 회원가입 실패시
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "/fail_back";
 		}
-		return "redirect:/";
+		return "redirect:/mem_joinSuccess.me?mem_id="+mem_id+"&mem_email="+mem_email;
 		// return "redirect:/send_authentication_code.jsp?id=" + id + "&email=" + email";
 		// 회원 가입 성공 시 인증 메일 발송을 위한 send_authentication_code.jsp 페이지로 이동 (임의의 주소임)
 		// => 파라미터로 아이디(id)와 이메일주소(email) 전송	
+	}
+	// 회원가입 인증클릭로직
+	@RequestMapping(value = "/member_authentication.me", method = RequestMethod.GET)
+	public String authentication(@ModelAttribute member_authVO authVO) {
+		String result = service.selectAuthInfo(authVO);
+		if(!result.equals(null)) {
+			service.deleteAuth(authVO);
+			service.updateAuth(authVO);
+		}
+		return "redirect:/";
 	}
 
 	// 로그인 폼으로 이동

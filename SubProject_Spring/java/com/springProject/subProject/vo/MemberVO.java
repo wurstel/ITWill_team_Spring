@@ -38,6 +38,7 @@ public class MemberVO {
 	private String mem_grade;
 	private String mem_point;
 	private String mem_paymethod;
+	private String mem_auth;
 	
 	public String getMem_id() {
 		return mem_id;
@@ -111,12 +112,20 @@ public class MemberVO {
 	public void setMem_postcode(String mem_postcode) {
 		this.mem_postcode = mem_postcode;
 	} 
-	
+	public String getMem_auth() {
+		return mem_auth;
+	}
+	public void setMem_auth(String mem_auth) {
+		this.mem_auth = mem_auth;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [mem_id=" + mem_id + ", mem_password=" + mem_password + ", mem_name=" + mem_name
 				+ ", mem_birth=" + mem_birth + ", mem_gender=" + mem_gender + ", mem_email=" + mem_email
-				+ ", mem_phoneNum=" + mem_phoneNum + ", mem_address=" + mem_address + ", mem_grade=" + mem_grade
-				+ ", mem_point=" + mem_point + ", mem_paymethod=" + mem_paymethod + "]";
+				+ ", mem_phoneNum=" + mem_phoneNum + ", mem_postcode=" + mem_postcode + ", mem_address=" + mem_address
+				+ ", mem_grade=" + mem_grade + ", mem_point=" + mem_point + ", mem_paymethod=" + mem_paymethod
+				+ ", mem_auth=" + mem_auth + "]";
 	}
+	
+	
 }

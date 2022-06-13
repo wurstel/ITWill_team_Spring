@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springProject.subProject.mapper.MemberMapper;
 import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_checkVO;
+import com.springProject.subProject.vo.member_authVO;
 
 
 @Service
@@ -19,7 +21,20 @@ public class ServiceMember {
 
 	@Autowired
 	private MemberMapper mapper;
-
+	@Autowired
+	private MailSender mailSender;
+	
+	// 이메일 보내
+	public void sendEmail(String mem_email, String addr,
+					String subject, String body) {
+		SimpleMailMessage smm = new SimpleMailMessage();
+		smm.setFrom(mem_email);
+		smm.setTo(addr);
+		smm.setSubject(subject); // 제목
+		smm.setText(body); // 내용
+		
+		mailSender.send(smm);
+	}
 	public String isDuplicate(String id) {
 		return mapper.isDuplicate(id);
 	}
@@ -29,18 +44,34 @@ public class ServiceMember {
 		return mapper.searchUser(mem_id,mem_password);
 	}
 
-	
-
+	// 회원가입
 	public int joinMember(@ModelAttribute MemberVO memberVO) {
 	System.out.println(memberVO);
 	
-	
 		return mapper.insertMember(memberVO);
+	}
+	// 회원인증조회
+	public String selectAuthInfo(@ModelAttribute member_authVO authVO) {
+		return mapper.authInfo(authVO);
+	}
+	public void insertAuthInfo(@ModelAttribute member_authVO authVO) {
+		mapper.insertAutoInfo(authVO);
+	}
+	
+	public void updateAuthInfo(@ModelAttribute member_authVO authVO) {
+		mapper.updateAuthInfo(authVO);
+	}
+	// 인증 후 코드 삭제
+	public void deleteAuth(@ModelAttribute member_authVO authVO) {
+		mapper.deleteAuth(authVO);
+	}
+	// 인증 성공으로 변경
+	public void updateAuth(@ModelAttribute member_authVO authVO) {
+		mapper.updateAuth(authVO);
 	}
 
 	// 마이 페이지
 	public MemberVO getMyPage(String id) {
-		// TODO Auto-generated method stub
 		return mapper.selectMyPage(id);
 	}
 
@@ -85,6 +116,8 @@ public class ServiceMember {
 	public List<Order_checkVO> loadInquiry(String mem_id) {
 		return mapper.loadInquiry(mem_id);
 	}
+
+
 	
 
 
