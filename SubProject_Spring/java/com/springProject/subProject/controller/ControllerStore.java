@@ -2,6 +2,8 @@ package com.springProject.subProject.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springProject.subProject.svc.ServiceStore;
+import com.springProject.subProject.vo.BasketVO;
 import com.springProject.subProject.vo.PageInfo;
 import com.springProject.subProject.vo.ProductVO;
 import com.springProject.subProject.vo.ReviewVO;
@@ -53,8 +56,9 @@ public class ControllerStore {
 		ProductVO productDetail = null; 
 		List<ReviewVO> productReviewList = null;
 		int reviewCount = service.getReviewCount(pd_code);
-		int reviewAvg = service.getReviewAvg(pd_code);
+		Integer reviewAvg = service.getReviewAvg(pd_code);
 		productDetail = service.getProductDetail(pd_code);
+//		System.out.println(productDetail);
 		productReviewList = service.getProductReviewList(pd_code, choice);
 		
 		model.addAttribute("productDetail", productDetail);
@@ -63,4 +67,42 @@ public class ControllerStore {
 		model.addAttribute("reviewAvg", reviewAvg);
 		return "store/detailProduct";
 	}
+	
+	//상품 장바구니에 담기
+	@RequestMapping(value = "/productBasket.st", method = RequestMethod.POST)
+	public String basketIn(String mem_id,String pd_code,String bk_qty,String pd_price,String choiceCheck,Model model) {
+		System.out.println(mem_id+" : "+pd_code+" : "+bk_qty+" : "+pd_price+" : "+choiceCheck);
+		Integer searchOrderNum = service.searchBasket(mem_id,pd_code);	//장바구니 확인
+		System.out.println(searchOrderNum);
+		if(searchOrderNum == 0) {
+			Integer insertCount = service.basketIn(mem_id,pd_code,bk_qty);
+			if(insertCount == 0) {
+				model.addAttribute("msg", "잘못된 접근 또는 시스템오류입니다");
+				return "fail_back";
+			}
+		}else {
+			String bk_order_num = searchOrderNum.toString();
+			Integer updateBasket = service.updateBasket(bk_qty,mem_id,pd_code,bk_order_num);
+			if(updateBasket == 0) {
+				model.addAttribute("msg", "잘못된 접근 또는 시스템오류입니다");
+				return "fail_back";
+			}
+		}
+		
+		
+		if(choiceCheck.equals("cart")) {
+			return "redirect:basket.me";
+		}else if(choiceCheck.equals("list")) {
+			return "redirect:storeMain.st";
+		}else {
+			return "redirect:productDetail.st?pd_code="+pd_code;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 }

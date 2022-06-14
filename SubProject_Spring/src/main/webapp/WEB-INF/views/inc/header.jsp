@@ -7,13 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-
+<script>
+function logout() {
+	var logoutData = confirm("로그아웃 하시겠습니까?");
+	if(logoutData) {
+		location.href="logout.me";
+	}
+}
+</script>
 </head>
 <body id="headerBody">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom navbar-fixed-top">
-    <a class="navbar-brand" href="main.jsp" style="margin-left: 10px">subscribeProject</a>
+    <a class="navbar-brand" href="./" style="margin-left: 10px">subscribeProject</a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
             data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -48,7 +53,7 @@
 			                <a class="nav-link" href="adminpage.me">관리자페이지</a>                
 			            </li>
 			            <li class="nav-item ">                                                                
-			                <a class="nav-link" href="logout.me">로그아웃</a>                
+			                <a class="nav-link" onclick="logout()">로그아웃</a>                
 			            </li>
             	</c:when>
             	<c:otherwise>
@@ -59,7 +64,7 @@
 			                <a class="nav-link" href="mypage.me">마이페이지</a>                
 			            </li>
 			            <li class="nav-item ">                                                                
-			                <a class="nav-link" href="logout.me">로그아웃</a>                
+			                <a class="nav-link" onclick="logout()">로그아웃</a>                
 			            </li>
             	</c:otherwise>
             </c:choose>

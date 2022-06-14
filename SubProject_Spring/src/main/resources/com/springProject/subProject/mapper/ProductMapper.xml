@@ -45,7 +45,22 @@
 	</select>
 	
 	<select id="selectReviewAvg" resultType="java.lang.Integer">
-		SELECT ROUND(AVG(re_score), 0) FROM review WHERE re_pd_code = #{pd_code};
+		SELECT IFNULL(ROUND(AVG(re_score), 0),0) FROM review WHERE re_pd_code = #{pd_code};
 	</select>
+	
+	<!-- 장바구니 확인 -->
+	<select id="selectOrderNum" resultType="java.lang.Integer">
+		SELECT IFNULL(MAX(bk_order_num),0) FROM basket WHERE bk_mem_id=#{mem_id} AND bk_pd_code=#{pd_code}
+	</select>
+	
+	 <!-- 제품상세에서 장바구니넣기 -->
+	<insert id="insertBasket">
+		INSERT INTO basket VALUES('1',#{mem_id},#{pd_code},#{bk_qty})
+	</insert>
+	
+	<!-- 제품상세에서 장바구니 업데이트 -->
+	<update id="updateBasket">
+		UPDATE basket SET bk_qty=#{bk_qty} WHERE bk_mem_id = #{mem_id} AND bk_order_num = #{bk_order_num} AND bk_pd_code= #{pd_code}	
+	</update>
 	
 </mapper>

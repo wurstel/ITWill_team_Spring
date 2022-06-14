@@ -72,6 +72,10 @@ $(function() {
 					<th scope="col">수량</th>
 					<th scope="col">주문금액</th>
 					<th scope="col">비고</th>
+					<th>
+  						<label class="form-check-label" for="flexCheckDefault">선택</label>
+						<input class="form-check-input" type="checkbox" id="flexCheckDefault">
+					</th>
 				</tr>
 			</thead>
 			<c:choose>
@@ -97,6 +101,9 @@ $(function() {
 					      	<input type="hidden" class="order_num" value="${basketlist.bk_order_num} ">
 					      	<button type="button" class="qtyupdate btn btn-success btn-sm" onclick="updateQty()">수량변경</button>
 					      	<button type="button" class="deleteBakset btn btn-danger btn-sm" onclick="deleteBakset()">삭제하기</button></td>
+					      <td>
+					      	<input class="form-check-input" type="checkbox" id="flexCheckDefault">
+					      </td>
 					    </tr>
 						</c:forEach>
 					<!-- /장바구니 목록  -->    
@@ -105,7 +112,7 @@ $(function() {
 					      <td></td>
 					      <td></td>
 					      <td>총 결제금액</td>
-					      <td><!-- 코드로 합계를 나타내서 표현 --></td>
+					      <td colspan="2"><!-- 코드로 합계를 나타내서 표현 --></td>
 					    </tr>
 					</tbody>
 				</c:otherwise>

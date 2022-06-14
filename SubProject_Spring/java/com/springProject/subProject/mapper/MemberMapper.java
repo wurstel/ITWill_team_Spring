@@ -48,7 +48,7 @@ public interface MemberMapper {
 	int updateBasket(BasketListVO basketListVO);
 
 	// 장바구니 삭제
-   void deleteMyBasket(@Param("bk_mem_id") String bk_mem_id,@Param("bk_ord	er_num") String bk_order_num,@Param("bk_pd_code") String bk_pd_code);
+   void deleteMyBasket(@Param("bk_mem_id") String bk_mem_id,@Param("bk_order_num") String bk_order_num,@Param("bk_pd_code") String bk_pd_code);
 
    //주문내역 확인
    String isInquiry(String mem_id);

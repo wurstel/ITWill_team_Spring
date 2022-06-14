@@ -18,7 +18,7 @@
 
 	<main class="mt-3">
 			<!-- 팝업창  -->
-		<form action="productCart.st" name="fr">
+		<form action="productBasket.st" name="fr" method="post">
 <!-- 		<form action="productCart.st" name="fr"> -->
 			<input type="hidden" name ="pd_code"value="${productDetail.getPd_code()}">
 			<input type="hidden" name ="mem_id"value="${sessionScope.userId }">
