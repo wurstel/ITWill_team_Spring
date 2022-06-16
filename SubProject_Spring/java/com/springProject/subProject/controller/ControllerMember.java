@@ -202,7 +202,7 @@ public class ControllerMember {
 	    String id = (String) session.getAttribute("userId");
 	    ArrayList<BasketListVO> basketlist = service.getBasketList(id);
 	
-	    model.addAttribute("basketlist", basketlist);
+	    session.setAttribute("basketlist", basketlist);
 	
 	    return "member/mem_basket";
 	}

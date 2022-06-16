@@ -23,8 +23,8 @@
 						<p class="card-text">
 							요청하신 주문이 완료되었습니다
 						</p>
-						<a href="/" class="btn btn-success">주문내역</a>
-						<a href="/" class="btn btn-primary">홈으로</a>
+						<a href="inquiry.me" class="btn btn-success">주문내역</a>
+						<a href="./" class="btn btn-primary">홈으로</a>
 					</div>
 				</div>
 	        </div>

@@ -1,5 +1,7 @@
 package com.springProject.subProject.vo;
 
+import java.util.List;
+
 /**
  * @author rudbe
  *
@@ -12,7 +14,6 @@ public class BasketListVO {
 	private String bk_order_num;
 	private String bk_mem_id;
 	private String bk_pd_code;
-	
 	
 	public String getPd_name() {
 		return pd_name;
@@ -59,16 +60,10 @@ public class BasketListVO {
 	
 	@Override
 	public String toString() {
-		return "BasketListDTO [pd_name=" + pd_name + ", pd_price=" + pd_price + ", bk_qty=" + bk_qty + ", totalprice="
+		return "BasketListVO [pd_name=" + pd_name + ", pd_price=" + pd_price + ", bk_qty=" + bk_qty + ", totalprice="
 				+ totalprice + ", bk_order_num=" + bk_order_num + ", bk_mem_id=" + bk_mem_id + ", bk_pd_code="
 				+ bk_pd_code + "]";
 	}
-
-	
-	
-	
-	
-	
 	
 	
 }

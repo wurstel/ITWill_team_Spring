@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.springProject.subProject.mapper.PaymentMapper;
+import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.Order_padVO;
 import com.springProject.subProject.vo.PayInfoVO;
 
@@ -23,5 +24,17 @@ public class ServicePayment {
 	public int insertOrderPad(Order_padVO order_padVO) {
 		return mapper.insertOrderPad(order_padVO);
 	}
+
+
+	public void insertBasketOrderPad(BasketListVO basketListVO) {
+		mapper.insertBasketOrderPad(basketListVO);
+	}
+
+
+	public Order_padVO getOrderPad(BasketListVO basketListVO) {
+		return mapper.getOrderPad(basketListVO);
+	}
+
+
 
 }
