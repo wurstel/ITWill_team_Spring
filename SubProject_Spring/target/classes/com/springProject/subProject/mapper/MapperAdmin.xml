@@ -11,7 +11,12 @@
 		SELECT * FROM member
 		LIMIT #{startRow}, #{listLimit}
 	</select>
-
+	
+	<delete id="deleteMember">
+		DELETE FROM member
+		WHERE mem_id = #{mem_id}
+	</delete>
+	
 
 <!-- 	고객센터관리 -->
 	<select id="selectCuListCount" resultType="java.lang.Integer">

@@ -119,7 +119,8 @@ h2 {
 									<td>${member.mem_phoneNum }</td>
 									<td>${member.mem_address }</td>
 									<td><button type="button"
-											class="btn btn-outline-danger btn-sm">삭제하기</button></td>
+											class="btn btn-outline-danger btn-sm"
+											onclick="location.href='admin_memdelete.ad?mem_id=${member.getMem_id() }&page=${pageNum}'">삭제하기</button></td>
 								</tr>
 							</c:forEach>
 						</c:if>

@@ -29,6 +29,17 @@ public class ServiceAdmin {
 		return mapper.selectMeList(pageInfo);
 	}
 	
+	// 회원 삭제
+	
+	public int removeMember(MemberVO member) {
+		System.out.println(member);
+		return mapper.deleteMember(member);
+	}
+	
+	
+	
+	
+	
 	
 	// 고객센터관리 게시물 목록
 	
@@ -39,6 +50,11 @@ public class ServiceAdmin {
 	public List<QnaVO> getCuList(PageInfo pageInfo) {
 		return mapper.selectCuList(pageInfo);
 	}
+	
+	
+	
+	
+	
 	
 	
 	// 상품등록 로직
@@ -78,6 +94,10 @@ public class ServiceAdmin {
 		
 		return mapper.updateProduct(product);
 	}
+	
+	
+	
+	
 	
 	
 		

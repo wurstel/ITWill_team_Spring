@@ -71,10 +71,38 @@ public class ControllerAdmin {
 		return "admin/memberManage";
 		
 	}
+	
+	
+	// 회원관리 삭제 폼
+	@RequestMapping(value = "/admin_memdelete.ad", method = RequestMethod.GET)
+		public String memdelete() {
+			return "admin/member_delete";
+		}
+
+	// 회원관리 삭제 로직 - POST
+	@RequestMapping(value = "/admin_memdelete.ad", method = RequestMethod.POST)
+		public String memdeletePost(@ModelAttribute MemberVO member, @RequestParam int page, Model model) {
+			
+			int deleteCount = service.removeMember(member);
+			
+			if(deleteCount == 0) {
+				model.addAttribute("msg", "삭제 실패!");
+				return "fail_back";
+			}
+			
+			model.addAttribute("page", page);
+			
+	
+			return "redirect:/admin_member.ad";
+		}
+	
+	
+	
 		
 	
 	
 	// 고객센터관리 페이지
+	
 	@RequestMapping(value = "/admin_customer.ad", method = RequestMethod.GET)
 	public String customerCenter(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
@@ -119,12 +147,14 @@ public class ControllerAdmin {
 	
 	
 	// 상품등록 폼 - GET
+	
 	@RequestMapping(value = "/admin_register.ad", method = RequestMethod.GET)
 	public String register() {
 		return "admin/product_register";
 	}
 	
 	// 상품등록 비즈니스 로직
+	
 	@RequestMapping(value = "/admin_register.ad", method = RequestMethod.POST)
 	public String registerPost(@ModelAttribute ProductVO product, Model model) {
 		
@@ -206,8 +236,7 @@ public class ControllerAdmin {
 		
 		int deleteCount = service.removeProduct(product);
 		
-		// 삭제 실패(deleteCount 가 0) 시 "패스워드 틀림!" 메세지 저장 후 fail_back.jsp 로 포워딩
-		// 아니면, qna_board_list.jsp 페이지로 포워딩(페이지번호 전달)
+		
 		if(deleteCount == 0) {
 			model.addAttribute("msg", "삭제 실패!");
 			return "fail_back";
@@ -219,8 +248,8 @@ public class ControllerAdmin {
 		return "redirect:/admin_list.ad";
 	}
 	
-	// 상품 수정 폼(modify - modify()) - GET
-	// => qna_board_modify.jsp 
+	// 상품 수정 폼
+	
 	@RequestMapping(value = "/admin_modify.ad", method = RequestMethod.GET)
 	public String modify(@RequestParam String pd_code, Model model) {
 		// 글 상세정보 조회 작업을 재사용하여 수정할 내용 가져오기
@@ -233,16 +262,16 @@ public class ControllerAdmin {
 		return "admin/product_modify";
 	}
 	
-	// 상품 수정 비즈니스 로직(modify - modifyPost()) - POST
-	// => service - modifyBoard(), mapper - deleteBoard()
-	// => 수정 결과 판별(실패 시 "글 수정 실패" fail_back.jsp, 성공 시 detail)
+	
+	// 상품 수정 비즈니스 로직
+	
 	@RequestMapping(value = "/admin_modify.ad", method = RequestMethod.POST)
 	public String modifyPost(@ModelAttribute ProductVO product, @RequestParam int page, Model model) {
 		
 		int modifyCount = service.modifyProduct(product);
 				
 		if (modifyCount == 0) {
-			model.addAttribute("msg", "글수정 실패");
+			model.addAttribute("msg", "상품수정 실패");
 			return "fail_back";
 		}
 		

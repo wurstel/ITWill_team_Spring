@@ -17,12 +17,22 @@ public interface MapperAdmin {
 	//  회원 목록 조회
 	public List<MemberVO> selectMeList(PageInfo pageInfo);
 	
+	// 회원 삭제
+	public int deleteMember(MemberVO member);
 	
+
+		
+		
+		
+		
 	//  총 고객센터 게시물 수 조회
 	public int selectCuListCount();
 	
 	//  고객센터 게시물 목록 조회
 	public List<QnaVO> selectCuList(PageInfo pageInfo);
+	
+	
+	
 	
 	
 	// 상품 등록
@@ -42,4 +52,7 @@ public interface MapperAdmin {
 
 	// 상품 수정
 	public int updateProduct(ProductVO product);
+	
+	
+	
 }
