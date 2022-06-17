@@ -13,8 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <style>
         .sidebar {
             position: fixed;
@@ -87,8 +85,7 @@
 							</tr>
 							<tr>
 								<td>상품내용</td>
-<%-- 								<td><textarea id="pd_detail" name="pd_detail">${product.pd_detail }</textarea></td> --%>
-								<td><textarea id="summernote" name="pd_detail">${product.pd_detail }</textarea></td>
+								<td><textarea  rows="10" cols="120" id="pd_detail" name="pd_detail">${product.pd_detail }</textarea></td>
 							</tr>
 							<tr>
 					            <td colspan="2" align="center">
@@ -106,14 +103,6 @@
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-		$('#summernote').summernote({
-			placeholder : '내용을 입력해주세요',
-			tabsize : 2,
-			height : 300
-		});
-	</script>
-    
     <script>
         new Chartist.Line('#traffic-chart', {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun'],

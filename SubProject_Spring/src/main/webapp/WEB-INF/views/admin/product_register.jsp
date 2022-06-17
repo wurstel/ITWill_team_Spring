@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 	<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <style>
@@ -84,8 +82,7 @@
 					        </tr>
 					        <tr>
 					            <td>상품설명</td>
-<!-- 					            <td><textarea rows="10" cols="120" name="pd_detail" id="pd_detail"></textarea></td> -->
-								<td><textarea id="summernote" name="pd_detail"></textarea></td>
+					            <td><textarea rows="10" cols="120" name="pd_detail" id="pd_detail"></textarea></td>
 					        </tr>
 					        <tr>
 					            <td>상품이미지</td>
@@ -104,13 +101,6 @@
         	</main>
         </div>
     </div>
-    <script>
-		$('#summernote').summernote({
-			placeholder : '내용을 입력해주세요',
-			tabsize : 2,
-			height : 300
-		});
-	</script>
     <script>
         new Chartist.Line('#traffic-chart', {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun'],
