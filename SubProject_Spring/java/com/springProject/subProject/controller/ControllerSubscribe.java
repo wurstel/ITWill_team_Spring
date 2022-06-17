@@ -39,5 +39,11 @@ public class ControllerSubscribe {
       return "subscribe/sub_order";
    }
    
+//   @RequestMapping(value = "/Payment.pm", method = RequestMethod.POST)
+//   public String payment() {
+//      return "payment/payment";
+//   }
+
+   
    
 }
