@@ -3,9 +3,14 @@ package com.springProject.subProject.svc;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -18,23 +23,47 @@ import com.springProject.subProject.vo.member_authVO;
 
 @Service
 public class ServiceMember {
-
+	@Autowired
+	 private JavaMailSender mailSender;
+	
+	
 	@Autowired
 	private MemberMapper mapper;
-	@Autowired
-	private MailSender mailSender;
+
+
+	private SimpleMailMessage preConfiguredMessage;
 	
 	// 이메일 보내
-	public void sendEmail(String mem_email, String addr,
-					String subject, String body) {
-		SimpleMailMessage smm = new SimpleMailMessage();
-		smm.setFrom(mem_email);
-		smm.setTo(addr);
-		smm.setSubject(subject); // 제목
-		smm.setText(body); // 내용
-		
-		mailSender.send(smm);
+	@Async
+	public void sendEmail(String to, String subject, String body) {
+		MimeMessage message = mailSender.createMimeMessage();
+
+		try {
+	    	   MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+	    	   messageHelper.setSubject(subject);
+	    	   messageHelper.setTo(to);
+	    	   messageHelper.setFrom("caras134679@gmail.com", "홍길동");
+	    	   messageHelper.setText(body,true);
+	    	   mailSender.send(message);
+	    	  }catch(Exception e){
+	    		  e.printStackTrace();
+	    	  }
+
+
 	}
+	
+ 	@Async
+    public void sendPreConfiguredMail(String message) {
+            SimpleMailMessage mailMessage = new SimpleMailMessage(preConfiguredMessage);
+            mailMessage.setText(message);
+            mailSender.send(mailMessage);
+    }
+
+
+	
+	
+	
+	
 	public String isDuplicate(String id) {
 		return mapper.isDuplicate(id);
 	}

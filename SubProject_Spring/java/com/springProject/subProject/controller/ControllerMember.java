@@ -1,11 +1,15 @@
 package com.springProject.subProject.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,9 +25,11 @@ import com.springProject.subProject.vo.Order_checkVO;
 import com.springProject.subProject.vo.member_authVO;
 
 @Controller
+@EnableAsync
 public class ControllerMember {
 //멤버에 관련된 회원가입,로그인작업
-
+	
+	
 	@Autowired
 	private ServiceMember service;
 	// 회원가입 폼으로 이동
@@ -57,17 +63,29 @@ public class ControllerMember {
 	}
 	// 회원가입 인증메일 전송 로직
 	@RequestMapping(value = "/mem_sendmail.me", method = RequestMethod.GET)
-	public ModelAndView sendEmail(@ModelAttribute MemberVO memberVO,String mem_email) throws Exception {
+	public ModelAndView sendEmail(HttpServletRequest request, HttpServletResponse response, @ModelAttribute MemberVO memberVO,String mem_email) throws Exception {
 
-		ModelAndView mv = new ModelAndView();
 		
-		String email = "email";
+		request.setCharacterEncoding("utf-8");
+    	response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+		
+        
+		ModelAndView mv = new ModelAndView();
+		StringBuffer sb = new StringBuffer();
+		sb.append("<html><body>");
+		sb.append("<meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>");
+		sb.append("<h1>"+"인증하려면 링크를 클릭하세요"+"</h1><br>");
+		sb.append("<h2>"+"<a href='http://localhost:8080/subProject/member_authentication.me?mem_id=" + memberVO.getMem_id() + "'>인증하기</a>"+"</h2>");
+		sb.append("</body></html>");
+		
+		
 		String mem_id = memberVO.getMem_id();
 		String addr = memberVO.getMem_email(); // 받는사람
 		String subject = "회원 가입 인증 메일입니다.";
-		String body = "인증하려면 아래 링크를 클릭하세요"
-				+"<a href='http://localhost:8080/subProject/member_authentication.me?mem_id=" + mem_id + "'>인증하기</a>";
-		service.sendEmail(email, addr, subject, body);
+		String body = sb.toString();
+		
+		service.sendEmail(addr, subject, body);
 		System.out.println(mem_id);
 		mv.setViewName("redirect:/");
 		return mv; 
