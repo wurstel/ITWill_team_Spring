@@ -2,33 +2,74 @@
  * 
  */
  
-	//비밀번호 정규식
-	function checkPass(pass) {
-		var passResult = document.getElementById("passResult");
-		   
-		var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/;
-		
-// 			최소 8 자, 최소 하나의 문자 및 하나의 숫자 :
-// 			"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+	var passResult = false;
+var checkRetypePassResult = false;
+//비밀번호 정규식
+function checkPass(pass) {
+	//		var passResult = document.getElementById("passResult");
 
-// 			최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자 :
-// 			"^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
+	var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/;
+
+	// 			최소 8 자, 최소 하나의 문자 및 하나의 숫자 :
+	// 			"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+
+	// 			최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자 :
+	// 			"^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
 
 
-// 			최소 8 자, 대문자 하나 이상, 소문자 하나 및 숫자 하나 :
-// 			^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$
+	// 			최소 8 자, 대문자 하나 이상, 소문자 하나 및 숫자 하나 :
+	// 			^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$
 
-		
-		
-		if(regex.exec(pass)) { 
-			passResult.innerHTML = "사용 가능";
-			passResult.style.color = "GREEN";
-		} else { 
-			passResult.innerHTML = "사용 불가능(숫자, 영문 대문자, 소문자 세가지 조합 8~16자)";
-			passResult.style.color = "RED";
-		}
+
+
+	if (regex.exec(pass)) {
+		document.getElementById("passResult").innerHTML = "사용 가능";
+		document.getElementById("passResult").style.color = "GREEN";
+		passResult = true;
+	} else {
+		document.getElementById("passResult").innerHTML = "사용 불가능(숫자, 영문 대문자, 소문자 세가지 조합 8~16자)";
+		document.getElementById("passResult").style.color = "RED";
+		passResult = false;
 	}
-	
+}
+
+// 비밀번호 재확인
+function checkRetypePass(pass2) {
+	/*
+	함수에서 pass 와 pass2 의 항목 비교하여 일치하면 "패스워드 일치"(초록색) 표시하고
+	아니면 "패스워드 불일치"(빨간색) 표시
+	=> 패스워드 일치 시 checkRetypePassResult 를 true, 아니면 false 로 변경
+	*/
+	var password = document.fr.passwd.value;
+	var spanElem = document.getElementById("checkRetypePassResult");
+
+	if (password == pass2) {
+		spanElem.innerHTML = "패스워드 일치";
+		spanElem.style.color = "GREEN";
+		checkRetypePassResult = true;
+	} else {
+		spanElem.innerHTML = "패스워드 불일치";
+		spanElem.style.color = "RED";
+		checkRetypePassResult = false;
+	}
+}
+
+// 비밀번호 변경 시 확인
+function checkForm() {
+
+	if (!passResult) {
+		alert("비밀번호 조합 확인 필수!");
+		document.fr.passwd.focus();
+		return false;
+	} else if (!checkRetypePassResult) {
+		alert("비밀번호 일치 확인 필수!");
+		document.fr.passwd2.focus();
+		return false;
+	}
+
+
+}
+
 	//전화번호 양식 변경
 	function checkPhone(phone) {
 		// 전화번호 검증 양식 : xxx-xxxx-xxxx(하이픈 포함 여부 무관) 가능

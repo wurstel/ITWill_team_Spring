@@ -95,3 +95,7 @@ body::before {
 	text-decoration: none;
 }
 
+#logo {
+	width: 228px;
+	height: 42px;
+}

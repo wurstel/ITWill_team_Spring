@@ -42,7 +42,7 @@ function logout() {
 			                <a class="nav-link" href="login_form.me">로그인</a>                
 			            </li>
 			            <li class="nav-item ">                                                                
-			                <a class="nav-link" href="join_form.me">회원가입</a>                
+			                <a class="nav-link" href="join_before.me">회원가입</a>                
 			            </li>
             	</c:when>
            		<c:when test="${userId eq 'almeal'}">
@@ -57,15 +57,30 @@ function logout() {
 			            </li>
             	</c:when>
             	<c:otherwise>
-            			<li class="nav-item ">                                                                
-			                <a class="nav-link">${userId}</a>                
-			            </li>
-	            		<li class="nav-item ">                                                                
-			                <a class="nav-link" href="mypage.me">마이페이지</a>                
-			            </li>
-			            <li class="nav-item ">                                                                
-			                <a class="nav-link" onclick="logout()">로그아웃</a>                
-			            </li>
+            		<c:choose>
+            			<c:when test="${access_token ne null }">
+            				<li class="nav-item ">                                                                
+			                <a class="nav-link">${userId}님</a>                
+				            </li>
+		            		<li class="nav-item ">                                                                
+				                <a class="nav-link" href="mypage.me">마이페이지</a>                
+				            </li>
+		            		<li class="nav-item ">                                                                
+				                <a class="nav-link" href="https://kauth.kakao.com/oauth/logout?client_id=25b9b94777a0d2b56646129bea603613&logout_redirect_uri=http://localhost:8080/subProject/auth/kakao/logout">로그아웃</a>                
+				            </li>
+            			</c:when>
+            			<c:when test="${access_token eq null }">
+            				<li class="nav-item ">                                                                
+			                <a class="nav-link">${userId}님</a>                
+				            </li>
+		            		<li class="nav-item ">                                                                
+				                <a class="nav-link" href="mypage.me">마이페이지</a>                
+				            </li>
+		            		<li class="nav-item ">                                                                
+				                <a class="nav-link" href="logout.me">로그아웃</a>                
+				            </li>
+            			</c:when>
+            		</c:choose>
             	</c:otherwise>
             </c:choose>
       	</ul>

@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.springProject.subProject.vo.BasketListVO;
+import com.springProject.subProject.vo.KakaoUserInfoVO;
 import com.springProject.subProject.vo.MemberVO;
+import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
 import com.springProject.subProject.vo.member_authVO;
 
@@ -15,8 +17,19 @@ public interface MemberMapper {
 
 	String isDuplicate(String id);
 
-	// 로그인
-	String searchUser(@Param("mem_id") String mem_id,@Param("mem_password") String mem_password);
+	// 로그인(수정 전)
+//		MemberVO searchUser(@ModelAttribute MemberVO memberVO);
+		
+		// 로그인
+		MemberVO getFindId(String mem_id);
+			
+		// 카카오 로그인
+		void insertKakaoId(@Param("userInfo") KakaoUserInfoVO kakaoUserInfoVO, @Param("gender") String gender, @Param("id") String id);
+
+		MemberVO selectUserInfo(String email);
+		
+		// 네이버 로그인
+		void insertNaverId(@Param("userInfo") NaverUserInfoVO naverUserInfoVO, @Param("id") String id);
 
 	// 회원가입
 	int insertMember(@ModelAttribute MemberVO memberVO);
@@ -33,14 +46,27 @@ public interface MemberMapper {
 	
 	// 인증 성공으로 변경
 	void updateAuth(member_authVO authVO);
-	
-	MemberVO selectMyPage(String id);
+	// 마이페이지
+		MemberVO selectMyPage(String id);
 
-	MemberVO selectMemberDetail(String id);
-	
+		// 회원정보 가져오기
+		MemberVO selectMemberDetail(String id);
+
 	// 회원 정보 수정
 	int updateMember(@ModelAttribute MemberVO memberVO);
 
+	// 아이디 찾기
+		String selectSearchId(@Param("mem_name") String mem_name, @Param("mem_phoneNum") String mem_phoneNum);
+
+		// 비밀번호 찾기
+		String selectSearchPass(@Param("mem_name") String mem_name, @Param("mem_phoneNum") String mem_phoneNum,
+				@Param("mem_email") String mem_email);
+
+		// 비밀번호 변경
+		int updatePass(@ModelAttribute MemberVO memberVO);
+
+	
+	
 	// 장바구니 불러오기
 	ArrayList<BasketListVO> selectMyBasket(String id);
 

@@ -21,7 +21,7 @@
 		<form action="productBasket.st" name="fr" method="post">
 <!-- 		<form action="productCart.st" name="fr"> -->
 			<input type="hidden" name ="pd_code"value="${productDetail.getPd_code()}">
-			<input type="hidden" name ="mem_id"value="${sessionScope.userId }">
+			<input type="hidden" name ="mem_id"value="${sessionScope.sId }">
 			<input type="hidden" name ="pd_price"value="${productDetail.getPd_price()}">
 			<input type="hidden" name ="choiceCheck" id="choiceCheck">
 			<div class="container" >
@@ -152,7 +152,7 @@
 			</div>
 			<!-- Modal -->
 			<c:choose>
-				<c:when test="${not empty sessionScope.userId}">
+				<c:when test="${not empty sessionScope.sId}">
 					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-80size modal-center">
 					    	<div class="modal-content">

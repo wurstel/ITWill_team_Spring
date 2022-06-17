@@ -73,7 +73,7 @@ public class ControllerStore {
 	public String basketIn(String mem_id,String pd_code,String bk_qty,String pd_price,String choiceCheck,Model model) {
 		System.out.println(mem_id+" : "+pd_code+" : "+bk_qty+" : "+pd_price+" : "+choiceCheck);
 		Integer searchOrderNum = service.searchBasket(mem_id,pd_code);	//장바구니 확인
-		System.out.println(searchOrderNum);
+		System.out.println("searchOrderNum : " + searchOrderNum);
 		if(searchOrderNum == 0) {
 			Integer insertCount = service.basketIn(mem_id,pd_code,bk_qty);
 			if(insertCount == 0) {

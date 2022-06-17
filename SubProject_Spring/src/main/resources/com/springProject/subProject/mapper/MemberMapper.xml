@@ -2,13 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.springProject.subProject.mapper.MemberMapper">
 	<!-- 로그인시 아이디,비밀번호 확인 -->
-	<select id="searchUser" resultType="java.lang.String">
-		SELECT mem_id FROM member WHERE mem_id=#{mem_id} AND mem_password=#{mem_password}
+<!-- 	<select id="searchUser" resultType="com.springProject.subProject.vo.MemberVO"> -->
+<!-- 		SELECT * FROM member WHERE mem_id=#{mem_id} AND mem_password=#{mem_password} -->
+<!-- 	</select> -->
+	
+	<!-- 로그인 -->
+	<select id="getFindId" resultType="com.springProject.subProject.vo.MemberVO">
+		SELECT * FROM member WHERE mem_id=#{mem_id}
 	</select>
+	
+	<select id="selectUserInfo" resultType="com.springProject.subProject.vo.MemberVO">
+		select * FROM member WHERE mem_email = #{email}
+	</select>
+	
+	<insert id="insertKakaoId">
+		INSERT INTO member VALUES(#{id},"",#{userInfo.kakao_account.profile.nickname},"",#{gender},#{userInfo.kakao_account.email},"","","",'normal','0','null', 'N')
+	</insert>
+	
+	<insert id="insertNaverId">
+		INSERT INTO member VALUES(#{id}, "", #{userInfo.response.name}, #{userInfo.response.birthday}, #{userInfo.response.gender}, #{userInfo.response.email}, #{userInfo.response.mobile}, "" ,"", 'normal', '0', 'null', 'N')
+	</insert>
+	
 	<!-- 회원가입 -->
 	<insert id="insertMember">
 		INSERT INTO member VALUES(#{mem_id},#{mem_password},#{mem_name},#{mem_birth},#{mem_gender},#{mem_email},#{mem_phoneNum},#{mem_postcode},#{mem_address},'normal','0','null','N')
 	</insert>
+	
 	<!-- 회원인증조회 -->
 	<select id="authInfo" resultType="java.lang.String">
 		SELECT mem_auth_code FROM member_auth WHERE mem_id = #{mem_id}
@@ -43,6 +62,43 @@
 		SET mem_email = #{mem_email}, mem_phoneNum = #{mem_phoneNum}, mem_postcode = #{mem_postcode}, mem_address = #{mem_address}
 		WHERE mem_id = #{mem_id}
 	</update>
+	
+	<!-- 아이디 찾기 -->
+	<select id="selectSearchId" resultType="java.lang.String">
+		SELECT mem_id FROM member
+		WHERE mem_name=#{mem_name} AND
+		mem_phoneNum=#{mem_phoneNum}
+	</select>
+
+	<!-- 비밀번호 찾기 -->
+	<select id="selectSearchPass" resultType="java.lang.String">
+		SELECT * FROM member
+		<choose>
+			<when test="mem_email.equals('')">
+				WHERE mem_name=#{mem_name} AND
+				mem_phoneNum=#{mem_phoneNum}
+			</when>
+			<when test="mem_phoneNum.equals('')">
+				WHERE mem_name=#{mem_name} AND mem_email=#{mem_email}
+			</when>
+		</choose>
+	</select>
+
+	<!-- 비밀번호 변경 -->
+	<update id="updatePass">
+		UPDATE member SET mem_password = #{mem_password}
+		<choose>
+			<when test="mem_email.equals('')">
+				WHERE mem_name=#{mem_name} AND
+				mem_phoneNum=#{mem_phoneNum}
+			</when>
+			<when test="mem_phoneNum.equals('')">
+				WHERE mem_name=#{mem_name} AND mem_email=#{mem_email}
+			</when>
+		</choose>
+	</update>
+	
+	
 	
 	<!-- 장바구니 불러오기 -->
 	<select id="selectMyBasket" resultType="com.springProject.subProject.vo.BasketListVO">
