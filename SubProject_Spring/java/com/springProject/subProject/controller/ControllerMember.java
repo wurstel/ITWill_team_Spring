@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -172,18 +173,18 @@ public class ControllerMember {
 		if (!encoder.matches(mem_password, member.getMem_password())) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "fail_back";
+		} else {
+			String isAuthenticatedMember = service.getAuthenticationStatus(member.getMem_id());
+			if (isAuthenticatedMember.equals("Y")) {
+				session.setAttribute("userId", member.getMem_name()); // 헤더에 표시할 사용자 이름
+				session.setAttribute("sId", member.getMem_id()); // 아이디 저장
+				return "redirect:/";
+			} else {
+				model.addAttribute("msg", "회원 인증 필수");
+				return "fail_back";
+			}
 		}
 
-//			MemberVO memberResult = service.login(memberVO);
-
-//			if(memberResult == null) {
-//				model.addAttribute("msg", "잘못된 접근입니다.");
-//				return "fail_back";
-//			}
-
-		session.setAttribute("userId", member.getMem_name()); // 헤더에 표시할 사용자 이름
-		session.setAttribute("sId", member.getMem_id()); // 아이디 저장
-		return "redirect:/";
 		// member_authentication.jsp 로 보내서 인증여부 판별
 	}
 

@@ -36,7 +36,6 @@ public class ServiceMember {
 	@Autowired
 	 private JavaMailSender mailSender;
 	
-	
 	@Autowired
 	private MemberMapper mapper;
 
@@ -45,7 +44,7 @@ public class ServiceMember {
 	
 	private SimpleMailMessage preConfiguredMessage;
 	
-	// 이메일 보내
+	// 이메일 보내기
 	@Async
 	public void sendEmail(String to, String subject, String body) {
 		MimeMessage message = mailSender.createMimeMessage();
@@ -60,8 +59,6 @@ public class ServiceMember {
 	    	  }catch(Exception e){
 	    		  e.printStackTrace();
 	    	  }
-
-
 	}
 	
  	@Async
@@ -71,25 +68,18 @@ public class ServiceMember {
             mailSender.send(mailMessage);
     }
 
-
-	
-	
-	
-	
 	public String isDuplicate(String id) {
 		return mapper.isDuplicate(id);
 	}
 	
-	// 로그인(수정 전)
-//		public MemberVO login(@ModelAttribute MemberVO memberVO) {
-//			return mapper.searchUser(memberVO);
-//		}
-
 	// 로그인
 	public MemberVO getId(String mem_id) {
 		return mapper.getFindId(mem_id);
 	}
-	
+	// 로그인 성공시 인증판별
+	public String getAuthenticationStatus(String mem_id) {
+		return mapper.searchAuthStatus(mem_id);
+	}
 	// 회원가입
 	public int joinMember(@ModelAttribute MemberVO memberVO) {
 	System.out.println(memberVO);

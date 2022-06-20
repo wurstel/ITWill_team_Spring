@@ -20,16 +20,19 @@ public interface MemberMapper {
 	// 로그인(수정 전)
 //		MemberVO searchUser(@ModelAttribute MemberVO memberVO);
 		
-		// 로그인
-		MemberVO getFindId(String mem_id);
+	// 로그인
+	MemberVO getFindId(String mem_id);
+	
+	// 로그인 성공시 인증 판별
+	String searchAuthStatus(@Param("mem_id") String mem_id);
 			
-		// 카카오 로그인
-		void insertKakaoId(@Param("userInfo") KakaoUserInfoVO kakaoUserInfoVO, @Param("gender") String gender, @Param("id") String id);
+	// 카카오 로그인
+	void insertKakaoId(@Param("userInfo") KakaoUserInfoVO kakaoUserInfoVO, @Param("gender") String gender, @Param("id") String id);
 
-		MemberVO selectUserInfo(String email);
+	MemberVO selectUserInfo(String email);
 		
-		// 네이버 로그인
-		void insertNaverId(@Param("userInfo") NaverUserInfoVO naverUserInfoVO, @Param("id") String id);
+	// 네이버 로그인
+	void insertNaverId(@Param("userInfo") NaverUserInfoVO naverUserInfoVO, @Param("id") String id);
 
 	// 회원가입
 	int insertMember(@ModelAttribute MemberVO memberVO);

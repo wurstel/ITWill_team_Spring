@@ -10,6 +10,10 @@
 	<select id="getFindId" resultType="com.springProject.subProject.vo.MemberVO">
 		SELECT * FROM member WHERE mem_id=#{mem_id}
 	</select>
+	<!-- 로그인 성공시 인증 여부 판별 -->
+	<select id="searchAuthStatus" resultType="java.lang.String">
+		SELECT mem_auth FROM member WHERE mem_id = #{mem_id}
+	</select>
 	
 	<select id="selectUserInfo" resultType="com.springProject.subProject.vo.MemberVO">
 		select * FROM member WHERE mem_email = #{email}
