@@ -15,7 +15,7 @@ import java.sql.*;
 		qna_re_ref INT,
 		qna_re_lev INT,
 		qna_re_seq INT,
-		qna_date Date
+		qna_date DATE
 	);
 
 */

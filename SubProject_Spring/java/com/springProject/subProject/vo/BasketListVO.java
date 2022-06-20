@@ -5,6 +5,12 @@ import java.util.List;
 /**
  * @author rudbe
  *
+ * CREATE VIEW BASKET_LIST AS
+SELECT pd_name,pd_price,bk_qty,(pd_price*bk_qty) totalprice,bk_order_num,bk_mem_id,
+bk_pd_code
+FROM basket, product
+WHERE bk_pd_code = pd_code;
+
  */
 public class BasketListVO {
 	private String pd_name;

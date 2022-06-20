@@ -11,7 +11,7 @@ import com.springProject.subProject.vo.KakaoUserInfoVO;
 import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
-import com.springProject.subProject.vo.member_authVO;
+import com.springProject.subProject.vo.Member_authVO;
 
 public interface MemberMapper {
 
@@ -35,17 +35,17 @@ public interface MemberMapper {
 	int insertMember(@ModelAttribute MemberVO memberVO);
 
 	// 회원인증
-	String authInfo(@ModelAttribute member_authVO authvo);
+	String authInfo(@ModelAttribute Member_authVO authvo);
 	
-	void insertAutoInfo(@ModelAttribute member_authVO authvo);
+	void insertAutoInfo(@ModelAttribute Member_authVO authvo);
 	
-	void updateAuthInfo(@ModelAttribute member_authVO authvo);
+	void updateAuthInfo(@ModelAttribute Member_authVO authvo);
 	
 	// 인증 후 삭제
-	void deleteAuth(member_authVO authVO);
+	void deleteAuth(Member_authVO authVO);
 	
 	// 인증 성공으로 변경
-	void updateAuth(member_authVO authVO);
+	void updateAuth(Member_authVO authVO);
 	// 마이페이지
 		MemberVO selectMyPage(String id);
 

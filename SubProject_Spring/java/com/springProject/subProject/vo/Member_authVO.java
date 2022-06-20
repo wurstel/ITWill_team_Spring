@@ -6,7 +6,7 @@ package com.springProject.subProject.vo;
 		mem_auth_code VARCHAR(50)
 	);
 	*/
-public class member_authVO {
+public class Member_authVO {
 	private String mem_id;
 	private String mem_auth_code;
 	public String getMem_id() {

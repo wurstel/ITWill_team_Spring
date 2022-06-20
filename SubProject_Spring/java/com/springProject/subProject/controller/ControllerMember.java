@@ -31,7 +31,7 @@ import com.springProject.subProject.vo.NaverTokenVO;
 import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
 import com.springProject.subProject.vo.UserIdVO;
-import com.springProject.subProject.vo.member_authVO;
+import com.springProject.subProject.vo.Member_authVO;
 
 @Controller
 @EnableAsync
@@ -67,8 +67,8 @@ public class ControllerMember {
 		return "redirect:MemberCheckId.me?mem_id=" + mem_id + "&isDuplicate=" + isDuplicate;
 	}
 	// 회원가입 인증로직
-	@RequestMapping(value = "/mem_joinSuccess.me", method = RequestMethod.GET) // POST로 변경 URL에 나옴
-	public String joinSuccess(@ModelAttribute member_authVO authVO) {
+	@RequestMapping(value = "/mem_joinSuccess.me", method = RequestMethod.GET)
+	public String joinSuccess(@ModelAttribute Member_authVO authVO) {
 
 		String auth = service.selectAuthInfo(authVO); // 기존 인증코드 조회
 		if(auth.equals(null)) {
@@ -108,7 +108,7 @@ public class ControllerMember {
 
 	// 회원가입 비즈니스 로직
 	@RequestMapping(value = "/mem_join.me", method = RequestMethod.POST)
-	public String join(@ModelAttribute MemberVO memberVO, @ModelAttribute member_authVO authVO,
+	public String join(@ModelAttribute MemberVO memberVO, @ModelAttribute Member_authVO authVO,
 			@RequestParam String mem_id, @RequestParam String mem_password, @RequestParam String mem_auth_code,
 			String mem_year, String mem_month, String mem_day, String mem_mailAdd, String domain, String mem_phoneF,
 			String mem_phoneM, String mem_phoneL, String address, String add_detail, Model model) {
@@ -143,7 +143,7 @@ public class ControllerMember {
 	
 	// 회원가입 인증클릭로직
 	@RequestMapping(value = "/member_authentication.me", method = RequestMethod.GET)
-	public String authentication(@ModelAttribute member_authVO authVO) {
+	public String authentication(@ModelAttribute Member_authVO authVO) {
 		String result = service.selectAuthInfo(authVO);
 		if(!result.equals(null)) {
 			service.deleteAuth(authVO);

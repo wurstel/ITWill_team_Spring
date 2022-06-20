@@ -1,5 +1,15 @@
 package com.springProject.subProject.vo;
 
+/*
+ * CREATE TABLE BASKET(
+bk_order_num VARCHAR(100),
+bk_mem_id VARCHAR(20),
+bk_pd_code VARCHAR(50),
+bk_qty VARCHAR(1000),
+PRIMARY KEY(bk_order_num,bk_mem_id,bk_pd_code)
+);
+
+ */
 public class BasketVO {
 	String bk_order_num;
 	String bk_mem_id;

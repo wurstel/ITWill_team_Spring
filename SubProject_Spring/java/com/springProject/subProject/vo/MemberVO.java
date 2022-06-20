@@ -7,7 +7,7 @@ package com.springProject.subProject.vo;
 	
 	CREATE TABLE MEMBER (
 		mem_id VARCHAR(20),
-		mem_password VARCHAR(16),
+		mem_password VARCHAR(500),
 		mem_name VARCHAR(10),
 		mem_birth VARCHAR(8),
 		mem_gender VARCHAR(1),
@@ -16,7 +16,7 @@ package com.springProject.subProject.vo;
 		mem_postcode VARCHAR(6),
 		mem_address	 VARCHAR(300),
 		mem_grade VARCHAR(30),
-		mem_point VARCHAR(1000),
+		mem_point VARCHAR(10),
 		mem_paymethod  VARCHAR(50),
 		mem_auth CHAR(1)
 	);

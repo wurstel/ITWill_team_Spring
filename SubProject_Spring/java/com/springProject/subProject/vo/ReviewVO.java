@@ -7,7 +7,8 @@ re_img VARCHAR(200),
 re_title VARCHAR(80),
 re_comment VARCHAR(800),
 re_score VARCHAR(1000),
-re_pd_code VARCHAR(50)
+re_pd_code VARCHAR(50),
+re_rdate VARCHAR(20)
 );
 
  */

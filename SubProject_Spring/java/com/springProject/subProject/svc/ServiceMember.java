@@ -25,7 +25,7 @@ import com.springProject.subProject.vo.NaverTokenVO;
 import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
 import com.springProject.subProject.vo.UserIdVO;
-import com.springProject.subProject.vo.member_authVO;
+import com.springProject.subProject.vo.Member_authVO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -97,22 +97,22 @@ public class ServiceMember {
 		return mapper.insertMember(memberVO);
 	}
 	// 회원인증조회
-	public String selectAuthInfo(@ModelAttribute member_authVO authVO) {
+	public String selectAuthInfo(@ModelAttribute Member_authVO authVO) {
 		return mapper.authInfo(authVO);
 	}
-	public void insertAuthInfo(@ModelAttribute member_authVO authVO) {
+	public void insertAuthInfo(@ModelAttribute Member_authVO authVO) {
 		mapper.insertAutoInfo(authVO);
 	}
 	
-	public void updateAuthInfo(@ModelAttribute member_authVO authVO) {
+	public void updateAuthInfo(@ModelAttribute Member_authVO authVO) {
 		mapper.updateAuthInfo(authVO);
 	}
 	// 인증 후 코드 삭제
-	public void deleteAuth(@ModelAttribute member_authVO authVO) {
+	public void deleteAuth(@ModelAttribute Member_authVO authVO) {
 		mapper.deleteAuth(authVO);
 	}
 	// 인증 성공으로 변경
-	public void updateAuth(@ModelAttribute member_authVO authVO) {
+	public void updateAuth(@ModelAttribute Member_authVO authVO) {
 		mapper.updateAuth(authVO);
 	}
 

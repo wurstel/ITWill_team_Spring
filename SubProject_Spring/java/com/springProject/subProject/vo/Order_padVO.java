@@ -1,5 +1,26 @@
 package com.springProject.subProject.vo;
 
+/*
+ * CREATE TABLE ORDER_PAD(
+order_num VARCHAR(100),
+order_mem_id VARCHAR(20),
+order_pd_code VARCHAR(50),
+order_status VARCHAR(1),
+order_qty VARCHAR(20),
+order_postcode VARCHAR(6),
+order_address VARCHAR(300),
+order_phonenum VARCHAR(20),
+PRIMARY KEY(order_num,order_mem_id,order_pd_code)
+);
+
+CREATE TABLE ORDER_DETAIL(
+od_order_num VARCHAR(1000),
+od_mem_id VARCHAR(20),
+od_pd_code VARCHAR(50),
+od_qty VARCHAR(1000)
+);
+
+ */
 public class Order_padVO {
 	private String order_num;
 	private String order_mem_id;
