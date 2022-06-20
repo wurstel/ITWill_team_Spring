@@ -14,7 +14,7 @@ public class Order_checkVO {
 	private String mem_id;
 	private String pd_name;
 	private String pd_price;
-	private String od_qty;
+	private String order_qty;
 	private String totalprice;
 	private String order_status;
 	
@@ -36,11 +36,12 @@ public class Order_checkVO {
 	public void setPd_price(String pd_price) {
 		this.pd_price = pd_price;
 	}
-	public String getOd_qty() {
-		return od_qty;
+	
+	public String getOrder_qty() {
+		return order_qty;
 	}
-	public void setOd_qty(String od_qty) {
-		this.od_qty = od_qty;
+	public void setOrder_qty(String order_qty) {
+		this.order_qty = order_qty;
 	}
 	public String getTotalprice() {
 		return totalprice;
@@ -57,6 +58,6 @@ public class Order_checkVO {
 	@Override
 	public String toString() {
 		return "Order_checkDTO [mem_id=" + mem_id + ", pd_code=" + pd_name + ", pd_price=" + pd_price + ", od_qty="
-				+ od_qty + ", totalprice=" + totalprice + ", order_status=" + order_status + "]";
+				+ order_qty + ", totalprice=" + totalprice + ", order_status=" + order_status + "]";
 	}
 }

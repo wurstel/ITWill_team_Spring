@@ -21,10 +21,10 @@
 					<div class="card-body">
 						<h5 class="card-title">결제완료</h5>
 						<p class="card-text">
-							요청하신 주문이 완료되었습니다
+							정기구독 신청이 완료되었습니다
 						</p>
-						<a href="paymentResultMove.pm?code=inquiry" class="btn btn-success">주문내역</a>
-						<a href="paymentResultMove.pm?code=home" class="btn btn-primary">홈으로</a>
+						<a href="paymentSubResultMove.pm?code=inquiry" class="btn btn-success">주문내역</a>
+						<a href="paymentSubResultMove.pm?code=home" class="btn btn-primary">홈으로</a>
 					</div>
 				</div>
 	        </div>

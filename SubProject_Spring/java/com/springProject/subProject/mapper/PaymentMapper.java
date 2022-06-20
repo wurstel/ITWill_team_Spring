@@ -15,5 +15,10 @@ public interface PaymentMapper {
 
 	Order_padVO getOrderPad(BasketListVO basketListVO);
 
+	void updateStatus(BasketListVO basketListVO);
 
+	void deleteOrderCheck(BasketListVO basketListVO);
+
+	void updateSubStatus(String mem_id);
+	
 }

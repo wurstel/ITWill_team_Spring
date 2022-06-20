@@ -34,6 +34,20 @@ public class ServicePayment {
 	public Order_padVO getOrderPad(BasketListVO basketListVO) {
 		return mapper.getOrderPad(basketListVO);
 	}
+	
+	public void updateStatus(BasketListVO basketListVO) {
+		mapper.updateStatus(basketListVO);
+	}
+
+
+	public void deleteOrderCheck(BasketListVO basketListVO) {
+		mapper.deleteOrderCheck(basketListVO);
+	}
+
+
+	public void updateStatus(String mem_id) {
+		mapper.updateSubStatus(mem_id);
+	}
 
 
 

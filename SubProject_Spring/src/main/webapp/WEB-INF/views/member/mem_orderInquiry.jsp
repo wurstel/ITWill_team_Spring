@@ -37,7 +37,7 @@
 				    <tr class="text-center">
 				      <td>${oc.pd_name }</td>
 				      <td>${oc.pd_price }</td>
-				      <td>${oc.od_qty }</td>
+				      <td>${oc.order_qty }</td>
 				      <td>${oc.totalprice }</td>
 				      <td>${oc.order_status }</td>
 				    </tr>
