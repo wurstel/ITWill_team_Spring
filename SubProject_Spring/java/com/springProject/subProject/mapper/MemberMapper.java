@@ -85,6 +85,9 @@ public interface MemberMapper {
    //주문내역 불러오기
    List<Order_checkVO> loadInquiry(String mem_id);
 
+   // 회원 탈퇴
+   void memberDelete(String id);
+
 
 
 

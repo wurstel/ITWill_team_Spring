@@ -485,5 +485,16 @@ public class ControllerMember {
        service.deleteBasket(bk_mem_id, bk_order_num, bk_pd_code);
        return "redirect:/basket.me";
     }
-	
+    // 회원탈퇴 창
+    @RequestMapping(value = "/MemberDelete.me", method = RequestMethod.GET)
+    public String memberDelete() {
+    	return "member/memberDelete";
+    }
+	// 회원탈퇴 비즈니스 로직
+    @RequestMapping(value = "/MemberDeletePro.me", method = RequestMethod.GET)
+    public String memberDeleteTrue(HttpSession session) {
+    	String id = (String)session.getAttribute("sId");
+    	service.memberDelete(id);
+    	return "redirect:/";
+    }
 }

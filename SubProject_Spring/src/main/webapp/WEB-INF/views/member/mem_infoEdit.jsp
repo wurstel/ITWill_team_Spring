@@ -42,6 +42,7 @@
 			<tr><td>멤버쉽등급</td><td>${memberVO.mem_grade }</td></tr>
       	</table>
       	<button type="submit" class="btn btn-secondary">수정하기</button>
+      	<input type="button" class="btn btn-danger" value="탈퇴하기" onclick="memberDelete()">
       </form>
     </div>
   </div>

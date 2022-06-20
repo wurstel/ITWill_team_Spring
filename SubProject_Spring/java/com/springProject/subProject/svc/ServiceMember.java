@@ -273,9 +273,9 @@ public class ServiceMember {
 	public List<Order_checkVO> loadInquiry(String mem_id) {
 		return mapper.loadInquiry(mem_id);
 	}
-
-
-	
-
+	// 회원탈퇴
+	public void memberDelete(String id) {
+		mapper.memberDelete(id);
+	}
 
 }

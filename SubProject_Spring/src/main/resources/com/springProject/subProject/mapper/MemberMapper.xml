@@ -126,4 +126,8 @@
    <select id="loadInquiry" resultType="com.springProject.subProject.vo.Order_checkVO">
    		SELECT * FROM order_check WHERE order_mem_id =#{mem_id}
    </select>
+   <!-- 회원탈퇴 -->
+   <delete id="memberDelete">
+   		DELETE FROM member WHERE mem_id = #{mem_id}
+   </delete>
 </mapper>
