@@ -40,7 +40,7 @@ function checkRetypePass(pass2) {
 	아니면 "패스워드 불일치"(빨간색) 표시
 	=> 패스워드 일치 시 checkRetypePassResult 를 true, 아니면 false 로 변경
 	*/
-	var password = document.fr.passwd.value;
+	var password = document.fr.mem_password.value;
 	var spanElem = document.getElementById("checkRetypePassResult");
 
 	if (password == pass2) {
