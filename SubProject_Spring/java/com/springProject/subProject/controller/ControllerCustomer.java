@@ -39,9 +39,9 @@ public class ControllerCustomer {
 	}
 	// 글 목록
 	@RequestMapping(value = "/customerCenter_list.cu", method = RequestMethod.GET)
-	public String customer(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	public String customer(@RequestParam(defaultValue = "") String searchType, @RequestParam(defaultValue ="") String keyword, @RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
-	int listCount = service.getListCount();
+	int listCount = service.getListCount(searchType, "%"+keyword+"%");
 	int listLimit = 10; // 한 페이지 당 표시할 게시물 목록 갯수
 	int pageLimit = 10; // 한 페이지 당 표시할 페이지 목록 갯수
 		
@@ -68,7 +68,7 @@ public class ControllerCustomer {
 	pageInfo.setListLimit(listLimit);
 		
 	// Service 객체의 getList() 메서드를 호출하여 게시물 목록 조회
-	List<QnaVO> qnaList = service.getList(pageInfo);
+	List<QnaVO> qnaList = service.getList(searchType, keyword, pageInfo);
 				
 	// Model 객체에 게시물 목록과 페이징 처리 정보 저장
 	model.addAttribute("qnaList", qnaList);
@@ -76,6 +76,49 @@ public class ControllerCustomer {
 		
 	return "customerCenter/qna_board_list";
 	
+	}
+	// 글 목록(검색)
+	@RequestMapping(value = "/customerCenter_list.cu", method = RequestMethod.POST)
+	public String listSearch(@RequestParam String searchType, @RequestParam String keyword, @RequestParam(defaultValue = "1") int pageNum, Model model) {
+			
+	int listCount = service.getListCount(searchType, "%" + keyword + "%");
+	int listLimit = 10; // 한 페이지 당 표시할 게시물 목록 갯수
+	int pageLimit = 10; // 한 페이지 당 표시할 페이지 목록 갯수
+			
+	// 페이징 처리를 위한 계산 작업
+	int maxPage = (int)Math.ceil((double)listCount / listLimit);
+	int startPage = ((int)((double)pageNum / pageLimit + 0.9) - 1) * pageLimit + 1;
+	int endPage = startPage + pageLimit - 1;
+			
+	if(endPage > maxPage) {
+		endPage = maxPage;
+	}
+			
+	// 조회 시작 게시물 번호(행 번호) 계산
+	int startRow = (pageNum - 1) * listLimit;
+				
+	// 페이징 처리 정보를 PageInfo 객체에 저장
+	PageInfo pageInfo = new PageInfo();
+	pageInfo.setPageNum(pageNum);
+	pageInfo.setMaxPage(maxPage);
+	pageInfo.setStartPage(startPage);
+	pageInfo.setEndPage(endPage);
+	pageInfo.setListCount(listCount);
+	pageInfo.setStartRow(startRow);
+	pageInfo.setListLimit(listLimit);
+			
+	// Service 객체의 getList() 메서드를 호출하여 게시물 목록 조회
+	List<QnaVO> qnaList = service.getList(searchType, "%" + keyword + "%",pageInfo);
+					
+	// Model 객체에 게시물 목록과 페이징 처리 정보 저장
+	model.addAttribute("qnaList", qnaList);
+	model.addAttribute("pageInfo", pageInfo);
+			
+	model.addAttribute("searchType", searchType);
+	model.addAttribute("keyword", keyword);
+	
+	return "customerCenter/qna_board_list";
+		
 	}
 	// 4. 글 상세내용 조회 - GET
 	@RequestMapping(value = "/customerCenter_detail.cu", method = RequestMethod.GET)

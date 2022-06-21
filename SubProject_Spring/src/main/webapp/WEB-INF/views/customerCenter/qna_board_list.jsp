@@ -3,6 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${param.keyword ne null }">
+	<c:set var="searchType" value="${param.searchType }"/>
+	<c:set var="keyword" value="${param.keyword }"/>
+</c:if> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +25,9 @@
 	<c:set var="startPage" value="${pageInfo.getStartPage() }" />
 	<c:set var="endPage" value="${pageInfo.getEndPage() }" />
 	<c:set var="listCount" value="${pageInfo.getListCount() }" />
-
 	<!-- 게시판 리스트 -->
 	<section id="listForm">
-	<table class="table table-hover text-center" style="margin-top: 5em;">
+	<table class="table table-hover text-center" style="margin-top: 10em;">
 		<thead class="table-light">
 			<tr>
 				<th scope="col" width="80">글번호</th>
@@ -93,6 +96,22 @@
 	            </li>
 			</ul>
 		</nav>
+	</section>
+	<!--  style="position: absolute; left: 50%; width: 300px; margin-left: -150px; " -->
+	<section id="buttonArea">
+		<form action="customerCenter_list.cu" method="post" >
+			<input type="hidden" name="pageNum" value="${pageNum}">
+				<div class="input-group">
+				  <select name="searchType" class="form-select" aria-label="Default select example">
+				    <option value="subject"<c:if test="${searchType ne null and searchType eq 'subject'}">selected</c:if>>제목</option>
+					<option value="content"<c:if test="${searchType ne null and searchType eq 'content'}">selected</c:if>>내용</option>
+					<option value="subject_content"<c:if test="${searchType ne null and searchType eq 'subject_content'}">selected</c:if>>제목+내용</option>
+					<option value="name"<c:if test="${searchType ne null and searchType eq 'name'}">selected</c:if>>작성자</option>
+				  </select>
+				  <input type="text" name="keyword" value="${param.keyword }" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+				  <button class="btn btn-outline-primary" type="submit">검색</button>
+				</div>
+		</form>
 	</section>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>

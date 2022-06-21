@@ -11,11 +11,39 @@
 	</insert>
 	<select id="selectListCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM qna
+		<choose>
+			<when test="!keyword.equals('') and searchType.equals('subject')">
+				WHERE qna_title LIKE #{keyword}
+			</when>
+			<when test="!keyword.equals('') and searchType.equals('content')">
+				WHERE qna_content LIKE #{keyword}
+			</when>
+			<when test="!keyword.equals('') and searchType.equals('subject_content')">
+				WHERE qna_title LIKE #{keyword} OR qna_content LIKE #{keyword}
+			</when>
+			<when test="!keyword.equals('') and searchType.equals('name')">
+				WHERE qna_mem_id LIKE #{keyword}
+			</when>
+		</choose>
 	</select>
 	<select id="selectList" resultType="com.springProject.subProject.vo.QnaVO">
 		SELECT * FROM qna
+		<choose>
+			<when test="!keyword.equals('') and searchType.equals('subject')">
+				WHERE qna_title LIKE #{keyword}
+			</when>
+			<when test="!keyword.equals('') and searchType.equals('content')">
+				WHERE qna_content LIKE #{keyword}
+			</when>
+			<when test="!keyword.equals('') and searchType.equals('subject_content')">
+				WHERE qna_title LIKE #{keyword} OR qna_content LIKE #{keyword}
+			</when>
+			<when test="!keyword.equals('') and searchType.equals('name')">
+				WHERE qna_mem_id LIKE #{keyword}
+			</when>
+		</choose>
 		ORDER BY qna_re_ref DESC, qna_re_seq ASC
-		LIMIT #{startRow}, #{listLimit}
+		LIMIT #{pageInfo.startRow}, #{pageInfo.listLimit}
 	</select>
 	<!-- 5. 글 상세내용 조회 -->
 	<select id="selectDetail" resultType="com.springProject.subProject.vo.QnaVO">

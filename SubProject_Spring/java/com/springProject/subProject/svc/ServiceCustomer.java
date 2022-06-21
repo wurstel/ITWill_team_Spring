@@ -37,12 +37,12 @@ public class ServiceCustomer {
 		
 		return mapper.insertBoard(qna);
 	}
-	public int getListCount() {
-		return mapper.selectListCount();
+	public int getListCount(String searchType, String keyword) {
+		return mapper.selectListCount(searchType, keyword);
 	}
 
-	public List<QnaVO> getList(PageInfo pageInfo) {
-		return mapper.selectList(pageInfo);
+	public List<QnaVO> getList(String searchType, String keyword, PageInfo pageInfo) {
+		return mapper.selectList(searchType, keyword, pageInfo);
 	}
 
 	// 5. 글 상세내용 조회

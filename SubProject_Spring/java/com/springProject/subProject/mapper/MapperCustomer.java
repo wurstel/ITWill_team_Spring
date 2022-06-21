@@ -2,6 +2,8 @@ package com.springProject.subProject.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.springProject.subProject.vo.PageInfo;
 import com.springProject.subProject.vo.QnaVO;
 
@@ -14,10 +16,10 @@ public interface MapperCustomer {
 	public int insertBoard(QnaVO qna);
 
 	//  총 게시물 수 조회
-	public int selectListCount();
+	public int selectListCount(@Param("searchType") String searchType, @Param("keyword") String keyword);
 
 	//  게시물 목록 조회
-	public List<QnaVO> selectList(PageInfo pageInfo);
+	public List<QnaVO> selectList(@Param("searchType") String searchType, @Param("keyword") String keyword, @Param("pageInfo") PageInfo pageInfo);
 	
 	//  글 상세내용 조회
 	public QnaVO selectDetail(int qna_num);
