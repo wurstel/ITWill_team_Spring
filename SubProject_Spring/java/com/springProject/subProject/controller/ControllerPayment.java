@@ -119,7 +119,7 @@ public class ControllerPayment {
 		payInfoVO.setMem_phoneNum(orderPadList.get(0).getOrder_phoneNum()); 
 		payInfoVO.setOrder_address(orderPadList.get(0).getOrder_address());
 		payInfoVO.setOrder_postcode(orderPadList.get(0).getOrder_postcode());
-		
+		System.out.println(payInfoVO);
 		model.addAttribute("payInfoVO", payInfoVO);
 		
 		return "payment/payment";
@@ -127,7 +127,7 @@ public class ControllerPayment {
 	
 	@RequestMapping(value = "/paymentResult", method = RequestMethod.GET)
 	public String payResult() {
-		return "payment/Payment_result";
+		return "payment/p ayment_result";
 	}
 	
 	@RequestMapping(value = "/paymentResultMove.pm", method = RequestMethod.GET)

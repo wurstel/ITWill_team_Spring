@@ -29,7 +29,7 @@ public class ServiceScheduler {
 			}
 		};
 	}
-	private Trigger getTrigger() {
+	private Trigger getTrigger() {  
 		return new PeriodicTrigger(1, TimeUnit.MINUTES);
 	}
 	//스케줄러 취소
