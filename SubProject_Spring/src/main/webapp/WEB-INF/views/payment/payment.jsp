@@ -15,6 +15,9 @@ html, body {
 	height: 100%;
 }
 </style>
+<script src="resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="resources/js/joinFunc.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
@@ -127,33 +130,133 @@ html, body {
 <body>
 <jsp:include page="../inc/header.jsp"/>  <!-- 헤더 들어가는 곳 -->
 <div class="container h-100">
-	<div class="row d-flex justify-content-center align-items-center h-100">
-	        <div class="col-4 text-center">
-				<div class="card">
-					<img src="resources//assets/credit-card.png" alt="스탠다드패키지" class="card-img-top" onclick="kgPay()"/>
-					<div class="card-body">
-						<button class="btn btn-outline-success btn-block" onclick="kgPay()">카드결제</button><br>
+<!-- 	<div class="row d-flex justify-content-center align-items-center h-100"> -->
+<!-- 	        <div class="col-4 text-center"> -->
+<!-- 				<div class="card"> -->
+<!-- 					<img src="resources//assets/credit-card.png" alt="스탠다드패키지" class="card-img-top" onclick="kgPay()"/> -->
+<!-- 					<div class="card-body"> -->
+<!-- 						<button class="btn btn-outline-success btn-block" onclick="kgPay()">카드결제</button><br> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 	        </div> -->
+<!-- 	        <div class="col-4 text-center"> -->
+<!-- 				<div class="card"> -->
+<!-- 					<img src="resources//assets/payment_icon_yellow_large.png" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()"/> -->
+<!-- 					<div class="card-body"> -->
+<!-- 						<button class="btn btn-outline-warning btn-block" onclick="kakaoPay()">카카오페이</button><br> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 	        </div> -->
+<!-- 	        <div class="col-4 text-center"> -->
+<!-- 				<div class="card"> -->
+<!-- 					<img src="resources//assets/logo-toss-blue.png" alt="스탠다드패키지" class="card-img-top" onclick="tossPay()"/> -->
+<!-- 					<div class="card-body"> -->
+<!-- 						<button class="btn btn-outline-primary btn-block" onclick="tossPay()">토스페이</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 	        </div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-lg-8 col-xl-6 text-center">
+				<h2 class="mt-0">주문정보</h2>
+				<hr class="divider" />
+			</div>
+		</div>
+		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+				<div class="col-lg-6">
+<%-- 						<input type="hidden" name="mem_auth_code" value="<%=mem_auth_code%>"> --%>
+					<div class="form-floating mb-3">
+						<input type="text" name="mem_name" id="floatingInput"
+							class="form-control" autocomplete="off" required="required">
+						<label for="floatingInput">주문자(필수)</label>
+					</div>
+					
+					<div class="form-floating mb-3">
+						<input type="text" name="mem_email" id="floatingInput"
+							class="form-control" autocomplete="off" required="required">
+						<label for="floatingInput">이메일(필수)</label>
+					</div>
+					
+					<div class="form-floating mb-3">
+						<input type="text" name="mem_phoneNum" id="floatingInput"
+							class="form-control" autocomplete="off" required="required">
+						<label for="floatingInput">전화번호(필수)</label>
+					</div>
+						<div class="row g-2">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" name="mem_postcode" id="postcode" class="form-control"> 
+									<label for="postcode">우편번호</label>
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="d-grid mb-3">
+									<input type="button" class="btn btn-outline-primary btn-xxl" value="주소검색" id="postcode_se"
+										onclick="postCodeSearch()">
+								</div>
+							</div>
+						</div>
+						<div class="row g-2">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" name="address" id="address" class="form-control">
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" name="add_detail" id="add_detail" class="form-control"> 
+									<label for="add_detail">상세주소
+										입력</label>
+								</div>
+							</div>
+						</div>
+
+
+
+					<div class="d-grid">
+<!-- 						<button class="btn btn-primary btn-xl" type="submit">결제하기</button> -->
+					<div class="row g-2">
+						<div class="col-md">
+							<div class="form-floating mb-3">
+								<div class="card">
+									<img src="resources//assets/credit-card.png" style="height:100px;" alt="스탠다드패키지" class="card-img-top" onclick="kgPay()" />
+									<div class="card-body">
+										<button class="btn btn-outline-success btn-block" onclick="kgPay()">카드결제</button>
+										<br>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md">
+							<div class="form-floating mb-3">
+								<div class="card">
+									<img src="resources//assets/payment_icon_yellow_large.png" style="height:100px;" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()" />
+									<div class="card-body">
+										<button class="btn btn-outline-warning btn-block" onclick="kakaoPay()">카카오페이</button>
+										<br>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md">
+							<div class="form-floating mb-3">
+								<div class="card">
+									<img src="resources//assets/logo-toss-blue.png" style="height:100px;" alt="스탠다드패키지" class="card-img-top" onclick="tossPay()" />
+									<div class="card-body">
+										<button class="btn btn-outline-primary btn-block" onclick="tossPay()">토스페이</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-	        </div>
-	        <div class="col-4 text-center">
-				<div class="card">
-					<img src="resources//assets/payment_icon_yellow_large.png" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()"/>
-					<div class="card-body">
-						<button class="btn btn-outline-warning btn-block" onclick="kakaoPay()">카카오페이</button><br>
-					</div>
 				</div>
-	        </div>
-	        <div class="col-4 text-center">
-				<div class="card">
-					<img src="resources//assets/logo-toss-blue.png" alt="스탠다드패키지" class="card-img-top" onclick="tossPay()"/>
-					<div class="card-body">
-						<button class="btn btn-outline-primary btn-block" onclick="tossPay()">토스페이</button>
-					</div>
-				</div>
-	        </div>
-	</div>
-</div>
+			</div>
+			</div>
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
