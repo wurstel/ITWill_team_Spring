@@ -38,7 +38,7 @@ public class ControllerPayment {
 	@RequestMapping(value = "/Payment.pm", method = RequestMethod.POST)
 	public String selectPay(@ModelAttribute Order_padVO order_padVO,String address,String address_detail ,HttpSession session,Model model) {
 		String order_address = address + address_detail;
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("sId");
 		order_padVO.setOrder_address(order_address);
 		order_padVO.setOrder_mem_id(userId);
 		System.out.println(order_padVO);
@@ -75,7 +75,7 @@ public class ControllerPayment {
 	public String paySubResultMove(HttpSession session, String code,Model model) {
 
 		//정기결제시
-		String mem_id = (String)session.getAttribute("userId");
+		String mem_id = (String)session.getAttribute("sId");
 		service.updateStatus(mem_id);				//결제 성공 후 주문표에 상태 바꾸기
 		if(code.equals("inquiry")) {
 			return "redirect:inquiry.me";

@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 	<task:annotation-driven />
+	<task:scheduler id="ServiceScheduler" pool-size="10"/>
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- hikariCP -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">

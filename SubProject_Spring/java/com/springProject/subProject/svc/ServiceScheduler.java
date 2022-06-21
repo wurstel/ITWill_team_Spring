@@ -13,15 +13,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceScheduler {
 	
+	@Autowired
 	private ThreadPoolTaskScheduler scheduler;
 	@Autowired
 	private ServiceSubPay pay;
+	
 	private Runnable getRunnable(String customer_uid,String price,String merchant_uid,HttpSession session) {
 		return new Runnable() {
 			
 			@Override
 			public void run() {
 				pay.SubPaySchedule(customer_uid, price, merchant_uid, session);
+				pay.SubRePay(customer_uid, price, merchant_uid, session);
 				//결제진행
 			}
 		};

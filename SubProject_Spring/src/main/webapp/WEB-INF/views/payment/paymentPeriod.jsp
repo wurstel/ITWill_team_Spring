@@ -27,7 +27,7 @@ html, body {
 			merchant_uid: 'merchant_'+new Date().getTime(), // 상점에서 관리하는 주문 번호
 			name : '${payInfoVO.pd_name}',
 			amount : ${payInfoVO.amount}, // 빌링키 발급과 함께 1,004원 결제승인을 시도합니다.
-			customer_uid : '${payInfoVO.mem_email}'+new Date().getTime(), // 필수 입력
+			customer_uid : '${payInfoVO.mem_email}', // 필수 입력
 			buyer_email: '${payInfoVO.mem_email}',
 			buyer_name: '${payInfoVO.mem_name}',
 			buyer_tel: '${payInfoVO.mem_phoneNum}',
@@ -40,7 +40,7 @@ html, body {
 			        url: "./subResult.pm", 
 			        type : "POST",
 			        data: {
-			          customer_uid: '${payInfoVO.mem_email}'+new Date().getTime(), // 카드(빌링키)와 1:1로 대응하는 값
+			          customer_uid: '${payInfoVO.mem_email}', // 카드(빌링키)와 1:1로 대응하는 값
 			          price : ${payInfoVO.amount},
 			          merchant_uid: 'merchant_'+new Date().getTime()
 			        }

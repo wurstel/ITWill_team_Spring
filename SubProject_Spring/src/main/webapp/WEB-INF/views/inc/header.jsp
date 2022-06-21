@@ -28,7 +28,7 @@
 
 </head>
 <body id="page-top">
- <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="subNav">
+ <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top py-3" id="subNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="./"><span class="h3">Start Bootstrap</span></a>&nbsp;&nbsp;&nbsp;
                 <a class="navbar-brand" href="subscribePage.sub"><span class="h5">구독</span></a>
