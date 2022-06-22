@@ -43,7 +43,7 @@ $(function() {
 $(function() {
 	$(".deleteBakset").click(function() {
 		var n = $('.deleteBakset').index(this);
-	    var order_num = $(".order_num:eq("+n+")").val();
+	    var order_num = $(".bk_order_num:eq("+n+")").val();
 		var mem_id = $(".bk_mem_id").val();
 		var pd_code = $(".bk_pd_code:eq("+n+")").val();
 	 	var isdelete = confirm("삭제하시겠습니까?");
