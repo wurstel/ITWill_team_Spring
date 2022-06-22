@@ -121,7 +121,7 @@ public class ControllerMember {
 		String mem_birth = mem_year + mem_month + mem_day;
 		String mem_email = mem_mailAdd + "@" + domain;
 		String mem_phoneNum = mem_phoneF + mem_phoneM + mem_phoneL;
-		String mem_address = address + add_detail;
+		String mem_address = address +","+ add_detail;
 		memberVO.setMem_password(securePassword); // 암호화한 비밀번호 memberVO 객체에 저장
 		memberVO.setMem_birth(mem_birth);
 		memberVO.setMem_email(mem_email);

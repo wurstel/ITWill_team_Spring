@@ -2,6 +2,7 @@ package com.springProject.subProject.mapper;
 
 
 import com.springProject.subProject.vo.BasketListVO;
+import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_padVO;
 import com.springProject.subProject.vo.PayInfoVO;
 
@@ -20,5 +21,7 @@ public interface PaymentMapper {
 	void deleteOrderCheck(BasketListVO basketListVO);
 
 	void updateSubStatus(String mem_id);
+
+	MemberVO getMemInfo(String sId);
 	
 }

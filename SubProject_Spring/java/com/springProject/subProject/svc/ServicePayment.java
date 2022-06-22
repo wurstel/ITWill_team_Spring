@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 
 import com.springProject.subProject.mapper.PaymentMapper;
 import com.springProject.subProject.vo.BasketListVO;
+import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_padVO;
 import com.springProject.subProject.vo.PayInfoVO;
 
@@ -47,6 +48,11 @@ public class ServicePayment {
 
 	public void updateStatus(String mem_id) {
 		mapper.updateSubStatus(mem_id);
+	}
+
+
+	public MemberVO getMemInfo(String sId) {
+		return mapper.getMemInfo(sId);
 	}
 
 

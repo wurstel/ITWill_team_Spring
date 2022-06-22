@@ -39,6 +39,10 @@
 	<select id="getOrderPad" resultType="com.springProject.subProject.vo.Order_padVO">
 		SELECT * FROM order_pad WHERE order_mem_id=#{bk_mem_id} AND order_pd_code=#{bk_pd_code} AND order_status='1'
 	</select>
+	<!-- 결제 회원정보 가져오기 -->
+	<select id="getMemInfo" resultType="com.springProject.subProject.vo.MemberVO">
+		SELECT * FROM member WHERE mem_id = #{sId}
+	</select>
 	
 	<!-- 결재롼료 후 orderPad status변경 -->
 	<update id="updateStatus">

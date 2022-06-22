@@ -28,8 +28,8 @@ html, body {
 					<img src="resources/assets/standardBox.png" alt="스탠다드패키지" class="card-img-top"/>
 					<div class="card-body">
 						<h5 class="card-title">스탠다드</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
+						<p class="card-text">증류주 박스  32,000원 / 월<br>
+						다양한 주종을 경험할 수 있는 구독 서비스<br>주조사들이 직접 추천하는 2~3종류의 술을 박스에 담아 소개해드립니다.</p>
 						<a href="sub_determine_st.sub" class="btn btn-primary">More</a>
 					</div>
 				</div>
@@ -39,8 +39,8 @@ html, body {
 				<img src="resources/assets/premiumBox.png" alt="프리미엄패키지" class="card-img-top"/>
 				<div class="card-body">
 					<h5 class="card-title">프리미엄</h5>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-						adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
+					<p class="card-text">
+					증류주 밀키트 박스 49,000원 / 월<br>주조사들이 직접 추천하는 2~3종류의 술과 술에 어울리는 밀키트 조합의 구독 서비스입니다.</p>
 					<a href="sub_determine_pre.sub" class="btn btn-primary">More</a>
 				</div>
 			</div>

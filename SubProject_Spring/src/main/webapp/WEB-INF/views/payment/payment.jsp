@@ -22,40 +22,7 @@ html, body {
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
 	IMP.init("imp05633369"); // https://admin.iamport.kr/settings#tab_profile 가맹점 식별코드
-	
-	function kakaoPay() {
-	  
-    // IMP.request_pay(param, callback) 결제창 호출
-    IMP.request_pay({ // param
-        pg: 'kakaopay', // 결제할 pg사 간편결제 카카오페이 테스트모드 ON 가맹점코드 일반결제용
-        pay_method: 'card',
-        merchant_uid: 'merchant_'+new Date().getTime(), // 주문번호
-        name: '${payInfoVO.pd_name}', // 상품명
-        amount: ${payInfoVO.amount}, // 가격
-        buyer_email: '${payInfoVO.mem_email}',
-        buyer_name: '${payInfoVO.mem_name}',
-        buyer_tel: '${payInfoVO.mem_phoneNum}',
-        buyer_addr: '${payInfoVO.order_address}',
-        buyer_postcode: '${payInfoVO.order_postcode}'
-    }, function (rsp) { // callback
-    	console.log(rsp);
-        if (rsp.success) {
-        	var msg = '결제가 완료되었습니다.';
-	        msg += '고유ID : ' + rsp.imp_uid;
-	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-	        msg += '결제 금액 : ' + rsp.paid_amount;
-	        msg += '카드 승인번호 : ' + rsp.apply_num;
-	        document.location="./paymentResult";
-            // 결제 성공 시 로직,
-            
-        } else {
-        	 var msg = '결제에 실패하였습니다.';
-	         msg += '에러내용 : ' + rsp.error_msg;
-            // 결제 실패 시 로직,
-        }
-        alert(msg);
-    });
-  }
+
 	function tossPay() {
 		  
 	    // IMP.request_pay(param, callback) 결제창 호출
@@ -169,25 +136,25 @@ html, body {
 <%-- 						<input type="hidden" name="mem_auth_code" value="<%=mem_auth_code%>"> --%>
 					<div class="form-floating mb-3">
 						<input type="text" name="mem_name" id="floatingInput"
-							class="form-control" autocomplete="off" required="required">
+							class="form-control" autocomplete="off" required="required" value="${memberInfo.mem_name }">
 						<label for="floatingInput">주문자(필수)</label>
 					</div>
 					
 					<div class="form-floating mb-3">
 						<input type="text" name="mem_email" id="floatingInput"
-							class="form-control" autocomplete="off" required="required">
+							class="form-control" autocomplete="off" required="required" value="${memberInfo.mem_email }">
 						<label for="floatingInput">이메일(필수)</label>
 					</div>
 					
 					<div class="form-floating mb-3">
 						<input type="text" name="mem_phoneNum" id="floatingInput"
-							class="form-control" autocomplete="off" required="required">
+							class="form-control" autocomplete="off" required="required" value="${memberInfo.mem_phoneNum }">
 						<label for="floatingInput">전화번호(필수)</label>
 					</div>
 						<div class="row g-2">
 							<div class="col-md">
 								<div class="form-floating mb-3">
-									<input type="text" name="mem_postcode" id="postcode" class="form-control"> 
+									<input type="text" name="mem_postcode" id="postcode" class="form-control" value="${memberInfo.mem_postcode }"> 
 									<label for="postcode">우편번호</label>
 								</div>
 							</div>
@@ -201,12 +168,12 @@ html, body {
 						<div class="row g-2">
 							<div class="col-md">
 								<div class="form-floating mb-3">
-									<input type="text" name="address" id="address" class="form-control">
+									<input type="text" name="address" id="address" class="form-control" value="${address }">
 								</div>
 							</div>
 							<div class="col-md">
 								<div class="form-floating mb-3">
-									<input type="text" name="add_detail" id="add_detail" class="form-control"> 
+									<input type="text" name="add_detail" id="add_detail" class="form-control" value="${add_detail }"> 
 									<label for="add_detail">상세주소
 										입력</label>
 								</div>
@@ -229,19 +196,6 @@ html, body {
 								</div>
 							</div>
 						</div>
-
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<div class="card">
-									<img src="resources//assets/payment_icon_yellow_large.png" style="height:100px;" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()" />
-									<div class="card-body">
-										<button class="btn btn-outline-warning btn-block" onclick="kakaoPay()">카카오페이</button>
-										<br>
-									</div>
-								</div>
-							</div>
-						</div>
-
 						<div class="col-md">
 							<div class="form-floating mb-3">
 								<div class="card">

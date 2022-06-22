@@ -21,6 +21,7 @@ import com.springProject.subProject.svc.ServiceImport;
 import com.springProject.subProject.svc.ServicePayment;
 import com.springProject.subProject.svc.ServiceScheduler;
 import com.springProject.subProject.vo.BasketListVO;
+import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_padVO;
 import com.springProject.subProject.vo.PayInfoVO;
 
@@ -120,6 +121,16 @@ public class ControllerPayment {
 		payInfoVO.setOrder_address(orderPadList.get(0).getOrder_address());
 		payInfoVO.setOrder_postcode(orderPadList.get(0).getOrder_postcode());
 		System.out.println(payInfoVO);
+		//회원정보 가져오기
+		String sId = (String)session.getAttribute("sId");
+		MemberVO memberInfo =  service.getMemInfo(sId);
+		String[] adressAll = memberInfo.getMem_address().split(",");
+		String address = adressAll[0];
+		String add_detail = adressAll[1];
+		System.out.println(memberInfo);
+		model.addAttribute("address", address);
+		model.addAttribute("add_detail", add_detail);
+		model.addAttribute("memberInfo", memberInfo);
 		model.addAttribute("payInfoVO", payInfoVO);
 		
 		return "payment/payment";

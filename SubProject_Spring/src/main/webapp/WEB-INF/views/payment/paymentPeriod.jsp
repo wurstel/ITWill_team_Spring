@@ -53,54 +53,12 @@ html, body {
 			}
 		});
 	}
-
-	function kgPay() {
-		 
-		IMP.request_pay({
-			pg: 'html5_inicis',
-			pay_method : 'card', // 기능 없음.
-			merchant_uid: 'merchant_'+new Date().getTime(), // 상점에서 관리하는 주문 번호
-			name : '${payInfoVO.pd_name}',
-			amount : ${payInfoVO.amount}, // 빌링키 발급과 함께 1,004원 결제승인을 시도합니다.
-			customer_uid : '${payInfoVO.mem_email}'+new Date().getTime(), // 필수 입력
-			buyer_email: '${payInfoVO.mem_email}',
-			buyer_name: '${payInfoVO.mem_name}',
-			buyer_tel: '${payInfoVO.mem_phoneNum}',
-			buyer_addr: '${payInfoVO.order_address}',
-	        buyer_postcode: '${payInfoVO.order_postcode}'
-		}, function(rsp) {
-			if ( rsp.success ) {
-				alert('빌링키 발급 성공');
-				$.ajax({
-			        url: "subResult.pm", 
-			        method: "POST",
-			        headers: { "Content-Type": "application/json" },
-			        data: {
-			          customer_uid: '${payInfoVO.mem_email}'+new Date().getTime(), // 카드(빌링키)와 1:1로 대응하는 값
-			        }
-			      }).done(function(result) {
-					alert(result)
-				});
-			} else {
-				alert('빌링키 발급 실패');
-			}
-		});
-	   
-	  }
 </script>
 </head>
 <body>
 <jsp:include page="../inc/header.jsp"/>  <!-- 헤더 들어가는 곳 -->
 <div class="container h-100">
 	<div class="row d-flex justify-content-center align-items-center h-100">
-	        <div class="col-6 text-center">
-				<div class="card">
-					<img src="resources//assets/credit-card.png" alt="스탠다드패키지" class="card-img-top" onclick="kgPay()"/>
-					<div class="card-body">
-						<button class="btn btn-outline-success btn-block" onclick="kgPay()">카드결제</button><br>
-					</div>
-				</div>
-	        </div>
 	        <div class="col-6 text-center">
 				<div class="card">
 					<img src="resources//assets/payment_icon_yellow_large.png" alt="스탠다드패키지" class="card-img-top" onclick="kakaoPay()"/>

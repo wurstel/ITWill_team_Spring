@@ -47,8 +47,8 @@
 		                        <li class="nav-item"><a class="nav-link" href="join_before.me">Join (3000w)</a></li>
                         		<li class="nav-item"><a class="nav-link" href="login_form.me">My shop</a></li>
                         	</c:when>
-                        	<c:when test="${userId eq 'almeal'}">
-            					<li class="nav-item "><a class="nav-link" href="adminpage.me">관리자</a></li>                
+                        	<c:when test="${sId eq 'almeal'}">
+            					<li class="nav-item "><a class="nav-link" href="admin_main.ad">관리자</a></li>                
 			            		<li class="nav-item "><a class="nav-link" href="logout.me">Logout</a></li>
             				</c:when>
                         	<c:otherwise>
