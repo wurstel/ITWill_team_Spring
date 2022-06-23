@@ -176,7 +176,7 @@ public class ControllerMember {
 		} else {
 			String isAuthenticatedMember = service.getAuthenticationStatus(member.getMem_id());
 			if (isAuthenticatedMember.equals("Y")) {
-				session.setAttribute("userId", member.getMem_name()); // 헤더에 표시할 사용자 이름
+				session.setAttribute("userName", member.getMem_name()); // 헤더에 표시할 사용자 이름
 				session.setAttribute("sId", member.getMem_id()); // 아이디 저장
 				return "redirect:/";
 			} else {
@@ -400,7 +400,7 @@ public class ControllerMember {
 				}
 				
 				
-				session.setAttribute("userId", kakaoUserInfo.getKakao_account().getProfile().get("nickname").toString());
+				session.setAttribute("userName", kakaoUserInfo.getKakao_account().getProfile().get("nickname").toString());
 				// 카카오 로그아웃을 판별하려는 토큰
 				session.setAttribute("access_token", kakaoTokenVO.getAccess_token());
 				session.setAttribute("sId", id);
@@ -435,7 +435,7 @@ public class ControllerMember {
 					service.naverJoin(naverUserInfoVO, id);
 				}
 				
-				session.setAttribute("userId", naverUserInfoVO.getResponse().getName());
+				session.setAttribute("userName", naverUserInfoVO.getResponse().getName());
 				session.setAttribute("sId", id);
 				System.out.println("네이버 로그인 아이디 : " + id);
 				return "redirect:/";

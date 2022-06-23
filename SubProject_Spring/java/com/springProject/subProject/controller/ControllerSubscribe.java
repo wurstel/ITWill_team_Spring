@@ -29,7 +29,7 @@ public class ControllerSubscribe {
    
    @RequestMapping(value = "/sub_order.sub", method = RequestMethod.GET)
    public String standardSub(HttpSession session, Model model) {
-      String id = (String)session.getAttribute("userId");
+      String id = (String)session.getAttribute("sId");
       
       if(id == null) {
          model.addAttribute("msg", "잘못된 접근입니다");

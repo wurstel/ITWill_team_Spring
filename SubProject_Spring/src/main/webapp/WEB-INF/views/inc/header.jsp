@@ -42,7 +42,7 @@
 			    </form>
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <c:choose>
-            				<c:when test="${empty userId }">
+            				<c:when test="${empty sId }">
 		                        <li class="nav-item"><a class="nav-link" href="login_form.me">Login</a></li>
 		                        <li class="nav-item"><a class="nav-link" href="join_before.me">Join (3000w)</a></li>
                         		<li class="nav-item"><a class="nav-link" href="login_form.me">My shop</a></li>
@@ -52,7 +52,7 @@
 			            		<li class="nav-item "><a class="nav-link" href="logout.me">Logout</a></li>
             				</c:when>
                         	<c:otherwise>
-                        		<li class="nav-item"><a class="nav-link">${userId}님</a></li>
+                        		<li class="nav-item"><a class="nav-link">${userName}님</a></li>
                         		<li class="nav-item"><a class="nav-link" href="logout.me">Logout</a></li>
                         		<li class="nav-item"><a class="nav-link" href="mypage.me">My shop</a></li>
                         	</c:otherwise>
