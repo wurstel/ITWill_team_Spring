@@ -66,6 +66,9 @@ h2 {
 	text-align: center;
 	padding: 20px 0;
 }
+
+
+
 </style>
 
 </head>
@@ -102,7 +105,8 @@ h2 {
 							<c:forEach var="product" items="${productList }">
 								<tr>
 									<td>${product.getPd_code() }</td>
-									<td>${product.getPd_img() }</td>
+<%-- 									<td>${product.getPd_img() }</td> --%>
+									<td><img src="./resources/img/${product.getPd_img()}" height="100px"></td>
 									<td><a
 										href="admin_detail.ad?pd_code=${product.getPd_code() }&page=${pageNum}">
 											${product.getPd_name() }</a></td>

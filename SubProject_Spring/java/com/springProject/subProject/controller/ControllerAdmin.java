@@ -1,6 +1,9 @@
 package com.springProject.subProject.controller;
 
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.springProject.subProject.svc.ServiceAdmin;
 import com.springProject.subProject.vo.MemberVO;
@@ -155,18 +160,52 @@ public class ControllerAdmin {
 	
 	// 상품등록 비즈니스 로직
 	
-	@RequestMapping(value = "/admin_register.ad", method = RequestMethod.POST)
-	public String registerPost(@ModelAttribute ProductVO product, Model model) {
-		
-		int insertCount = service.registerProduct(product);
-		
-		if (insertCount == 0) {
-			model.addAttribute("msg", "상품 등록 실패");
-			return "fail_back";
+		@RequestMapping(value = "/admin_register.ad", method = RequestMethod.POST)
+		public String registerPost(@ModelAttribute ProductVO product, Model model, MultipartHttpServletRequest request,
+				@RequestParam("file") MultipartFile[] file) throws Exception {
+			
+			String uploadPath = request.getRealPath("/resources/img");
+			System.out.println(uploadPath);
+		    String fileOriginName = "";
+		    String fileMultiName = "";
+		    
+		    
+		    
+		    for(int i=0; i<file.length; i++) {
+		        fileOriginName = file[i].getOriginalFilename();
+		        System.out.println("기존 파일명 : "+fileOriginName);
+		        SimpleDateFormat formatter = new SimpleDateFormat("YYYYMMDD_HHMMSS_"+i);
+		        Calendar now = Calendar.getInstance();
+		        
+		        //확장자명
+		        String extension = fileOriginName.split("\\.")[1];
+		        
+		        //fileOriginName에 날짜+.+확장자명으로 저장시킴.
+		        fileOriginName = formatter.format(now.getTime())+"."+extension;
+		        System.out.println("변경된 파일명 : "+fileOriginName);
+		        
+		        File f = new File(uploadPath+"\\"+fileOriginName);
+		        file[i].transferTo(f);
+		        if(i==0) { fileMultiName += fileOriginName; }
+		        else{ fileMultiName += ","+fileOriginName; }
+		    }
+		    
+		    
+		    System.out.println("*"+fileMultiName);
+		    
+		    product.setPd_img(fileMultiName);
+			
+			
+			
+			int insertCount = service.registerProduct(product);
+			
+			if (insertCount == 0) {
+				model.addAttribute("msg", "상품 등록 실패");
+				return "fail_back";
+			}
+			
+			return "redirect:/admin_list.ad";
 		}
-		
-		return "redirect:/admin_list.ad";
-	}
 	
 	
 	// 상품 목록

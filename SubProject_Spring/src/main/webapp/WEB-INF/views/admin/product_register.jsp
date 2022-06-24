@@ -54,6 +54,10 @@
         .sidebar .nav-link.active {
             color: #0d6efd;
         }
+        
+        .table {
+		    white-space:nowrap;
+		}
     </style>
 </head>
 <body>
@@ -66,7 +70,7 @@
                		<h1 class="mt-4">상품등록</h1>
                 </div>
                	<div>
-					<form action="admin_register.ad" name="ProductRegisterForm" method="post" >
+					<form action="admin_register.ad" name="ProductRegisterForm" method="post" enctype="multipart/form-data">
 					    <table class="table">
 					    	<tr>
 					            <td>상품코드</td>
@@ -86,7 +90,8 @@
 					        </tr>
 					        <tr>
 					            <td>상품이미지</td>
-					            <td><input type="file" name="pd_img" id="pd_img"></td>
+					            <td><input type="file" name="file" id="file" multiple="multiple" ></td>
+<%-- 					             <%=request.getRealPath("/") %> --%>
 					        </tr>
 					        <tr>
 					            <td colspan="2" align="center">
@@ -96,7 +101,7 @@
 					            </td>
 					        </tr>
 					    </table>
-					</form>                    
+					</form>         
            		</div>
         	</main>
         </div>

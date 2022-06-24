@@ -57,6 +57,10 @@
 			width: 1024px;
 			text-align: center;
 		}
+		
+		.table {
+		    white-space:nowrap;
+		}
     </style>
 </head>
 <body>

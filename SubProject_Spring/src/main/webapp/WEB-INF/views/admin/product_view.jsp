@@ -49,6 +49,10 @@
         .sidebar .nav-link.active {
             color: #0d6efd;
         }
+        
+        .table {
+		    white-space:nowrap;
+		}
     </style>
     
 </head>
@@ -66,7 +70,8 @@
 				        <tr>
 				            <td>상품 이미지</td>
 				            <td>
-				                <img src="" height="300px">
+				            	<img src="./resources/img/${product.getPd_img()}" height="300px">
+<!-- 				                <img src="" height="300px"> -->
 				            </td>
 				        </tr>
 				        <tr>
@@ -83,12 +88,12 @@
 				        </tr>
 				        <tr>
 				            <td>상품설명</td>
-				            <td><textarea id="productDesc" name="pd_detail" rows="15" cols="150" readonly="readonly">${product.getPd_detail()}</textarea></td>
+				            <td><textarea id="productDesc" name="pd_detail" rows="15" cols="100" readonly="readonly">${product.getPd_detail()}</textarea></td>
 			       		</tr>
 			        	<tr>
 				            <td colspan="2" align="center">
 				                <input type="button" class="btn btn-outline-primary" value="수정" onclick="location.href='admin_modify.ad?pd_code=${param.pd_code}&page=${param.page}'">
-				                <input type="button" class="btn btn-outline-danger btn-sm" id="deleteBtn"value="삭제" onclick="location.href='admin_delete.ad?pd_code=${param.pd_code}&page=${param.page}'">
+				                <input type="button" class="btn btn-outline-primary" id="deleteBtn"value="삭제" onclick="location.href='admin_delete.ad?pd_code=${param.pd_code}&page=${param.page}'">
 				                <input type="button" class="btn btn-outline-primary" id="listBtn" value="상품목록" 
 				                	onclick="location.href = 'admin_list.ad?page=${param.page}'">  
 				                	
