@@ -5,6 +5,7 @@ import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_padVO;
 import com.springProject.subProject.vo.PayInfoVO;
+import com.springProject.subProject.vo.ProductVO;
 
 public interface PaymentMapper {
 
@@ -23,5 +24,7 @@ public interface PaymentMapper {
 	void updateSubStatus(String mem_id);
 
 	MemberVO getMemInfo(String sId);
+
+	ProductVO getProduct(BasketListVO listVO);
 	
 }

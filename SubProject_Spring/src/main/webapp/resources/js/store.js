@@ -141,5 +141,14 @@ $(document).ready(function(){
 		$("html").animate({scrollTop: scrollPosition}, 500); 
 	});
 });		
+
+//상세정보에서 바로 주문
+function payDetail() {
+	var bk_pd_code = document.fr.pd_code.value;
+	var bk_qty = document.fr.bk_qty.value;
+	var bk_mem_id = document.fr.mem_id.value;
+	
+	location.href = "payDetail.pm?bk_pd_code="+ bk_pd_code + "&bk_qty=" + bk_qty+"&bk_mem_id=" + bk_mem_id;
+}
 		
 		

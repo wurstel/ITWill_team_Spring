@@ -35,7 +35,7 @@ body {
 
 <!-- For Demo Purpose -->
 <div class="container py-5">
-    <h2 class="h3 font-weight-bold">프리밈엄 패키지</h2>
+    <h2 class="h3 font-weight-bold">프리미엄 패키지</h2>
     <div class="row">
         <div class="col-lg-10 mb-4">
             <p class="font-italic text-muted">증류주 밀키트 박스 49,000원 / 월</p>

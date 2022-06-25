@@ -25,7 +25,11 @@
 	</update>
 	
 	<!-- 일반결제 -->
-
+	
+	<!-- 디테일에서 주문 -->
+	<select id="getProduct" resultType="com.springProject.subProject.vo.ProductVO">
+		SELECT * FROM product WHERE pd_code=#{bk_pd_code}
+	</select>
 	<!-- 장바구니에서 주문표 -->
 	<insert id="insertBasketOrderPad">
 		INSERT INTO order_pad VALUES((select order_num from(SELECT IFNULL(max(CAST(order_num as unsigned)),0)+1 as order_num from order_pad where order_mem_id=#{bk_mem_id} AND order_pd_code = #{bk_pd_code})tmp),

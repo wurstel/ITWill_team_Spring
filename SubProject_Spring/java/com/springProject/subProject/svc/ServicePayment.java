@@ -9,6 +9,7 @@ import com.springProject.subProject.vo.BasketListVO;
 import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.Order_padVO;
 import com.springProject.subProject.vo.PayInfoVO;
+import com.springProject.subProject.vo.ProductVO;
 
 @Service
 public class ServicePayment {
@@ -53,6 +54,11 @@ public class ServicePayment {
 
 	public MemberVO getMemInfo(String sId) {
 		return mapper.getMemInfo(sId);
+	}
+
+
+	public ProductVO getProduct(BasketListVO listVO) {
+		return mapper.getProduct(listVO);
 	}
 
 

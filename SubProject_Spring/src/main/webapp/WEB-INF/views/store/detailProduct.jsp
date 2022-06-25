@@ -140,7 +140,7 @@
 <!-- 												<button type="submit" class="btn btn-lg btn-dark" >장바구니담기</button> -->
 											</div>
 											<div class="col-6 d-grid p-1">
-												<button type="button" class="btn btn-lg btn-danger">주문하기</button>
+												<button type="button" class="btn btn-lg btn-danger" onclick="payDetail()">주문하기</button>
 											</div>
 										</c:otherwise>
 									</c:choose>
