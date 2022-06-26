@@ -82,7 +82,7 @@ String mem_auth_code = genCode.getAuthenticationCode(); %>
 				</select>
 		</div>
 		<div class="int-area">
-			<input type="button" value="메일 인증" class="mail_btn" id="mail_btn">				
+<!-- 			<input type="button" value="메일 인증" class="mail_btn" id="mail_btn">				 -->
 <!-- 			<input type="text" name="mem_auth" id="auth" autocomplete="off" required="required"> -->
 <!-- 			<label for="id">메일 인증</label>	아이디 중복방지	 -->
 		</div>

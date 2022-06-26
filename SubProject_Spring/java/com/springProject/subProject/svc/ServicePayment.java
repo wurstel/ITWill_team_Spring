@@ -60,6 +60,10 @@ public class ServicePayment {
 	public ProductVO getProduct(BasketListVO listVO) {
 		return mapper.getProduct(listVO);
 	}
+	
+	public MemberVO addressCofirm(String sId) {
+		return mapper.addressCofirm(sId);
+	}
 
 
 

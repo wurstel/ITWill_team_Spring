@@ -31,6 +31,7 @@ import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.NaverTokenVO;
 import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
+import com.springProject.subProject.vo.ReviewVO;
 import com.springProject.subProject.vo.UserIdVO;
 import com.springProject.subProject.vo.Member_authVO;
 
@@ -515,7 +516,20 @@ public class ControllerMember {
 			
 			return "redirect:/";
 		}
-		
-		
+    }
+    
+ // 마이페이지 - 리뷰쓰기로 이동
+    @RequestMapping(value = "/review.me", method = RequestMethod.GET)
+    public String writeReview(Model model, ReviewVO review) {
+       int insertCount = service.writeReview(review);
+       
+       service.updateReviewAvg(review);
+       
+       if (insertCount == 0) {
+          model.addAttribute("msg", "리뷰 등록 실패");
+          return "redirect:/inquiry.me";
+       }
+        
+       return "redirect:/inquiry.me";
     }
 }

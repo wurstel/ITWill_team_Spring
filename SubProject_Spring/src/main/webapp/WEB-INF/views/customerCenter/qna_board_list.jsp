@@ -15,6 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>Q&A 게시판</title>
+<link href="./resources/css/subpage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<jsp:include page="../inc/header.jsp"></jsp:include>
@@ -98,17 +99,17 @@
 		</nav>
 	</section>
 	<!--  style="position: absolute; left: 50%; width: 300px; margin-left: -150px; " -->
-	<section id="buttonArea">
+	<section id="buttonArea" class="search">
 		<form action="customerCenter_list.cu" method="post" >
 			<input type="hidden" name="pageNum" value="${pageNum}">
 				<div class="input-group">
-				  <select name="searchType" class="form-select" aria-label="Default select example">
+				  <select name="searchType" class="form-select-sm" aria-label="Default select example">
 				    <option value="subject"<c:if test="${searchType ne null and searchType eq 'subject'}">selected</c:if>>제목</option>
 					<option value="content"<c:if test="${searchType ne null and searchType eq 'content'}">selected</c:if>>내용</option>
 					<option value="subject_content"<c:if test="${searchType ne null and searchType eq 'subject_content'}">selected</c:if>>제목+내용</option>
 					<option value="name"<c:if test="${searchType ne null and searchType eq 'name'}">selected</c:if>>작성자</option>
 				  </select>
-				  <input type="text" name="keyword" value="${param.keyword }" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+				  <input type="text" name="keyword" value="${param.keyword }" class="form-control-sm" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
 				  <button class="btn btn-outline-primary" type="submit">검색</button>
 				</div>
 		</form>

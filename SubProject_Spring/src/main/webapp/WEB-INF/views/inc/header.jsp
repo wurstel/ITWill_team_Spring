@@ -52,12 +52,21 @@
 			            		<li class="nav-item "><a class="nav-link" href="logout.me">Logout</a></li>
             				</c:when>
                         	<c:otherwise>
-                        		<li class="nav-item"><a class="nav-link">${userName}님</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="logout.me">Logout</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="mypage.me">My shop</a></li>
+                        		<c:choose>
+                        			<c:when test="${access_token ne null }">
+                        					<li class="nav-item"><a class="nav-link">${userName}님</a></li>
+                        					<li class="nav-item"><a class="nav-link" href="https://kauth.kakao.com/oauth/logout?client_id=25b9b94777a0d2b56646129bea603613&logout_redirect_uri=http://localhost:8080/subProject/auth/kakao/logout">Logout</a></li>
+                        					<li class="nav-item"><a class="nav-link" href="mypage.me">My shop</a></li>
+                        			</c:when>
+                        			<c:otherwise>
+                        					<li class="nav-item"><a class="nav-link">${userName}님</a></li>
+			                        		<li class="nav-item"><a class="nav-link" href="logout.me">Logout</a></li>
+			                        		<li class="nav-item"><a class="nav-link" href="mypage.me">My shop</a></li>
+                        			</c:otherwise>
+                        		</c:choose>
                         	</c:otherwise>
                         </c:choose>
-                        <li class="nav-item"><a class="nav-link" href="CustomerCenter.cu">Community</a></li>
+                      		<li class="nav-item"><a class="nav-link" href="customerCenter_list.cu">Community</a></li>
                     </ul>
                 </div>
             </div>

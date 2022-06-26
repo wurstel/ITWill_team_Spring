@@ -35,16 +35,13 @@
 						  	</div>
 						  	<div class="carousel-inner">
 						    	<div class="carousel-item active">
-						    		<!-- 임시 사진 -->
-						     		<img src="${pageContext.request.contextPath}/resources/img/pic2.png" class="d-block w-100" alt="...">
+						     		<img src="resources/assets/${productDetail.getPd_img() }" class="mainImg">
 						    	</div>
 						   		<div class="carousel-item">
-						   			<!-- 임시 사진 -->
-						      		<img src="${pageContext.request.contextPath}/resources/img/pic2.png" class="d-block w-100" alt="...">
+						      		<img src="resources/assets/${productDetail.getPd_img() }" class="mainImg">
 						    	</div>
 						    	<div class="carousel-item">
-						    		<!-- 임시 사진 -->
-						      		<img src="${pageContext.request.contextPath}/resources/img/pic2.png" class="d-block w-100" alt="...">
+						      		<img src="resources/assets/${productDetail.getPd_img() }" class="mainImg">
 						   		 </div>
 						  	</div>
 						  	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -76,8 +73,9 @@
 									<c:if test="${now le rdate + 14}">
 										<span class="badge bg-dark">new</span>
 									</c:if>
-									<span class="badge bg-dark">best</span>
-									<span class="badge bg-dark">정보3</span>
+									<c:if test="${reviewAvg ge 4}">
+										<span class="badge bg-dark">best</span>
+									</c:if>
 								</p>
 								<p class="card-text pb-3">
 									배송비 2,500원 | 도서산간(제주도) 배송비 추가 5,000원 | 택배배송 | 5일 이내 출고 (주말,공휴일 제외)
@@ -163,11 +161,11 @@
 						      	<div class="modal-body">
 <%-- 					      	  		<img src="${productDetail.getPd_img() }" id="image"> --%>
 									<!-- 임시 사진 -->
-									<img src="${pageContext.request.contextPath}/resources/img/pic2.png" id="image">
-					      	  		<div id="na">상품코드 :</div>
-					          		<div id="cr">${productDetail.getPd_code() }</div>
+									<img src="resources/assets/${productDetail.getPd_img() }" id="image">
 					      	  		<div id="na">상품명 :</div>
 					          		<div id="cr">${productDetail.getPd_name() }</div>
+					          		<div id="na">상품가격 :</div>
+					          		<div id="cr">${productDetail.getPd_price() }</div>
 					      		</div>
 					      		<div class="modal-footer">
 					       	  		<input type="button" value="장바구니 이동" class="btn btn-outline-dark" onclick="cartChoice('cart')">
@@ -228,8 +226,7 @@
 							<div class="card mb-3" style="max-width: 100%;">
 								<div class="row g-0">
 									<div class="col-md-4">
-										<!-- 임시 사진 -->
-										<img src="${pageContext.request.contextPath}/resources/img/pic2.png"
+										<img src="resources/assets/${productDetail.getPd_img() }"
 											style="width: 150px; height: 180px;"
 											class="img-fluid rounded-start" alt="...">
 <%-- 										<img src="${review.getRe_img() }" --%>

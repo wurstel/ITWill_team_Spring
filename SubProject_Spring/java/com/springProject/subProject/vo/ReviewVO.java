@@ -20,6 +20,7 @@ public class ReviewVO {
 	private String re_comment;
 	private String re_score;
 	private String re_pd_code;
+	private String re_check;
 	
 	public String getRe_num() {
 		return re_num;
@@ -63,6 +64,21 @@ public class ReviewVO {
 	public void setRe_pd_code(String re_pd_code) {
 		this.re_pd_code = re_pd_code;
 	}
+	public String getRe_check() {
+		return re_check;
+	}
+	
+	public void setRe_check(String re_check) {
+		this.re_check = re_check;
+	}
+	
+	@Override
+	public String toString() {
+		return "ReviewVO [re_num=" + re_num + ", re_mem_id=" + re_mem_id + ", re_img=" + re_img + ", re_title="
+				+ re_title + ", re_comment=" + re_comment + ", re_score=" + re_score + ", re_pd_code=" + re_pd_code
+				+ ", re_check=" + re_check + "]";
+	}
+	
 	
 	
 }

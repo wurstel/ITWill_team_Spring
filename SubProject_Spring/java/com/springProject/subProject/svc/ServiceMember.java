@@ -24,6 +24,7 @@ import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.NaverTokenVO;
 import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
+import com.springProject.subProject.vo.ReviewVO;
 import com.springProject.subProject.vo.UserIdVO;
 import com.springProject.subProject.vo.Member_authVO;
 
@@ -278,6 +279,23 @@ public class ServiceMember {
 	public void memberDelete(String securePassword) {
 
 		mapper.memberDelete(securePassword);
+	}
+	
+	public int writeReview(ReviewVO review) {
+		 Integer num = mapper.selectMaxNum();
+		 
+		 if(num == null) {
+				num = 1;
+			} else {
+				num += 1;
+			}
+		 review.setRe_num(num.toString());
+		
+	      return mapper.insertReview(review);
+	   }
+
+	public void updateReviewAvg(ReviewVO review) {
+		mapper.updateReviewAvg(review);
 	}
 
 }

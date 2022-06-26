@@ -19,6 +19,7 @@
   <div id="page-content-wrapper">
     <div class="container-fluid">
       <form action="memInfoEdit.me" name="fr" id="fr" method="post">
+      	
       	<table class="table" >
 			<tr><td>아이디</td><td>${memberVO.mem_id }</td></tr>
 			<tr><td>이름</td><td>${memberVO.mem_name }</td></tr>
@@ -36,7 +37,7 @@
 					</select>
 			</td>
 			</tr>
-			<tr><td>전화번호</td><td><input type="text" name="mem_phoneNum" id="phone"onblur="checkPhone(this.value)"></td></tr>
+			<tr><td>전화번호</td><td><input type="text" name="mem_phoneNum" id="phone" value="${memberVO.mem_phoneNum }" onblur="checkPhone(this.value)"></td></tr>
 			<tr><td rowspan="2">주소</td><td><input type="text" name="mem_postcode" id="postcode"><input type="button" value="주소검색" onclick="postCodeSearch()"></td></tr>
 			<tr><td><input type="text" name="address" id="address"><input type="text" name="add_detail" id="add_detail" placeholder="상세주소 입력"></td></tr>
 			<tr><td>멤버쉽등급</td><td>${memberVO.mem_grade }</td></tr>

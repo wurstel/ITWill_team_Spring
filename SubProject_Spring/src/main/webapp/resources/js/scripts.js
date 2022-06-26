@@ -57,3 +57,23 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+// 리뷰 작성
+$(function() {
+   $(".reviewWrite").on("click", function() {
+      var n = $(".reviewWrite").index(this);
+      
+      var re_pd_code = document.getElementById("re_pd_code");
+      var re_pd_name = document.getElementById("re_pd_name");
+      var re_pd_img = document.getElementById("imageR");
+      
+      var pd_code = $(".oc_pd_code:eq("+n+")").val();
+      var pd_name = $(".oc_pd_name:eq("+n+")").val();
+      var pd_img = $(".oc_pd_img:eq("+n+")").val();
+      
+      re_pd_code.value = pd_code;
+      re_pd_name.value = pd_name;
+      re_pd_img.src = "resources/assets/" + pd_img;
+      
+   });
+});  

@@ -59,5 +59,8 @@
 		DELETE FROM basket WHERE bk_mem_id = #{bk_mem_id}
 	</delete>
 	
+	<select id="addressCofirm" resultType="com.springProject.subProject.vo.MemberVO">
+		SELECT mem_postcode, mem_address FROM member WHERE mem_id = #{sId}
+	</select>
 	
 </mapper>

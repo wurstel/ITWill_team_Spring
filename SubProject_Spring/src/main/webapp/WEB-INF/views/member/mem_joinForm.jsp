@@ -186,7 +186,7 @@ String mem_auth_code = genCode.getAuthenticationCode(); %>
 						</div>
 					<div class="d-grid mb-3">
 <!-- 						<div class="form-floating"> -->
-							<input type="button" value="메일 인증" class="btn btn-outline-primary btn-xxl" id="mail_btn">
+<!-- 							<input type="button" value="메일 인증" class="btn btn-outline-primary btn-xxl" id="mail_btn"> -->
 <!-- 						</div> -->
 					</div>
 

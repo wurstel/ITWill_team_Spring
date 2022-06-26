@@ -17,6 +17,8 @@ public class Order_checkVO {
 	private String order_qty;
 	private String totalprice;
 	private String order_status;
+	private String pd_code;
+	private String pd_img;
 	
 	public String getMem_id() {
 		return mem_id;
@@ -59,5 +61,17 @@ public class Order_checkVO {
 	public String toString() {
 		return "Order_checkDTO [mem_id=" + mem_id + ", pd_code=" + pd_name + ", pd_price=" + pd_price + ", od_qty="
 				+ order_qty + ", totalprice=" + totalprice + ", order_status=" + order_status + "]";
+	}
+	public String getPd_code() {
+		return pd_code;
+	}
+	public void setPd_code(String pd_code) {
+		this.pd_code = pd_code;
+	}
+	public String getPd_img() {
+		return pd_img;
+	}
+	public void setPd_img(String pd_img) {
+		this.pd_img = pd_img;
 	}
 }

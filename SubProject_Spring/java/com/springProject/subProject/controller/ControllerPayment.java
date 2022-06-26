@@ -86,7 +86,7 @@ public class ControllerPayment {
 			return "redirect:/";
 		}else {
 			model.addAttribute("msg", "잘못된 접근이거나 시스템 오류입니다");
-			return "failback";
+			return "fail_back";
 		}
 	}
 	
@@ -96,7 +96,15 @@ public class ControllerPayment {
 	public String selectPayStore(HttpSession session,Model model) {
 		ArrayList<BasketListVO> list = (ArrayList<BasketListVO>)session.getAttribute("basketlist");
 		ArrayList<Order_padVO> orderPadList = new ArrayList<Order_padVO>();
-	
+		String sId = session.getAttribute("sId").toString();
+		
+		MemberVO member = service.addressCofirm(sId);
+		
+		if(member.getMem_address().equals("") && member.getMem_postcode().equals("")) {
+			model.addAttribute("msg", "회원정보변경 페이지에서 전화번호와 주소를 입력해주세요");
+			return "fail_back";
+		}
+		
 		for(BasketListVO basketListVO : list) {
 			service.insertBasketOrderPad(basketListVO);
 		}		// 장바구니 상품을 주문표에 넣기
@@ -124,7 +132,7 @@ public class ControllerPayment {
 		payInfoVO.setOrder_postcode(orderPadList.get(0).getOrder_postcode());
 		System.out.println(payInfoVO);
 		//회원정보 가져오기
-		String sId = (String)session.getAttribute("sId");
+//		String sId = (String)session.getAttribute("sId");
 		MemberVO memberInfo =  service.getMemInfo(sId);
 		String[] adressAll = memberInfo.getMem_address().split(",");
 		String address = adressAll[0];
@@ -205,7 +213,7 @@ public class ControllerPayment {
 			return "redirect:/";
 		}else {
 			model.addAttribute("msg", "잘못된 접근이거나 시스템 오류입니다");
-			return "failback";
+			return "fail_back";
 		}
 	}
 	

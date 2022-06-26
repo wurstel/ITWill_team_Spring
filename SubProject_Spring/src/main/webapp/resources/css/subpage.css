@@ -131,3 +131,17 @@ td{
 	font-weight: bold;
 	color: gray;
 }
+
+.img {
+	width: 286px;
+	height: 380px;
+}
+
+.mainImg {
+	width: 450px;
+	height: 500px;
+}
+
+.search {
+	position: absolute; right: 320px;
+}

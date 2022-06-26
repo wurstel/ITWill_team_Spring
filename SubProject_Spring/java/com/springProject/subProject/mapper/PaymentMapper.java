@@ -27,4 +27,6 @@ public interface PaymentMapper {
 
 	ProductVO getProduct(BasketListVO listVO);
 	
+	MemberVO addressCofirm(String sId);
+	
 }

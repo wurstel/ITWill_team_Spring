@@ -11,6 +11,7 @@ import com.springProject.subProject.vo.KakaoUserInfoVO;
 import com.springProject.subProject.vo.MemberVO;
 import com.springProject.subProject.vo.NaverUserInfoVO;
 import com.springProject.subProject.vo.Order_checkVO;
+import com.springProject.subProject.vo.ReviewVO;
 import com.springProject.subProject.vo.Member_authVO;
 
 public interface MemberMapper {
@@ -87,6 +88,15 @@ public interface MemberMapper {
 
 	// 회원 탈퇴
 	void memberDelete(@Param("securePassword") String securePassword);
+	
+	// 리뷰 갯수 
+	Integer selectMaxNum();
+
+	// 리뷰 작성
+	int insertReview(ReviewVO review);
+	
+	//  상품 리뷰 평균 업데이트
+	void updateReviewAvg(ReviewVO review);
 
 
 }

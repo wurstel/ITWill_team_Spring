@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="selectProductReviewList" resultType="com.springProject.subProject.vo.ReviewVO">
-		SELECT * FROM review WHERE re_pd_code = (SELECT pd_code FROM product WHERE pd_code = #{pd_code}) 
+		SELECT * FROM review WHERE re_pd_code = CONVERT(#{pd_code}, SIGNED INTEGER)  
 		<choose>
 			<when test="choice.equals('최신순') or choice.equals('')">
 				ORDER BY DATE_FORMAT(re_rdate, '%y%m%d') DESC 
@@ -37,15 +37,14 @@
 				ORDER BY CONVERT(re_score, SIGNED INTEGER) DESC 	
 			</when>
 		</choose>
-		LIMIT 0, 5
 	</select>
 	
 	<select id="selectReviewCount" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM review WHERE re_pd_code = #{pd_code};
+		SELECT COUNT(*) FROM review WHERE re_pd_code = CONVERT(#{pd_code}, SIGNED INTEGER)
 	</select>
 	
 	<select id="selectReviewAvg" resultType="java.lang.Integer">
-		SELECT IFNULL(ROUND(AVG(re_score), 0),0) FROM review WHERE re_pd_code = #{pd_code};
+		SELECT IFNULL(ROUND(AVG(re_score), 0),0) FROM review WHERE re_pd_code = CONVERT(#{pd_code}, SIGNED INTEGER)
 	</select>
 	
 	<!-- 장바구니 확인 -->

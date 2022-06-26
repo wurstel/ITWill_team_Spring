@@ -20,11 +20,11 @@
 	</select>
 	
 	<insert id="insertKakaoId">
-		INSERT INTO member VALUES(#{id},"",#{userInfo.kakao_account.profile.nickname},"",#{gender},#{userInfo.kakao_account.email},"","","",'normal','0','null', 'N')
+		INSERT INTO member VALUES(#{id},"",#{userInfo.kakao_account.profile.nickname},"",#{gender},#{userInfo.kakao_account.email},"","","",'normal','0','null', 'Y')
 	</insert>
 	
 	<insert id="insertNaverId">
-		INSERT INTO member VALUES(#{id}, "", #{userInfo.response.name}, #{userInfo.response.birthday}, #{userInfo.response.gender}, #{userInfo.response.email}, #{userInfo.response.mobile}, "" ,"", 'normal', '0', 'null', 'N')
+		INSERT INTO member VALUES(#{id}, "", #{userInfo.response.name}, #{userInfo.response.birthday}, #{userInfo.response.gender}, #{userInfo.response.email}, #{userInfo.response.mobile}, "" ,"", 'normal', '0', 'null', 'Y')
 	</insert>
 	
 	<!-- 회원가입 -->
@@ -130,4 +130,19 @@
    <delete id="memberDelete">
    		DELETE FROM member WHERE mem_password = #{securePassword}
    </delete>
+   
+    <select id="selectMaxNum" resultType="java.lang.Integer">
+		SELECT MAX(re_num) from review
+	</select> 
+   
+   <insert id="insertReview">
+      INSERT INTO review 
+      VALUES(#{re_num}, #{re_mem_id}, '', #{re_title}, #{re_comment}, #{re_score}, #{re_pd_code}, now(), '1')
+   </insert>
+   
+   <update id="updateReviewAvg">
+   		UPDATE product 
+   		SET pd_re_avg = (SELECT ROUND(AVG(re_score), 0) FROM review WHERE re_pd_code = CONVERT(#{re_pd_code}, SIGNED INTEGER))
+   		WHERE pd_code =  CONVERT(#{re_pd_code}, SIGNED INTEGER)
+   </update>
 </mapper>
