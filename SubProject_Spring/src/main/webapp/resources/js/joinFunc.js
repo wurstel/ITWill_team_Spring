@@ -91,10 +91,10 @@ function checkForm() {
 	function checkDuplicateId() {
 		window.open("MemberCheckId.me", "check", "width=400,height=200");
 	}
-	// 회원 탈퇴 창
-	function memberDelete() {
-		window.open("MemberDelete.me", "check", "width=400,height=200");
-	}
+//	// 회원 탈퇴 창
+//	function memberDelete() {
+//		window.open("MemberDelete.me", "check", "width=400,height=200");
+//	}
 	//domainselect
 	function selectDomain() {
 		document.fr.domain.value = document.fr.sDomain.value;

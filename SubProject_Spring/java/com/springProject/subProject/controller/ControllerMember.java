@@ -165,7 +165,10 @@ public class ControllerMember {
 			@RequestParam String mem_password, Model model) {
 		// 입력받은 아이디로 memberVO 정보 불러옴
 		MemberVO member = service.getId(mem_id);
-
+		if(member == null) {
+			model.addAttribute("msg", "틀리거나 존재하지 않는 아이디입니다.");
+			return "fail_back";
+		}
 		// 입력한 비밀번호와 memberVO에 있는 비밀번호 복호화 하여 비교
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -349,7 +352,7 @@ public class ControllerMember {
 //					ModelAndView mv = new ModelAndView();
 			String email = "email";
 			String addr = mem_email; // 새로만든 구글 계정
-			String subject = "[회사명] 비밀번호 조회 인증 이메일 입니다.";
+			String subject = "[Almeal] 비밀번호 조회 인증 이메일 입니다.";
 			String body = "인증번호는 " + numStr2 + " 입니다. \n 해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 
 			service.sendEmailSelectPass(email, addr, subject, body);
@@ -488,13 +491,31 @@ public class ControllerMember {
     // 회원탈퇴 창
     @RequestMapping(value = "/MemberDelete.me", method = RequestMethod.GET)
     public String memberDelete() {
-    	return "member/memberDelete";
+    	return "member/memDelete";
     }
+    
 	// 회원탈퇴 비즈니스 로직
-    @RequestMapping(value = "/MemberDeletePro.me", method = RequestMethod.GET)
-    public String memberDeleteTrue(HttpSession session) {
-    	String id = (String)session.getAttribute("sId");
-    	service.memberDelete(id);
-    	return "redirect:/";
+    @RequestMapping(value = "/MemberDeletePro.me", method = RequestMethod.POST)
+    public String memberDeleteTrue(@RequestParam String mem_password, @ModelAttribute MemberVO memberVO, HttpSession session, Model model) {
+    	String id = (String) session.getAttribute("sId");
+		MemberVO member = service.getMyPage(id);
+	
+    	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    	
+		// matches()라는 메서드를 사용하여 입력받은 비밀번호와 DB에 저장돼있는 security방식의 암호화 키를 복호화하여 비교
+		if (!encoder.matches(mem_password, member.getMem_password())) {
+			model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
+			return "fail_back";
+		} else {
+			
+			String securePassword =  member.getMem_password();
+			service.memberDelete(securePassword);
+			
+			session.invalidate();
+			
+			return "redirect:/";
+		}
+		
+		
     }
 }

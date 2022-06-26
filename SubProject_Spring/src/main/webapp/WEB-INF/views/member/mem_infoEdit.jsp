@@ -41,8 +41,8 @@
 			<tr><td><input type="text" name="address" id="address"><input type="text" name="add_detail" id="add_detail" placeholder="상세주소 입력"></td></tr>
 			<tr><td>멤버쉽등급</td><td>${memberVO.mem_grade }</td></tr>
       	</table>
-      	<button type="submit" class="btn btn-secondary">수정하기</button>
-      	<input type="button" class="btn btn-danger" value="탈퇴하기" onclick="memberDelete()">
+      		<button type="submit" class="btn btn-secondary">수정하기</button>
+      	<input type="button" class="btn btn-danger" value="탈퇴하기" onclick="location.href='MemberDelete.me'">
       </form>
     </div>
   </div>

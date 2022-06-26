@@ -24,10 +24,10 @@
 				<input type="hidden" name="mem_name" value="${mem_name }">
 				<input type="hidden" name="mem_phoneNum" value="${mem_phoneNum }">
 				<input type="hidden" name="mem_email" value="${mem_email }">
-				<input type="text" name="mem_password" id="passwd" placeholder="새 비밀번호"
+				<input type="password" name="mem_password" id="passwd" placeholder="새 비밀번호"
 					class="card-text" style="font-weight: bold; font-size: 20px" onkeyup="checkPass(this.value)"><br>
 				<span id="passResult" class="passResult"></span><br>	
-				<input type="text" name="mem_password2" id="passwd2" placeholder="새 비밀번호(재확인)"
+				<input type="password" name="mem_password2" id="passwd2" placeholder="새 비밀번호(재확인)"
 					class="card-text" style="font-weight: bold; font-size: 20px" onkeyup="checkRetypePass(this.value)"><br>
 				<span id="checkRetypePassResult" class="checkRetypePassResult"></span><br>
 				<input type="submit" class="btn btn-primary" value="비밀번호 변경">

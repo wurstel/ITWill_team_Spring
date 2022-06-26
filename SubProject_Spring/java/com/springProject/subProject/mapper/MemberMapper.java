@@ -82,18 +82,11 @@ public interface MemberMapper {
    //주문내역 확인
    String isInquiry(String mem_id);
 
-   //주문내역 불러오기
-   List<Order_checkVO> loadInquiry(String mem_id);
+	// 주문내역 불러오기
+	List<Order_checkVO> loadInquiry(String mem_id);
 
-   // 회원 탈퇴
-   void memberDelete(String id);
-
-
-
-
-
-
-
+	// 회원 탈퇴
+	void memberDelete(@Param("securePassword") String securePassword);
 
 
 }

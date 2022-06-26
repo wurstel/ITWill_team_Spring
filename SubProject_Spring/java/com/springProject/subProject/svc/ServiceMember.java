@@ -141,7 +141,7 @@ public class ServiceMember {
 			params.put("to", mem_phoneNum); // 수신전화번호
 			params.put("from", "01086282629"); // 발신전화번호
 			params.put("type", "SMS");
-			params.put("text", "[회사명] 본인확인 인증번호 " + "[" + numStr + "]" + "를 입력하세요.");
+			params.put("text", "[Almeal] 본인확인 인증번호 " + "[" + numStr + "]" + "를 입력하세요.");
 			params.put("app_version", "test app 1.2"); // application name and version
 
 			try {
@@ -273,9 +273,11 @@ public class ServiceMember {
 	public List<Order_checkVO> loadInquiry(String mem_id) {
 		return mapper.loadInquiry(mem_id);
 	}
+
 	// 회원탈퇴
-	public void memberDelete(String id) {
-		mapper.memberDelete(id);
+	public void memberDelete(String securePassword) {
+
+		mapper.memberDelete(securePassword);
 	}
 
 }
