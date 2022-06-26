@@ -226,7 +226,7 @@ public class ControllerMember {
 			String domain, String mem_phoneNum, String mem_postcode, String address, String add_detail, Model model) {
 		String id = (String) session.getAttribute("sId");
 		String mem_email = mem_mailAdd + "@" + domain;
-		String mem_address = address + add_detail;
+		String mem_address = address +","+ add_detail;
 		memberVO.setMem_id(id);
 		System.out.println("아이디 : " + id);
 		memberVO.setMem_email(mem_email);

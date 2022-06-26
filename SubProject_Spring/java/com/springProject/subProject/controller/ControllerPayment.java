@@ -161,14 +161,18 @@ public class ControllerPayment {
 		//회원정보 가져오기
 		String sId = (String)session.getAttribute("sId");
 		MemberVO memberInfo =  service.getMemInfo(sId);
-		String[] adressAll = memberInfo.getMem_address().split(",");
-		String address = adressAll[0];
-		String add_detail = adressAll[1];
+		if(memberInfo.getMem_address().equals(null)) {
+			String[] addressAll = memberInfo.getMem_address().split(",");
+			String address = addressAll[0];
+			String add_detail = addressAll[1];
+			model.addAttribute("address", address);
+			model.addAttribute("add_detail", add_detail);
+		}
 		System.out.println(memberInfo);
 		
 		session.setAttribute("detailInfo", listVO);
-		model.addAttribute("address", address);
-		model.addAttribute("add_detail", add_detail);
+		model.addAttribute("address", "");
+		model.addAttribute("add_detail", "");
 		model.addAttribute("memberInfo", memberInfo);
 		model.addAttribute("payInfoVO", payInfoVO);
 		
