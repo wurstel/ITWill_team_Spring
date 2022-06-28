@@ -73,7 +73,7 @@ $(function() {
       
       re_pd_code.value = pd_code;
       re_pd_name.value = pd_name;
-      re_pd_img.src = "resources/assets/" + pd_img;
+      re_pd_img.src = "./resources/img/" + pd_img;
       
    });
 });  

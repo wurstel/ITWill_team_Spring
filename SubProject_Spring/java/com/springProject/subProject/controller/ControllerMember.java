@@ -521,7 +521,7 @@ public class ControllerMember {
  // 마이페이지 - 리뷰쓰기로 이동
     @RequestMapping(value = "/review.me", method = RequestMethod.GET)
     public String writeReview(Model model, ReviewVO review) {
-       int insertCount = service.writeReview(review);
+       Integer insertCount = service.writeReview(review);
        
        service.updateReviewAvg(review);
        

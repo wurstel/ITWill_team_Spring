@@ -35,7 +35,7 @@
 						  	</div>
 						  	<div class="carousel-inner">
 						    	<div class="carousel-item active">
-						     		<img src="resources/assets/${productDetail.getPd_img() }" class="mainImg">
+						     		<img src="./resources/img/${productDetail.getPd_img() }" class="mainImg">
 						    	</div>
 						   		<div class="carousel-item">
 						      		<img src="resources/assets/${productDetail.getPd_img() }" class="mainImg">
@@ -161,7 +161,7 @@
 						      	<div class="modal-body">
 <%-- 					      	  		<img src="${productDetail.getPd_img() }" id="image"> --%>
 									<!-- 임시 사진 -->
-									<img src="resources/assets/${productDetail.getPd_img() }" id="image">
+									<img src="./resources/assets/${productDetail.getPd_img() }" id="image">
 					      	  		<div id="na">상품명 :</div>
 					          		<div id="cr">${productDetail.getPd_name() }</div>
 					          		<div id="na">상품가격 :</div>
@@ -197,8 +197,8 @@
 			<div class="row" style="margin: 50px 0;">
 				<h1 class="jumbotron">
 					<div class="container">
-						<h1>Hello world</h1>
-						<small>This is product page.</small>
+<!-- 						<h1>Hello world</h1> -->
+<%-- 						<small>${productDetail.getPd_detail}</small> --%>
 					</div>
 				</h1>
 			</div>

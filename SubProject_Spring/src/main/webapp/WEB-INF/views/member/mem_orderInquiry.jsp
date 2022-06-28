@@ -95,7 +95,7 @@
 
 <form action="review.me" name="myform" id="myform" method="get">
 	<input type="hidden" name="re_mem_id" value="${sessionScope.sId }">
-	<input  type="hidden" name="re_pd_code" id="re_pd_code">
+	<input  type="hidden" name="re_pd_code" id="re_pd_code" value="">
 	    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	      <div class="modal-dialog modal-80size modal-center">
 	          <div class="modal-content">

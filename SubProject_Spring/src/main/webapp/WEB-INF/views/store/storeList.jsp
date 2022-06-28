@@ -94,7 +94,7 @@
 						<c:forEach var="product" items="${productList }">
 							<div class="col-lg-3 col-md-6">
 								<div class="card" style="width: 18rem;" onclick="location.href='productDetail.st?pd_code=${product.getPd_code() }'">
-									<img src="resources/assets/${product.getPd_img() }" class="img">
+									<img src="./resources/img/${product.getPd_img() }" class="img">
 									<div class="card-body">
 										<h5 class="card-title">${product.getPd_name() }</h5>
 										<p class="card-text"><fmt:formatNumber value="${product.getPd_price() }" pattern="#,###원" /></p>

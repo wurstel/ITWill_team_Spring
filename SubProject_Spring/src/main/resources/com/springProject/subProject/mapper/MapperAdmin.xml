@@ -33,8 +33,8 @@
 <!-- 	상품관리 -->
 	<insert id="insertProduct">
 		INSERT INTO product 
-		VALUES (#{pd_code}, #{pd_name}, #{pd_img}, #{pd_price}, #{pd_stock}, #{pd_detail},
-				now(), #{pd_state}, #{pd_sales}, #{pd_re_avg})
+		VALUES (#{pd_code}, #{pd_name}, #{pd_img}, #{pd_price}, '10', #{pd_detail},
+				now(), '재고있음', '0', '0')
 	</insert>
 	
 	

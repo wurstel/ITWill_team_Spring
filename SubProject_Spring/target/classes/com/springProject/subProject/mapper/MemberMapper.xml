@@ -137,7 +137,7 @@
    
    <insert id="insertReview">
       INSERT INTO review 
-      VALUES(#{re_num}, #{re_mem_id}, '', #{re_title}, #{re_comment}, #{re_score}, #{re_pd_code}, now(), '1')
+      VALUES(#{re_num}, #{re_mem_id}, '', #{re_title}, #{re_comment}, #{re_score}, #{re_pd_code}, now())
    </insert>
    
    <update id="updateReviewAvg">

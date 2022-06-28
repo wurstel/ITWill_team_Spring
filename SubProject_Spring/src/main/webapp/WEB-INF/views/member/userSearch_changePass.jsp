@@ -17,7 +17,7 @@
 	<div class="card text-center">
 		<div class="card-header">비밀번호찾기</div>
 		<div class="card-body">
-			<h5 class="card-title">고객님의 새 비밀번호를 변경해주세요.</h5>
+			<h5 class="card-title">고객님의 새 비밀번호를 입력해주세요.</h5>
 			<form action="changePass.me" method="post" name ="fr" onsubmit="return checkForm()">
 				<!-- 			<input type="text" name="mem_password" placeholder="새 비밀번호" -->
 				<!-- 				required="required" class="card-text"><br> -->

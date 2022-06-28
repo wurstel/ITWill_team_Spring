@@ -134,13 +134,13 @@ public class ServiceMember {
 		// 아이디, 비밀번호 찾기 - 휴대폰번호 인증
 		public void certifiedPhoneNumber(String mem_phoneNum, String numStr) {
 			// 인증번호(전화번호, 인증번호)
-			String api_key = "NCS7HTCDIUT9TAWD";
-			String api_secret = "JEWWSQKG12PLGCTO8FCVHMDUOTXGJICS";
+			String api_key = "NCSUU0RGYRFOBFK9";
+			String api_secret = "V6CAKLJ6SKWDKY90QWNVBFANUANSYXO9";
 			Message coolsms = new Message(api_key, api_secret);
 
 			HashMap<String, String> params = new HashMap<String, String>();
 			params.put("to", mem_phoneNum); // 수신전화번호
-			params.put("from", "01086282629"); // 발신전화번호
+			params.put("from", "01040722104"); // 발신전화번호
 			params.put("type", "SMS");
 			params.put("text", "[Almeal] 본인확인 인증번호 " + "[" + numStr + "]" + "를 입력하세요.");
 			params.put("app_version", "test app 1.2"); // application name and version
